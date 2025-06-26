@@ -12,7 +12,7 @@ const io = socketIo(server, {
     origin: function (origin, callback) {
       if (!origin) return callback(null, true);
       
-      if (origin.includes('goldpizza-delivery-system') && origin.includes('vercel.app')) {
+      if (origin && origin.includes('vercel.app')) {
         return callback(null, origin);
       }
       
@@ -41,7 +41,7 @@ app.use(cors({
     if (!origin) return callback(null, true);
     
     // Permitir qualquer subdomínio do Vercel para este projeto
-    if (origin.includes('goldpizza-delivery-system') && origin.includes('vercel.app')) {
+    if (origin && origin.includes('vercel.app')) {
       return callback(null, origin);
     }
     
