@@ -9,14 +9,45 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"]
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (origin.includes('goldpizza-delivery-system') && origin.includes('vercel.app')) {
+        return callback(null, true);
+      }
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error('Não permitido pelo CORS'), false);
+    },
+    methods: ["GET", "POST"],
+    credentials: true
   }
 });
 
 // Middleware
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'https://goldpizza-delivery-system.vercel.app',
+  'https://goldpizza-delivery-system-jq15.vercel.app'
+];
+
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: function (origin, callback) {
+    // Permitir requisições sem origin (ex: mobile apps, Postman)
+    if (!origin) return callback(null, true);
+    
+    // Permitir qualquer subdomínio do Vercel para este projeto
+    if (origin.includes('goldpizza-delivery-system') && origin.includes('vercel.app')) {
+      return callback(null, true);
+    }
+    
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    
+    return callback(new Error('Não permitido pelo CORS'), false);
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
