@@ -1,0 +1,17 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="64" fill="#D97706"/>
+  <circle cx="256" cy="256" r="192" fill="#FED7AA" stroke="#D97706" stroke-width="8"/>
+  <!-- Pizza slices -->
+  <path d="M256 64 L256 256 L448 256 A192 192 0 0 0 256 64 Z" fill="#F59E0B"/>
+  <path d="M256 256 L64 256 A192 192 0 0 0 256 448 Z" fill="#F59E0B"/>
+  <!-- Toppings -->
+  <circle cx="320" cy="192" r="20" fill="#DC2626"/>
+  <circle cx="192" cy="320" r="20" fill="#DC2626"/>
+  <circle cx="288" cy="288" r="16" fill="#16A34A"/>
+  <circle cx="224" cy="224" r="16" fill="#16A34A"/>
+  <circle cx="352" cy="320" r="16" fill="#DC2626"/>
+  <circle cx="160" cy="192" r="16" fill="#16A34A"/>
+  <!-- Crown -->
+  <path d="M256 32 L272 64 L240 64 Z" fill="#EAB308"/>
+  <circle cx="256" cy="40" r="8" fill="#EAB308"/>
+</svg>
