@@ -1,0 +1,3127 @@
+{
+  "users": [
+    {
+      "permissoesCozinha": {
+        "preparo": false,
+        "finalizacao": false,
+        "expedicao": false
+      },
+      "_id": "68570a97f5c44f9f5330f146",
+      "name": "Administrador",
+      "email": "admin@goldpizza.com",
+      "password": "$2a$10$Ba.g1rvkX5IonaHPxK5Fp.DDtqR.ICT87Uti5NMMtehWweHjTWt4u",
+      "role": "admin",
+      "ativo": true,
+      "forcarAlteracaoSenha": false,
+      "primeiroLogin": false,
+      "createdAt": "2025-06-21T19:40:07.116Z",
+      "__v": 0
+    },
+    {
+      "permissoesCozinha": {
+        "preparo": false,
+        "finalizacao": false,
+        "expedicao": false
+      },
+      "_id": "68570a97f5c44f9f5330f148",
+      "name": "Admin Pizzaria",
+      "email": "admin.pizzaria@pizzagold.com",
+      "password": "$2a$10$K8dZpelxVl7QKELWTu1oj.djBM9wWvgcFZ31xUNnwNzikAVSgi6iu",
+      "role": "admin_pizzaria",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "ativo": true,
+      "forcarAlteracaoSenha": false,
+      "primeiroLogin": false,
+      "createdAt": "2025-06-21T19:40:07.207Z",
+      "__v": 0
+    },
+    {
+      "permissoesCozinha": {
+        "preparo": false,
+        "finalizacao": false,
+        "expedicao": false
+      },
+      "_id": "68570a97f5c44f9f5330f14a",
+      "name": "João Atendente",
+      "email": "atendente@pizzagold.com",
+      "password": "$2a$10$InKTBRj0yrS9oabdWzoLr.LqepdKkJoasqG09Wgx1VGuF9zfYZebe",
+      "role": "atendente",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "ativo": true,
+      "forcarAlteracaoSenha": false,
+      "primeiroLogin": true,
+      "createdAt": "2025-06-21T19:40:07.296Z",
+      "__v": 0
+    },
+    {
+      "permissoesCozinha": {
+        "preparo": false,
+        "finalizacao": false,
+        "expedicao": false
+      },
+      "_id": "68570a97f5c44f9f5330f14c",
+      "name": "Maria Cozinha",
+      "email": "cozinha@pizzagold.com",
+      "password": "$2a$10$h.r.yMtNtJnD4Z7by3yf8.C05.gUrdU667N0pqhhbxCQPi7OaPu8G",
+      "role": "cozinha",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "ativo": true,
+      "forcarAlteracaoSenha": false,
+      "primeiroLogin": true,
+      "createdAt": "2025-06-21T19:40:07.373Z",
+      "__v": 0
+    },
+    {
+      "permissoesCozinha": {
+        "preparo": false,
+        "finalizacao": false,
+        "expedicao": false
+      },
+      "dadosMotoboy": {
+        "telefone": "11987654321",
+        "veiculo": "Honda CG 160",
+        "placa": "ABC-1234"
+      },
+      "_id": "68570a97f5c44f9f5330f14e",
+      "name": "Carlos Motoboy",
+      "email": "motoboy@pizzagold.com",
+      "password": "$2a$10$tcj0DKrIfxI30EkuyMEy7e4691Xiq2pV8ej7.ZU07jvC/hSbs8a5O",
+      "role": "motoboy",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "ativo": true,
+      "forcarAlteracaoSenha": false,
+      "primeiroLogin": true,
+      "createdAt": "2025-06-21T19:40:07.456Z",
+      "__v": 0
+    },
+    {
+      "permissoesCozinha": {
+        "preparo": false,
+        "finalizacao": false,
+        "expedicao": false
+      },
+      "_id": "685777eee3c169e355d8e068",
+      "name": "Atendente",
+      "email": "atendente0@pizzagold.com",
+      "password": "$2a$10$2TiIxXVuA5G9vhA94huuxu6TllInwcSYrRptThnrHu96b12kxa.dG",
+      "role": "atendente",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "ativo": true,
+      "forcarAlteracaoSenha": false,
+      "primeiroLogin": false,
+      "createdAt": "2025-06-22T03:26:38.354Z",
+      "__v": 0
+    },
+    {
+      "permissoesCozinha": {
+        "preparo": false,
+        "finalizacao": true,
+        "expedicao": false
+      },
+      "_id": "68577825e3c169e355d8e0bb",
+      "name": "Cozinha1",
+      "email": "cozinha1@goldpizza.com",
+      "password": "$2a$10$MDzIyGI.FIz8lfHRURGN3eCxSGB7S7DZZ9VCo02q7cMh4dAuQKOWu",
+      "role": "cozinha",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "ativo": true,
+      "forcarAlteracaoSenha": false,
+      "primeiroLogin": false,
+      "createdAt": "2025-06-22T03:27:33.959Z",
+      "__v": 0
+    },
+    {
+      "permissoesCozinha": {
+        "preparo": false,
+        "finalizacao": false,
+        "expedicao": false
+      },
+      "dadosMotoboy": {
+        "telefone": "48984473573",
+        "veiculo": "",
+        "placa": ""
+      },
+      "_id": "68577970e3c169e355d8e3ea",
+      "name": "13",
+      "email": "motoboy0@goldpizza.com",
+      "password": "$2a$10$gY0DLY2282KFjvLhMms4w.rZRsSY3DWh4r1xSyfv8lKJcBquj9F4C",
+      "role": "motoboy",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "ativo": true,
+      "forcarAlteracaoSenha": false,
+      "primeiroLogin": false,
+      "createdAt": "2025-06-22T03:33:04.499Z",
+      "__v": 0
+    },
+    {
+      "permissoesCozinha": {
+        "preparo": false,
+        "finalizacao": false,
+        "expedicao": true
+      },
+      "_id": "685785cfc55f8f5762ed25aa",
+      "name": "Cozinha2",
+      "email": "cozinha2@goldpizza.com",
+      "password": "$2a$10$HWn7eySkdRLroqtFkCe5ROyyzKc0INyovb75aaft4bJVDSNY9tXk.",
+      "role": "cozinha",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "ativo": true,
+      "forcarAlteracaoSenha": false,
+      "primeiroLogin": false,
+      "createdAt": "2025-06-22T04:25:51.486Z",
+      "__v": 0
+    },
+    {
+      "permissoesCozinha": {
+        "preparo": true,
+        "finalizacao": false,
+        "expedicao": false
+      },
+      "_id": "68598ad1f5eb11c2d666dc95",
+      "name": "Cozinha0",
+      "email": "cozinha0@goldpizza.com",
+      "password": "$2a$10$.AvqS0u6XCF4hA9JTeKpSOSCnR.lyZH1obeuXsBi4dj5cnv/xJL2a",
+      "role": "cozinha",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "ativo": true,
+      "forcarAlteracaoSenha": false,
+      "primeiroLogin": false,
+      "createdAt": "2025-06-23T17:11:45.050Z",
+      "__v": 0
+    },
+    {
+      "permissoesCozinha": {
+        "preparo": false,
+        "finalizacao": false,
+        "expedicao": false
+      },
+      "_id": "685cdeb84a39457b087957c9",
+      "name": "1",
+      "email": "1@1.com",
+      "password": "$2a$10$qyvBTKjQBVKxT4k.VcCpRe8sCtYePaPw37akaHykQaF/d1mn2RbwC",
+      "role": "admin_pizzaria",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "ativo": true,
+      "forcarAlteracaoSenha": true,
+      "primeiroLogin": true,
+      "createdAt": "2025-06-26T05:46:32.243Z",
+      "__v": 0
+    }
+  ],
+  "pizzarias": [
+    {
+      "endereco": {
+        "rua": "Rua das Pizzas",
+        "numero": "123",
+        "bairro": "Centro",
+        "cidade": "São Paulo",
+        "cep": "01234-567"
+      },
+      "contato": {
+        "telefone": "(11) 1234-5678",
+        "email": "contato@pizzagold.com",
+        "whatsapp": "11987654321"
+      },
+      "configuracoes": {
+        "horarioFuncionamento": {
+          "abertura": "18:00",
+          "fechamento": "23:00"
+        },
+        "taxaEntrega": 5,
+        "tempoPreparoMedio": 30,
+        "comissaoMotoboy": 2.5,
+        "limiteUsuarios": 10
+      },
+      "_id": "68570a97f5c44f9f5330f144",
+      "nome": "Pizza Gold Express",
+      "ativa": true,
+      "createdAt": "2025-06-21T19:40:07.109Z",
+      "__v": 0
+    }
+  ],
+  "pedidos": [
+    {
+      "endereco": {
+        "rua": "Rua dos Clientes",
+        "numero": "456",
+        "bairro": "Vila Teste",
+        "cidade": "São Paulo",
+        "cep": "01234-567",
+        "complemento": "",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "comissaoMotoboy": 2.5,
+        "subtotal": 46.9,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 51.9
+      },
+      "tempos": {
+        "recebido": "2025-06-21T14:56:16.710Z",
+        "preparando": "2025-06-21T19:26:25.849Z",
+        "pronto": "2025-06-21T19:26:33.992Z",
+        "saiu_entrega": "2025-06-21T19:26:37.140Z"
+      },
+      "progressoPizzas": {},
+      "_id": "6856c810bda2ed1629130b9f",
+      "numero": 1,
+      "cliente": "6856c810bda2ed1629130b98",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itens": [
+        {
+          "item": "6854ecdd89328bce1074d7bc",
+          "quantidade": 1,
+          "precoUnitario": 35.9,
+          "valorEspecial": 0,
+          "observacoes": "",
+          "subtotal": 35.9,
+          "_id": "6856c810bda2ed1629130ba0",
+          "sabores": [],
+          "pizzas": []
+        },
+        {
+          "item": "6854ecdd89328bce1074d7c0",
+          "quantidade": 2,
+          "precoUnitario": 5.5,
+          "valorEspecial": 0,
+          "observacoes": "",
+          "subtotal": 11,
+          "_id": "6856c810bda2ed1629130ba1",
+          "sabores": [],
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "saiu_entrega",
+      "tempoEstimado": 45,
+      "observacoes": "Sem cebola, por favor",
+      "createdAt": "2025-06-21T14:56:16.705Z",
+      "updatedAt": "2025-06-21T19:26:37.140Z",
+      "historico": [],
+      "__v": 0,
+      "pizzaiolo": "6856c02c76e74a0fa77dc43a"
+    },
+    {
+      "endereco": {
+        "rua": "Rua dos Clientes",
+        "numero": "456",
+        "bairro": "Vila Teste",
+        "cidade": "São Paulo",
+        "cep": "01234-567",
+        "complemento": "",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "comissaoMotoboy": 2.5,
+        "subtotal": 46.9,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 51.9
+      },
+      "tempos": {
+        "recebido": "2025-06-21T14:56:16.717Z",
+        "preparando": "2025-06-21T19:26:23.400Z",
+        "pronto": "2025-06-21T19:26:33.063Z",
+        "saiu_entrega": "2025-06-21T19:26:36.928Z"
+      },
+      "progressoPizzas": {},
+      "_id": "6856c810bda2ed1629130ba6",
+      "numero": 2,
+      "cliente": "6856c810bda2ed1629130b98",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itens": [
+        {
+          "item": "6854ecdd89328bce1074d7bc",
+          "quantidade": 1,
+          "precoUnitario": 35.9,
+          "valorEspecial": 0,
+          "observacoes": "",
+          "subtotal": 35.9,
+          "_id": "6856c810bda2ed1629130ba7",
+          "sabores": [],
+          "pizzas": []
+        },
+        {
+          "item": "6854ecdd89328bce1074d7c0",
+          "quantidade": 2,
+          "precoUnitario": 5.5,
+          "valorEspecial": 0,
+          "observacoes": "",
+          "subtotal": 11,
+          "_id": "6856c810bda2ed1629130ba8",
+          "sabores": [],
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "saiu_entrega",
+      "tempoEstimado": 45,
+      "observacoes": "Pizza bem assada",
+      "createdAt": "2025-06-21T14:51:16.715Z",
+      "updatedAt": "2025-06-21T19:26:36.926Z",
+      "historico": [],
+      "__v": 0,
+      "pizzaiolo": "6856c02c76e74a0fa77dc43a"
+    },
+    {
+      "endereco": {
+        "rua": "Rua dos Clientes",
+        "numero": "456",
+        "bairro": "Vila Teste",
+        "cidade": "São Paulo",
+        "cep": "01234-567",
+        "complemento": "",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "comissaoMotoboy": 2.5,
+        "subtotal": 46.9,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 51.9
+      },
+      "tempos": {
+        "preparando": "2025-06-21T14:56:16.723Z",
+        "pronto": "2025-06-21T19:26:32.296Z",
+        "saiu_entrega": "2025-06-21T19:26:36.067Z"
+      },
+      "progressoPizzas": {},
+      "_id": "6856c810bda2ed1629130bad",
+      "numero": 3,
+      "cliente": "6856c810bda2ed1629130b98",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itens": [
+        {
+          "item": "6854ecdd89328bce1074d7bc",
+          "quantidade": 1,
+          "precoUnitario": 35.9,
+          "valorEspecial": 0,
+          "observacoes": "",
+          "subtotal": 35.9,
+          "_id": "6856c810bda2ed1629130bae",
+          "sabores": [],
+          "pizzas": []
+        },
+        {
+          "item": "6854ecdd89328bce1074d7c0",
+          "quantidade": 2,
+          "precoUnitario": 5.5,
+          "valorEspecial": 0,
+          "observacoes": "",
+          "subtotal": 11,
+          "_id": "6856c810bda2ed1629130baf",
+          "sabores": [],
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "saiu_entrega",
+      "tempoEstimado": 45,
+      "observacoes": "Cliente preferencial",
+      "createdAt": "2025-06-21T14:46:16.722Z",
+      "updatedAt": "2025-06-21T19:26:36.067Z",
+      "historico": [],
+      "__v": 0
+    },
+    {
+      "endereco": {
+        "rua": "Rua dos Clientes",
+        "numero": "456",
+        "bairro": "Vila Teste",
+        "cidade": "São Paulo",
+        "cep": "01234-567",
+        "complemento": "",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "comissaoMotoboy": 2.5,
+        "subtotal": 46.9,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 51.9
+      },
+      "tempos": {
+        "pronto": "2025-06-21T14:56:16.729Z",
+        "saiu_entrega": "2025-06-21T15:12:22.749Z"
+      },
+      "progressoPizzas": {},
+      "_id": "6856c810bda2ed1629130bb4",
+      "numero": 4,
+      "cliente": "6856c810bda2ed1629130b98",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itens": [
+        {
+          "item": "6854ecdd89328bce1074d7bc",
+          "quantidade": 1,
+          "precoUnitario": 35.9,
+          "valorEspecial": 0,
+          "observacoes": "",
+          "subtotal": 35.9,
+          "_id": "6856c810bda2ed1629130bb5",
+          "sabores": [],
+          "pizzas": []
+        },
+        {
+          "item": "6854ecdd89328bce1074d7c0",
+          "quantidade": 2,
+          "precoUnitario": 5.5,
+          "valorEspecial": 0,
+          "observacoes": "",
+          "subtotal": 11,
+          "_id": "6856c810bda2ed1629130bb6",
+          "sabores": [],
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "saiu_entrega",
+      "tempoEstimado": 45,
+      "observacoes": "Entrega rápida",
+      "createdAt": "2025-06-21T14:41:16.728Z",
+      "updatedAt": "2025-06-21T15:12:22.749Z",
+      "historico": [],
+      "__v": 0
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "comissaoMotoboy": 2.5,
+        "subtotal": 89.9,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 94.9
+      },
+      "progressoPizzas": {},
+      "_id": "6856c91e6ddb433421314c17",
+      "numero": 1,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "itens": [
+        {
+          "item": "685494ff3140b09daaa75eeb",
+          "quantidade": 1,
+          "precoUnitario": 89.9,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "68537a5c4e42399574e4351c",
+              "quantidade": 1,
+              "_id": "6856c91e6ddb433421314c19"
+            }
+          ],
+          "borda": "68541522524f697bde30f298",
+          "observacoes": "",
+          "subtotal": 89.9,
+          "_id": "6856c91e6ddb433421314c18",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "recebido",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-21T15:00:46.174Z",
+          "observacao": "",
+          "_id": "6856c91e6ddb433421314c1a"
+        }
+      ],
+      "createdAt": "2025-06-21T15:00:46.178Z",
+      "updatedAt": "2025-06-21T15:00:46.181Z",
+      "__v": 0
+    },
+    {
+      "endereco": {
+        "rua": "Rua Teste",
+        "numero": "123",
+        "bairro": "Centro",
+        "cidade": "São Paulo",
+        "cep": "01234-567",
+        "complemento": "",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "comissaoMotoboy": 2.5,
+        "subtotal": 0,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 5
+      },
+      "tempos": {
+        "preparando": "2025-06-21T19:24:44.340Z"
+      },
+      "progressoPizzas": {},
+      "_id": "6856c9619bacbad85cda018d",
+      "numero": 5,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itens": [
+        {
+          "item": "68537a5c4e42399574e4351c",
+          "quantidade": 1,
+          "precoUnitario": 0,
+          "valorEspecial": 0,
+          "sabores": [],
+          "borda": null,
+          "observacoes": "",
+          "subtotal": 0,
+          "_id": "6856c9619bacbad85cda018e",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "preparando",
+      "tempoEstimado": 45,
+      "observacoes": "Pedido teste",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-21T15:01:53.114Z",
+          "observacao": "",
+          "_id": "6856c9619bacbad85cda018f"
+        }
+      ],
+      "createdAt": "2025-06-21T15:01:53.120Z",
+      "updatedAt": "2025-06-21T19:24:44.340Z",
+      "__v": 0,
+      "pizzaiolo": "6856c02c76e74a0fa77dc43a"
+    },
+    {
+      "endereco": {
+        "rua": "rua 1",
+        "numero": "123",
+        "complemento": "a3 b2",
+        "bairro": "Bairro 1",
+        "cidade": "Cidade 1",
+        "cep": "88813-788",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "comissaoMotoboy": 2.5,
+        "subtotal": 30,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 35
+      },
+      "tempos": {
+        "preparando": "2025-06-21T15:04:43.447Z",
+        "pronto": "2025-06-21T15:05:21.713Z",
+        "saiu_entrega": "2025-06-21T19:25:50.123Z"
+      },
+      "progressoPizzas": {},
+      "_id": "6856c9eca5842585d23cd2b2",
+      "numero": 6,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itens": [
+        {
+          "item": "6856c1860bf95e23b608cba5",
+          "quantidade": 1,
+          "precoUnitario": 30,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "6856c18cf3b74b1e77fd84e4",
+              "quantidade": 1,
+              "_id": "6856c9eca5842585d23cd2b4"
+            }
+          ],
+          "borda": "6856c9679bacbad85cda019a",
+          "observacoes": "",
+          "subtotal": 30,
+          "_id": "6856c9eca5842585d23cd2b3",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "saiu_entrega",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-21T15:04:12.253Z",
+          "observacao": "",
+          "_id": "6856c9eca5842585d23cd2b5"
+        }
+      ],
+      "createdAt": "2025-06-21T15:04:12.257Z",
+      "updatedAt": "2025-06-21T19:25:50.123Z",
+      "__v": 0,
+      "pizzaiolo": "6856c02c76e74a0fa77dc43a"
+    },
+    {
+      "endereco": null,
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "comissaoMotoboy": 2.5,
+        "subtotal": 30,
+        "taxaEntrega": 0,
+        "desconto": 0,
+        "total": 30
+      },
+      "tempos": {
+        "preparando": "2025-06-21T15:14:08.873Z",
+        "pronto": "2025-06-21T15:14:17.484Z",
+        "entregue": "2025-06-21T15:14:33.122Z"
+      },
+      "progressoPizzas": {},
+      "_id": "6856cbf2fe69059ad34ce430",
+      "numero": 7,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itens": [
+        {
+          "item": "6856c1860bf95e23b608cba5",
+          "quantidade": 1,
+          "precoUnitario": 30,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "6856c18cf3b74b1e77fd84e4",
+              "quantidade": 1,
+              "_id": "6856cbf2fe69059ad34ce432"
+            }
+          ],
+          "borda": "6856c9679bacbad85cda019a",
+          "observacoes": "",
+          "subtotal": 30,
+          "_id": "6856cbf2fe69059ad34ce431",
+          "pizzas": []
+        }
+      ],
+      "tipo": "retirada",
+      "status": "finalizado_pago",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-21T15:12:50.956Z",
+          "observacao": "",
+          "_id": "6856cbf2fe69059ad34ce433"
+        }
+      ],
+      "createdAt": "2025-06-21T15:12:50.958Z",
+      "updatedAt": "2025-06-21T19:25:26.781Z",
+      "__v": 0,
+      "pizzaiolo": "6856c02c76e74a0fa77dc43a"
+    },
+    {
+      "endereco": {
+        "rua": "1",
+        "numero": "1",
+        "complemento": "1",
+        "bairro": "1",
+        "cidade": "1",
+        "cep": "12121-212",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "comissaoMotoboy": 2.5,
+        "subtotal": 200,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 205
+      },
+      "tempos": {
+        "preparando": "2025-06-21T19:24:40.126Z",
+        "pronto": "2025-06-21T19:24:55.091Z",
+        "saiu_entrega": "2025-06-21T19:24:59.285Z"
+      },
+      "progressoPizzas": {},
+      "_id": "685706ec02215ae48cb33397",
+      "numero": 8,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itens": [
+        {
+          "item": "6856c99fa5842585d23cd268",
+          "quantidade": 1,
+          "precoUnitario": 200,
+          "valorEspecial": 0,
+          "sabores": [],
+          "borda": null,
+          "observacoes": "",
+          "pizzas": [
+            {
+              "nome": "Pizza Tradicional",
+              "categoria": "pizza",
+              "quantidade": 1,
+              "sabores": [
+                {
+                  "_id": "6856c18cf3b74b1e77fd84e4",
+                  "nome": "Margherita",
+                  "descricao": "Molho de tomate, mussarela, manjericão fresco e azeite",
+                  "categoria": "sabor",
+                  "valorEspecial": 0,
+                  "preco": 0,
+                  "itensCombo": [],
+                  "ingredientes": []
+                }
+              ],
+              "borda": {
+                "_id": "6856c9679bacbad85cda019a",
+                "nome": "Requeijão",
+                "descricao": "Requeijão",
+                "categoria": "borda",
+                "valorEspecial": 0,
+                "preco": 0,
+                "ingredientes": [],
+                "itensCombo": []
+              },
+              "observacoes": "",
+              "_id": "685706ec02215ae48cb33399"
+            }
+          ],
+          "subtotal": 200,
+          "_id": "685706ec02215ae48cb33398"
+        }
+      ],
+      "tipo": "delivery",
+      "status": "saiu_entrega",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-21T19:24:28.408Z",
+          "observacao": "",
+          "_id": "685706ec02215ae48cb3339a"
+        }
+      ],
+      "createdAt": "2025-06-21T19:24:28.415Z",
+      "updatedAt": "2025-06-21T19:24:59.284Z",
+      "__v": 0,
+      "pizzaiolo": "6856c02c76e74a0fa77dc43a"
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 30,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 35,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-21T19:37:44.331Z",
+        "pronto": "2025-06-21T19:37:48.843Z"
+      },
+      "progressoPizzas": {},
+      "_id": "685709fa59f53371be62abe5",
+      "numero": 9,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itens": [
+        {
+          "item": "6856c1860bf95e23b608cba5",
+          "quantidade": 1,
+          "precoUnitario": 30,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "6856c18cf3b74b1e77fd84e4",
+              "quantidade": 1,
+              "_id": "685709fa59f53371be62abe7"
+            }
+          ],
+          "borda": "6856c9679bacbad85cda019a",
+          "observacoes": "",
+          "subtotal": 30,
+          "_id": "685709fa59f53371be62abe6",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "pronto",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-21T19:37:30.654Z",
+          "observacao": "",
+          "_id": "685709fa59f53371be62abe8"
+        }
+      ],
+      "createdAt": "2025-06-21T19:37:30.660Z",
+      "updatedAt": "2025-06-21T19:37:48.843Z",
+      "__v": 0,
+      "pizzaiolo": "6856c02c76e74a0fa77dc438"
+    },
+    {
+      "endereco": {
+        "rua": "a",
+        "numero": "a",
+        "complemento": "121",
+        "bairro": "a",
+        "cidade": "a",
+        "cep": "21212-121",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 200,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 205,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-22T03:27:49.644Z",
+        "pronto": "2025-06-22T03:33:25.692Z",
+        "saiu_entrega": "2025-06-22T03:33:37.303Z",
+        "entregue": "2025-06-24T18:29:10.303Z",
+        "finalizado_pago": "2025-06-25T22:39:18.899Z"
+      },
+      "_id": "685777bbe3c169e355d8e01c",
+      "numero": 1,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773b51155d72a00508023",
+          "quantidade": 2,
+          "precoUnitario": 100,
+          "valorEspecial": 0,
+          "sabores": [],
+          "borda": null,
+          "observacoes": "",
+          "pizzas": [
+            {
+              "nome": "Pequena",
+              "categoria": "pizza",
+              "quantidade": 1,
+              "sabores": [
+                {
+                  "_id": "685773551155d72a00507fad",
+                  "nome": "Sabor 1",
+                  "descricao": "Sabor 1",
+                  "categoria": "sabor",
+                  "valorEspecial": 0,
+                  "preco": 0,
+                  "ingredientes": [],
+                  "itensCombo": []
+                }
+              ],
+              "borda": {
+                "_id": "685773981155d72a00508001",
+                "nome": "Requeijão",
+                "descricao": "Requeijão",
+                "categoria": "borda",
+                "valorEspecial": 0,
+                "preco": 0,
+                "ingredientes": [],
+                "itensCombo": []
+              },
+              "observacoes": "",
+              "_id": "685777bbe3c169e355d8e01e"
+            }
+          ],
+          "subtotal": 200,
+          "_id": "685777bbe3c169e355d8e01d"
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-22T03:25:47.234Z",
+          "observacao": "",
+          "_id": "685777bbe3c169e355d8e01f"
+        }
+      ],
+      "createdAt": "2025-06-22T03:25:47.241Z",
+      "updatedAt": "2025-06-25T22:39:18.899Z",
+      "__v": 0,
+      "pizzaiolo": "68577825e3c169e355d8e0bb",
+      "motoboy": "68577970e3c169e355d8e3ea",
+      "progressoPizzas": {}
+    },
+    {
+      "endereco": {
+        "rua": "1",
+        "numero": "1",
+        "complemento": "12313",
+        "bairro": "1",
+        "cidade": "1",
+        "cep": "21312-312",
+        "referencia": "123"
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 100,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 105,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-22T03:49:09.354Z",
+        "pronto": "2025-06-22T15:42:11.363Z",
+        "saiu_entrega": "2025-06-22T15:55:20.403Z",
+        "entregue": "2025-06-24T18:29:13.146Z",
+        "finalizado_pago": "2025-06-25T22:39:20.240Z"
+      },
+      "_id": "68577d0ce3c169e355d8e7e6",
+      "numero": 2,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773b51155d72a00508023",
+          "quantidade": 1,
+          "precoUnitario": 100,
+          "valorEspecial": 0,
+          "sabores": [],
+          "borda": null,
+          "observacoes": "",
+          "pizzas": [
+            {
+              "nome": "Pequena",
+              "categoria": "pizza",
+              "quantidade": 1,
+              "sabores": [
+                {
+                  "_id": "685773551155d72a00507fad",
+                  "nome": "Sabor 1",
+                  "descricao": "Sabor 1",
+                  "categoria": "sabor",
+                  "valorEspecial": 0,
+                  "preco": 0,
+                  "ingredientes": [],
+                  "itensCombo": []
+                }
+              ],
+              "borda": {
+                "_id": "685773981155d72a00508001",
+                "nome": "Requeijão",
+                "descricao": "Requeijão",
+                "categoria": "borda",
+                "valorEspecial": 0,
+                "preco": 0,
+                "ingredientes": [],
+                "itensCombo": []
+              },
+              "observacoes": "Sem cebola",
+              "_id": "68577d0ce3c169e355d8e7e8"
+            }
+          ],
+          "subtotal": 100,
+          "_id": "68577d0ce3c169e355d8e7e7"
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-22T03:48:28.574Z",
+          "observacao": "",
+          "_id": "68577d0ce3c169e355d8e7e9"
+        }
+      ],
+      "createdAt": "2025-06-22T03:48:28.577Z",
+      "updatedAt": "2025-06-25T22:39:20.240Z",
+      "__v": 0,
+      "pizzaiolo": "68577825e3c169e355d8e0bb",
+      "motoboy": "68577970e3c169e355d8e3ea",
+      "progressoPizzas": {}
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 80,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 85,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-22T03:50:29.268Z",
+        "pronto": "2025-06-22T15:42:27.551Z",
+        "saiu_entrega": "2025-06-22T15:55:22.494Z",
+        "entregue": "2025-06-24T20:36:24.302Z",
+        "finalizado_pago": "2025-06-25T22:39:22.167Z"
+      },
+      "_id": "68577d7ee3c169e355d8ea59",
+      "numero": 3,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773371155d72a00507f9c",
+          "quantidade": 2,
+          "precoUnitario": 40,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "685773551155d72a00507fad",
+              "quantidade": 1,
+              "_id": "68577d7ee3c169e355d8ea5b"
+            }
+          ],
+          "borda": "685773981155d72a00508001",
+          "observacoes": "",
+          "subtotal": 80,
+          "_id": "68577d7ee3c169e355d8ea5a",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-22T03:50:22.906Z",
+          "observacao": "",
+          "_id": "68577d7ee3c169e355d8ea5c"
+        }
+      ],
+      "createdAt": "2025-06-22T03:50:22.907Z",
+      "updatedAt": "2025-06-25T22:39:22.167Z",
+      "__v": 0,
+      "pizzaiolo": "68570a97f5c44f9f5330f146",
+      "motoboy": "68577970e3c169e355d8e3ea",
+      "progressoPizzas": {}
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 85,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 90,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-22T03:51:59.613Z",
+        "pronto": "2025-06-22T15:47:11.073Z",
+        "saiu_entrega": "2025-06-22T15:55:23.691Z",
+        "entregue": "2025-06-24T20:36:23.379Z",
+        "finalizado_pago": "2025-06-25T22:39:21.280Z"
+      },
+      "_id": "68577ddae3c169e355d8eb82",
+      "numero": 4,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773371155d72a00507f9c",
+          "quantidade": 2,
+          "precoUnitario": 40,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "685773551155d72a00507fad",
+              "quantidade": 1,
+              "_id": "68577ddae3c169e355d8eb84"
+            },
+            {
+              "sabor": "685773601155d72a00507fbe",
+              "quantidade": 1,
+              "_id": "68577ddae3c169e355d8eb85"
+            }
+          ],
+          "borda": "685773981155d72a00508001",
+          "observacoes": "Sem cebola",
+          "subtotal": 85,
+          "_id": "68577ddae3c169e355d8eb83",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-22T03:51:54.136Z",
+          "observacao": "",
+          "_id": "68577ddae3c169e355d8eb86"
+        }
+      ],
+      "createdAt": "2025-06-22T03:51:54.139Z",
+      "updatedAt": "2025-06-25T22:39:21.280Z",
+      "__v": 0,
+      "pizzaiolo": "68570a97f5c44f9f5330f146",
+      "motoboy": "68577970e3c169e355d8e3ea",
+      "progressoPizzas": {}
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 40,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 45,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-22T04:26:36.866Z",
+        "pronto": "2025-06-22T15:46:49.136Z",
+        "saiu_entrega": "2025-06-22T15:55:24.722Z",
+        "entregue": "2025-06-24T20:36:22.618Z",
+        "finalizado_pago": "2025-06-25T22:39:22.601Z"
+      },
+      "_id": "685785ddc55f8f5762ed260b",
+      "numero": 5,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773371155d72a00507f9c",
+          "quantidade": 1,
+          "precoUnitario": 40,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "685773551155d72a00507fad",
+              "quantidade": 1,
+              "_id": "685785ddc55f8f5762ed260d"
+            }
+          ],
+          "borda": "685773981155d72a00508001",
+          "observacoes": "",
+          "subtotal": 40,
+          "_id": "685785ddc55f8f5762ed260c",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-22T04:26:05.555Z",
+          "observacao": "",
+          "_id": "685785ddc55f8f5762ed260e"
+        }
+      ],
+      "createdAt": "2025-06-22T04:26:05.558Z",
+      "updatedAt": "2025-06-25T22:39:22.601Z",
+      "__v": 0,
+      "pizzaiolo": "68577825e3c169e355d8e0bb",
+      "motoboy": "68577970e3c169e355d8e3ea",
+      "progressoPizzas": {}
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 40,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 45,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-22T14:48:13.982Z",
+        "pronto": "2025-06-22T15:46:57.191Z",
+        "saiu_entrega": "2025-06-22T15:55:25.629Z",
+        "entregue": "2025-06-24T20:36:21.815Z",
+        "finalizado_pago": "2025-06-25T22:39:22.904Z"
+      },
+      "_id": "685785e7c55f8f5762ed263f",
+      "numero": 6,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773371155d72a00507f9c",
+          "quantidade": 1,
+          "precoUnitario": 40,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "685773551155d72a00507fad",
+              "quantidade": 1,
+              "_id": "685785e7c55f8f5762ed2641"
+            }
+          ],
+          "borda": "685773981155d72a00508001",
+          "observacoes": "",
+          "subtotal": 40,
+          "_id": "685785e7c55f8f5762ed2640",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-22T04:26:15.190Z",
+          "observacao": "",
+          "_id": "685785e7c55f8f5762ed2642"
+        }
+      ],
+      "createdAt": "2025-06-22T04:26:15.191Z",
+      "updatedAt": "2025-06-25T22:39:22.904Z",
+      "__v": 0,
+      "pizzaiolo": "685785cfc55f8f5762ed25aa",
+      "motoboy": "68577970e3c169e355d8e3ea",
+      "progressoPizzas": {}
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 40,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 45,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-22T14:49:26.787Z",
+        "pronto": "2025-06-22T15:42:14.052Z",
+        "saiu_entrega": "2025-06-22T15:55:26.904Z",
+        "entregue": "2025-06-24T20:36:21.027Z",
+        "finalizado_pago": "2025-06-25T22:39:23.217Z"
+      },
+      "_id": "685817d1599352b6b60af21d",
+      "numero": 7,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773371155d72a00507f9c",
+          "quantidade": 1,
+          "precoUnitario": 40,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "685773551155d72a00507fad",
+              "quantidade": 1,
+              "_id": "685817d1599352b6b60af21f"
+            }
+          ],
+          "borda": "685773981155d72a00508001",
+          "observacoes": "",
+          "subtotal": 40,
+          "_id": "685817d1599352b6b60af21e",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-22T14:48:49.422Z",
+          "observacao": "",
+          "_id": "685817d1599352b6b60af220"
+        }
+      ],
+      "createdAt": "2025-06-22T14:48:49.426Z",
+      "updatedAt": "2025-06-25T22:39:23.217Z",
+      "__v": 0,
+      "pizzaiolo": "685785cfc55f8f5762ed25aa",
+      "motoboy": "68577970e3c169e355d8e3ea",
+      "progressoPizzas": {}
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 40,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 45,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-22T15:49:14.193Z",
+        "pronto": "2025-06-22T15:49:20.310Z",
+        "saiu_entrega": "2025-06-22T15:55:27.913Z",
+        "entregue": "2025-06-23T02:34:36.154Z",
+        "finalizado_pago": "2025-06-23T16:26:41.377Z"
+      },
+      "progressoPizzas": {},
+      "_id": "685825efeeefed7f4d1dd811",
+      "numero": 8,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773371155d72a00507f9c",
+          "quantidade": 1,
+          "precoUnitario": 40,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "685773551155d72a00507fad",
+              "quantidade": 1,
+              "_id": "685825efeeefed7f4d1dd813"
+            }
+          ],
+          "borda": "685773981155d72a00508001",
+          "observacoes": "",
+          "subtotal": 40,
+          "_id": "685825efeeefed7f4d1dd812",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-22T15:49:03.289Z",
+          "observacao": "",
+          "_id": "685825efeeefed7f4d1dd814"
+        }
+      ],
+      "createdAt": "2025-06-22T15:49:03.299Z",
+      "updatedAt": "2025-06-23T16:26:41.377Z",
+      "__v": 0,
+      "pizzaiolo": "68570a97f5c44f9f5330f148",
+      "motoboy": "68577970e3c169e355d8e3ea"
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 40,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 45,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-22T15:50:43.881Z",
+        "pronto": "2025-06-22T15:52:40.359Z",
+        "saiu_entrega": "2025-06-22T15:55:28.938Z",
+        "entregue": "2025-06-23T02:34:29.700Z",
+        "finalizado_pago": "2025-06-23T16:26:41.203Z"
+      },
+      "progressoPizzas": {},
+      "_id": "68582635eeefed7f4d1dda69",
+      "numero": 9,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773371155d72a00507f9c",
+          "quantidade": 1,
+          "precoUnitario": 40,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "685773551155d72a00507fad",
+              "quantidade": 1,
+              "_id": "68582635eeefed7f4d1dda6b"
+            }
+          ],
+          "borda": "685773981155d72a00508001",
+          "observacoes": "",
+          "subtotal": 40,
+          "_id": "68582635eeefed7f4d1dda6a",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-22T15:50:13.606Z",
+          "observacao": "",
+          "_id": "68582635eeefed7f4d1dda6c"
+        }
+      ],
+      "createdAt": "2025-06-22T15:50:13.609Z",
+      "updatedAt": "2025-06-23T16:26:41.203Z",
+      "__v": 0,
+      "pizzaiolo": "68570a97f5c44f9f5330f148",
+      "motoboy": "68577970e3c169e355d8e3ea"
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 80,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 85,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-22T15:51:32.376Z",
+        "pronto": "2025-06-22T15:52:59.892Z",
+        "saiu_entrega": "2025-06-22T15:55:29.992Z",
+        "entregue": "2025-06-23T02:31:06.612Z",
+        "finalizado_pago": "2025-06-23T16:26:41.027Z"
+      },
+      "progressoPizzas": {},
+      "_id": "68582668eeefed7f4d1ddbdc",
+      "numero": 10,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773371155d72a00507f9c",
+          "quantidade": 1,
+          "precoUnitario": 40,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "685773551155d72a00507fad",
+              "quantidade": 1,
+              "_id": "68582668eeefed7f4d1ddbde"
+            }
+          ],
+          "borda": "685773981155d72a00508001",
+          "observacoes": "",
+          "subtotal": 40,
+          "_id": "68582668eeefed7f4d1ddbdd",
+          "pizzas": []
+        },
+        {
+          "item": "685773371155d72a00507f9c",
+          "quantidade": 1,
+          "precoUnitario": 40,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "685773551155d72a00507fad",
+              "quantidade": 1,
+              "_id": "68582668eeefed7f4d1ddbe0"
+            }
+          ],
+          "borda": "685773981155d72a00508001",
+          "observacoes": "",
+          "subtotal": 40,
+          "_id": "68582668eeefed7f4d1ddbdf",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-22T15:51:04.322Z",
+          "observacao": "",
+          "_id": "68582668eeefed7f4d1ddbe1"
+        }
+      ],
+      "createdAt": "2025-06-22T15:51:04.323Z",
+      "updatedAt": "2025-06-23T16:26:41.027Z",
+      "__v": 0,
+      "pizzaiolo": "68570a97f5c44f9f5330f148",
+      "motoboy": "68577970e3c169e355d8e3ea"
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 40,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 45,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-22T15:53:32.698Z",
+        "pronto": "2025-06-22T15:53:38.542Z",
+        "saiu_entrega": "2025-06-22T15:55:31.075Z",
+        "entregue": "2025-06-23T02:30:16.363Z",
+        "finalizado_pago": "2025-06-23T16:26:40.630Z"
+      },
+      "progressoPizzas": {},
+      "_id": "685826e91bdb8bc4210876bb",
+      "numero": 11,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773371155d72a00507f9c",
+          "quantidade": 1,
+          "precoUnitario": 40,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "685773551155d72a00507fad",
+              "quantidade": 1,
+              "_id": "685826e91bdb8bc4210876bd"
+            }
+          ],
+          "borda": "685773981155d72a00508001",
+          "observacoes": "",
+          "subtotal": 40,
+          "_id": "685826e91bdb8bc4210876bc",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-22T15:53:13.210Z",
+          "observacao": "",
+          "_id": "685826e91bdb8bc4210876be"
+        }
+      ],
+      "createdAt": "2025-06-22T15:53:13.218Z",
+      "updatedAt": "2025-06-23T16:26:40.630Z",
+      "__v": 0,
+      "pizzaiolo": "68570a97f5c44f9f5330f148",
+      "motoboy": "68577970e3c169e355d8e3ea"
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 11,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 16,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-22T15:54:55.526Z",
+        "pronto": "2025-06-22T15:55:09.853Z",
+        "saiu_entrega": "2025-06-22T15:55:32.535Z",
+        "entregue": "2025-06-23T02:30:13.257Z",
+        "finalizado_pago": "2025-06-23T16:26:39.885Z"
+      },
+      "progressoPizzas": {},
+      "_id": "6858273fce3534bdc7762219",
+      "numero": 12,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "6857764edcad7a8a04bbd692",
+          "quantidade": 1,
+          "precoUnitario": 11,
+          "valorEspecial": 0,
+          "sabores": [],
+          "borda": null,
+          "observacoes": "",
+          "pizzas": [
+            {
+              "nome": "Pequena",
+              "categoria": "pizza",
+              "quantidade": 1,
+              "sabores": [
+                {
+                  "_id": "685773551155d72a00507fad",
+                  "nome": "Sabor 1",
+                  "descricao": "Sabor 1",
+                  "categoria": "sabor",
+                  "valorEspecial": 0,
+                  "preco": 0,
+                  "ingredientes": [],
+                  "itensCombo": []
+                }
+              ],
+              "borda": {
+                "_id": "685773981155d72a00508001",
+                "nome": "Requeijão",
+                "descricao": "Requeijão",
+                "categoria": "borda",
+                "valorEspecial": 0,
+                "preco": 0,
+                "ingredientes": [],
+                "itensCombo": []
+              },
+              "observacoes": "",
+              "_id": "6858273fce3534bdc776221b"
+            }
+          ],
+          "subtotal": 11,
+          "_id": "6858273fce3534bdc776221a"
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-22T15:54:39.387Z",
+          "observacao": "",
+          "_id": "6858273fce3534bdc776221c"
+        }
+      ],
+      "createdAt": "2025-06-22T15:54:39.405Z",
+      "updatedAt": "2025-06-23T16:26:39.885Z",
+      "__v": 0,
+      "pizzaiolo": "68570a97f5c44f9f5330f148",
+      "motoboy": "68577970e3c169e355d8e3ea"
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 51,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 56,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-22T16:02:55.607Z",
+        "pronto": "2025-06-22T16:03:03.721Z",
+        "saiu_entrega": "2025-06-22T16:03:06.443Z",
+        "entregue": "2025-06-23T02:30:12.435Z",
+        "finalizado_pago": "2025-06-23T16:26:35.319Z"
+      },
+      "progressoPizzas": {},
+      "_id": "685829269ed1f6c34f6b029b",
+      "numero": 13,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "6857764edcad7a8a04bbd692",
+          "quantidade": 1,
+          "precoUnitario": 11,
+          "valorEspecial": 0,
+          "sabores": [],
+          "borda": null,
+          "observacoes": "",
+          "pizzas": [
+            {
+              "nome": "Pequena",
+              "categoria": "pizza",
+              "quantidade": 1,
+              "sabores": [
+                {
+                  "_id": "685773551155d72a00507fad",
+                  "nome": "Sabor 1",
+                  "descricao": "Sabor 1",
+                  "categoria": "sabor",
+                  "valorEspecial": 0,
+                  "preco": 0,
+                  "ingredientes": [],
+                  "itensCombo": []
+                }
+              ],
+              "borda": {
+                "_id": "685773981155d72a00508001",
+                "nome": "Requeijão",
+                "descricao": "Requeijão",
+                "categoria": "borda",
+                "valorEspecial": 0,
+                "preco": 0,
+                "ingredientes": [],
+                "itensCombo": []
+              },
+              "observacoes": "",
+              "_id": "685829269ed1f6c34f6b029d"
+            }
+          ],
+          "subtotal": 11,
+          "_id": "685829269ed1f6c34f6b029c"
+        },
+        {
+          "item": "685773371155d72a00507f9c",
+          "quantidade": 1,
+          "precoUnitario": 40,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "685773551155d72a00507fad",
+              "quantidade": 1,
+              "_id": "685829269ed1f6c34f6b029f"
+            }
+          ],
+          "borda": "685773981155d72a00508001",
+          "observacoes": "",
+          "subtotal": 40,
+          "_id": "685829269ed1f6c34f6b029e",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-22T16:02:46.519Z",
+          "observacao": "",
+          "_id": "685829269ed1f6c34f6b02a0"
+        }
+      ],
+      "createdAt": "2025-06-22T16:02:46.528Z",
+      "updatedAt": "2025-06-23T16:26:35.319Z",
+      "__v": 0,
+      "pizzaiolo": "68570a97f5c44f9f5330f146",
+      "motoboy": "68577970e3c169e355d8e3ea"
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 100,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 105,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-23T19:08:46.503Z",
+        "finalizado": "2025-06-24T11:27:39.263Z",
+        "pronto": "2025-06-24T11:27:57.442Z",
+        "saiu_entrega": "2025-06-24T11:29:14.229Z",
+        "entregue": "2025-06-24T20:36:19.698Z",
+        "finalizado_pago": "2025-06-25T22:39:23.557Z"
+      },
+      "_id": "685980e1392b5eaf1df9ea06",
+      "numero": 14,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773b51155d72a00508023",
+          "quantidade": 1,
+          "precoUnitario": 100,
+          "valorEspecial": 0,
+          "sabores": [],
+          "borda": null,
+          "observacoes": "",
+          "pizzas": [
+            {
+              "nome": "Pequena",
+              "categoria": "pizza",
+              "quantidade": 1,
+              "sabores": [
+                {
+                  "_id": "685773551155d72a00507fad",
+                  "nome": "Sabor 1",
+                  "descricao": "Sabor 1",
+                  "categoria": "sabor",
+                  "valorEspecial": 0,
+                  "preco": 0,
+                  "ingredientes": [],
+                  "itensCombo": []
+                }
+              ],
+              "borda": {
+                "_id": "685773981155d72a00508001",
+                "nome": "Requeijão",
+                "descricao": "Requeijão",
+                "categoria": "borda",
+                "valorEspecial": 0,
+                "preco": 0,
+                "ingredientes": [],
+                "itensCombo": []
+              },
+              "observacoes": "sem cebola",
+              "_id": "685980e1392b5eaf1df9ea08"
+            }
+          ],
+          "subtotal": 100,
+          "_id": "685980e1392b5eaf1df9ea07"
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-23T16:29:21.299Z",
+          "observacao": "",
+          "_id": "685980e1392b5eaf1df9ea09"
+        }
+      ],
+      "createdAt": "2025-06-23T16:29:21.305Z",
+      "updatedAt": "2025-06-25T22:39:23.557Z",
+      "__v": 0,
+      "pizzaiolo": "68570a97f5c44f9f5330f148",
+      "progressoPizzas": {
+        "combo-0-0": true
+      },
+      "motoboy": "68577970e3c169e355d8e3ea"
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 100,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 105,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-23T19:09:45.302Z",
+        "finalizado": "2025-06-23T19:23:27.598Z",
+        "pronto": "2025-06-23T21:45:27.148Z",
+        "saiu_entrega": "2025-06-24T03:00:34.210Z",
+        "entregue": "2025-06-24T20:36:18.421Z",
+        "finalizado_pago": "2025-06-25T22:39:23.904Z"
+      },
+      "_id": "6859a6629e170dd9bb099109",
+      "numero": 15,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773b51155d72a00508023",
+          "quantidade": 1,
+          "precoUnitario": 100,
+          "valorEspecial": 0,
+          "sabores": [],
+          "borda": null,
+          "observacoes": "",
+          "pizzas": [
+            {
+              "nome": "Pequena",
+              "categoria": "pizza",
+              "quantidade": 1,
+              "sabores": [
+                {
+                  "_id": "685773551155d72a00507fad",
+                  "nome": "Sabor 1",
+                  "descricao": "Sabor 1",
+                  "categoria": "sabor",
+                  "valorEspecial": 0,
+                  "preco": 0,
+                  "ingredientes": [],
+                  "itensCombo": []
+                }
+              ],
+              "borda": {
+                "_id": "685773981155d72a00508001",
+                "nome": "Requeijão",
+                "descricao": "Requeijão",
+                "categoria": "borda",
+                "valorEspecial": 0,
+                "preco": 0,
+                "ingredientes": [],
+                "itensCombo": []
+              },
+              "observacoes": "sem cebola",
+              "_id": "6859a6629e170dd9bb09910b"
+            }
+          ],
+          "subtotal": 100,
+          "_id": "6859a6629e170dd9bb09910a"
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-23T19:09:22.952Z",
+          "observacao": "",
+          "_id": "6859a6629e170dd9bb09910c"
+        }
+      ],
+      "createdAt": "2025-06-23T19:09:22.957Z",
+      "updatedAt": "2025-06-25T22:39:23.904Z",
+      "__v": 0,
+      "pizzaiolo": "68598ad1f5eb11c2d666dc95",
+      "progressoPizzas": {
+        "combo-0-0": true
+      },
+      "motoboy": "68577970e3c169e355d8e3ea"
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 40,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 45,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-23T19:14:24.544Z",
+        "finalizado": "2025-06-23T19:14:31.851Z",
+        "pronto": "2025-06-23T21:42:45.588Z",
+        "saiu_entrega": "2025-06-24T03:00:30.958Z",
+        "entregue": "2025-06-24T20:36:17.269Z",
+        "finalizado_pago": "2025-06-25T22:39:24.252Z"
+      },
+      "_id": "6859a78b9e170dd9bb0996d1",
+      "numero": 16,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773371155d72a00507f9c",
+          "quantidade": 1,
+          "precoUnitario": 40,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "685773551155d72a00507fad",
+              "quantidade": 1,
+              "_id": "6859a78b9e170dd9bb0996d3"
+            }
+          ],
+          "borda": "685773981155d72a00508001",
+          "observacoes": "",
+          "subtotal": 40,
+          "_id": "6859a78b9e170dd9bb0996d2",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-23T19:14:19.455Z",
+          "observacao": "",
+          "_id": "6859a78b9e170dd9bb0996d4"
+        }
+      ],
+      "createdAt": "2025-06-23T19:14:19.456Z",
+      "updatedAt": "2025-06-25T22:39:24.252Z",
+      "__v": 0,
+      "pizzaiolo": "68598ad1f5eb11c2d666dc95",
+      "progressoPizzas": {},
+      "motoboy": "68577970e3c169e355d8e3ea"
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 100,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 105,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-23T22:04:22.566Z",
+        "finalizado": "2025-06-23T22:04:24.292Z",
+        "pronto": "2025-06-23T22:04:28.038Z",
+        "saiu_entrega": "2025-06-23T22:37:25.742Z",
+        "entregue": "2025-06-24T11:30:14.946Z",
+        "finalizado_pago": "2025-06-25T22:39:24.615Z"
+      },
+      "_id": "6859cf5feea280e13b44c16c",
+      "numero": 17,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773b51155d72a00508023",
+          "quantidade": 1,
+          "precoUnitario": 100,
+          "valorEspecial": 0,
+          "sabores": [],
+          "borda": null,
+          "observacoes": "",
+          "pizzas": [
+            {
+              "nome": "Pequena",
+              "categoria": "pizza",
+              "quantidade": 1,
+              "sabores": [
+                {
+                  "_id": "685773551155d72a00507fad",
+                  "nome": "Sabor 1",
+                  "descricao": "Sabor 1",
+                  "categoria": "sabor",
+                  "valorEspecial": 0,
+                  "preco": 0,
+                  "ingredientes": [],
+                  "itensCombo": []
+                }
+              ],
+              "borda": {
+                "_id": "685773981155d72a00508001",
+                "nome": "Requeijão",
+                "descricao": "Requeijão",
+                "categoria": "borda",
+                "valorEspecial": 0,
+                "preco": 0,
+                "ingredientes": [],
+                "itensCombo": []
+              },
+              "observacoes": "",
+              "_id": "6859cf5feea280e13b44c16e"
+            }
+          ],
+          "subtotal": 100,
+          "_id": "6859cf5feea280e13b44c16d"
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "progressoPizzas": {
+        "combo-0-0": true
+      },
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-23T22:04:15.351Z",
+          "observacao": "",
+          "_id": "6859cf5feea280e13b44c16f"
+        }
+      ],
+      "createdAt": "2025-06-23T22:04:15.354Z",
+      "updatedAt": "2025-06-25T22:39:24.615Z",
+      "__v": 0,
+      "pizzaiolo": "68570a97f5c44f9f5330f148",
+      "motoboy": "68577970e3c169e355d8e3ea"
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 100,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 105,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-23T22:26:48.909Z",
+        "finalizado": "2025-06-23T22:26:50.919Z",
+        "pronto": "2025-06-23T22:26:55.266Z",
+        "saiu_entrega": "2025-06-24T03:00:33.101Z",
+        "entregue": "2025-06-24T11:08:45.628Z",
+        "finalizado_pago": "2025-06-25T22:39:24.986Z"
+      },
+      "_id": "6859d491cf8f779c0220043e",
+      "numero": 18,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773b51155d72a00508023",
+          "quantidade": 1,
+          "precoUnitario": 100,
+          "valorEspecial": 0,
+          "sabores": [],
+          "borda": null,
+          "observacoes": "",
+          "pizzas": [
+            {
+              "nome": "Pequena",
+              "categoria": "pizza",
+              "quantidade": 1,
+              "sabores": [
+                {
+                  "_id": "685773551155d72a00507fad",
+                  "nome": "Sabor 1",
+                  "descricao": "Sabor 1",
+                  "categoria": "sabor",
+                  "valorEspecial": 0,
+                  "preco": 0,
+                  "ingredientes": [],
+                  "itensCombo": []
+                }
+              ],
+              "borda": {
+                "_id": "685773981155d72a00508001",
+                "nome": "Requeijão",
+                "descricao": "Requeijão",
+                "categoria": "borda",
+                "valorEspecial": 0,
+                "preco": 0,
+                "ingredientes": [],
+                "itensCombo": []
+              },
+              "observacoes": "",
+              "_id": "6859d491cf8f779c02200440"
+            }
+          ],
+          "subtotal": 100,
+          "_id": "6859d491cf8f779c0220043f"
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "progressoPizzas": {
+        "combo-0-0": true
+      },
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-23T22:26:25.215Z",
+          "observacao": "",
+          "_id": "6859d491cf8f779c02200441"
+        }
+      ],
+      "createdAt": "2025-06-23T22:26:25.219Z",
+      "updatedAt": "2025-06-25T22:39:24.986Z",
+      "__v": 0,
+      "pizzaiolo": "68570a97f5c44f9f5330f148",
+      "motoboy": "68577970e3c169e355d8e3ea"
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": "Ponto referencia"
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": true,
+        "valorTroco": 130
+      },
+      "valores": {
+        "subtotal": 100,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 105,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-24T02:49:17.158Z",
+        "finalizado": "2025-06-24T02:49:20.164Z",
+        "pronto": "2025-06-24T02:50:07.570Z",
+        "saiu_entrega": "2025-06-24T11:14:58.625Z",
+        "entregue": "2025-06-24T11:30:06.254Z",
+        "finalizado_pago": "2025-06-25T22:39:25.339Z"
+      },
+      "_id": "685a11b78d4bd03f9aab5577",
+      "numero": 19,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773b51155d72a00508023",
+          "quantidade": 1,
+          "precoUnitario": 100,
+          "valorEspecial": 0,
+          "sabores": [],
+          "borda": null,
+          "observacoes": "",
+          "pizzas": [
+            {
+              "nome": "Pequena",
+              "categoria": "pizza",
+              "quantidade": 1,
+              "sabores": [
+                {
+                  "_id": "685773551155d72a00507fad",
+                  "nome": "Sabor 1",
+                  "descricao": "Sabor 1",
+                  "categoria": "sabor",
+                  "valorEspecial": 0,
+                  "preco": 0,
+                  "ingredientes": [],
+                  "itensCombo": []
+                }
+              ],
+              "borda": {
+                "_id": "685773981155d72a00508001",
+                "nome": "Requeijão",
+                "descricao": "Requeijão",
+                "categoria": "borda",
+                "valorEspecial": 0,
+                "preco": 0,
+                "ingredientes": [],
+                "itensCombo": []
+              },
+              "observacoes": "",
+              "_id": "685a11b78d4bd03f9aab5579"
+            }
+          ],
+          "subtotal": 100,
+          "_id": "685a11b78d4bd03f9aab5578"
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "progressoPizzas": {
+        "combo-0-0": true
+      },
+      "tempoEstimado": 45,
+      "observacoes": "Liga no celular",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-24T02:47:19.747Z",
+          "observacao": "",
+          "_id": "685a11b78d4bd03f9aab557a"
+        }
+      ],
+      "createdAt": "2025-06-24T02:47:19.757Z",
+      "updatedAt": "2025-06-25T22:39:25.339Z",
+      "__v": 0,
+      "pizzaiolo": "68598ad1f5eb11c2d666dc95",
+      "motoboy": "68577970e3c169e355d8e3ea"
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": "Ponto de Referencia"
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": true,
+        "valorTroco": 130
+      },
+      "valores": {
+        "subtotal": 100,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 105,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-24T02:49:20.883Z",
+        "finalizado": "2025-06-24T02:49:22.522Z",
+        "pronto": "2025-06-24T02:50:05.488Z",
+        "saiu_entrega": "2025-06-25T04:41:36.046Z",
+        "entregue": "2025-06-25T04:41:51.413Z",
+        "finalizado_pago": "2025-06-25T22:39:25.681Z"
+      },
+      "_id": "685a11fc8d4bd03f9aab5658",
+      "numero": 20,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773b51155d72a00508023",
+          "quantidade": 1,
+          "precoUnitario": 100,
+          "valorEspecial": 0,
+          "sabores": [],
+          "borda": null,
+          "observacoes": "",
+          "pizzas": [
+            {
+              "nome": "Pequena",
+              "categoria": "pizza",
+              "quantidade": 1,
+              "sabores": [
+                {
+                  "_id": "685773551155d72a00507fad",
+                  "nome": "Sabor 1",
+                  "descricao": "Sabor 1",
+                  "categoria": "sabor",
+                  "valorEspecial": 0,
+                  "preco": 0,
+                  "ingredientes": [],
+                  "itensCombo": []
+                }
+              ],
+              "borda": {
+                "_id": "685773981155d72a00508001",
+                "nome": "Requeijão",
+                "descricao": "Requeijão",
+                "categoria": "borda",
+                "valorEspecial": 0,
+                "preco": 0,
+                "ingredientes": [],
+                "itensCombo": []
+              },
+              "observacoes": "observão pizza",
+              "_id": "685a11fc8d4bd03f9aab565a"
+            }
+          ],
+          "subtotal": 100,
+          "_id": "685a11fc8d4bd03f9aab5659"
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "progressoPizzas": {
+        "combo-0-0": true
+      },
+      "tempoEstimado": 45,
+      "observacoes": "Observações do Pedido",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-24T02:48:28.700Z",
+          "observacao": "",
+          "_id": "685a11fc8d4bd03f9aab565b"
+        }
+      ],
+      "createdAt": "2025-06-24T02:48:28.701Z",
+      "updatedAt": "2025-06-25T22:39:25.681Z",
+      "__v": 0,
+      "pizzaiolo": "68598ad1f5eb11c2d666dc95",
+      "motoboy": "68577970e3c169e355d8e3ea"
+    },
+    {
+      "endereco": null,
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": true,
+        "valorTroco": 130
+      },
+      "valores": {
+        "subtotal": 40,
+        "taxaEntrega": 0,
+        "desconto": 0,
+        "total": 40,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-24T02:52:16.325Z",
+        "finalizado": "2025-06-24T02:52:20.685Z",
+        "pronto": "2025-06-24T02:52:25.512Z",
+        "entregue": "2025-06-24T02:52:43.452Z",
+        "finalizado_pago": "2025-06-25T22:39:26.043Z"
+      },
+      "_id": "685a12cd8d4bd03f9aab58e8",
+      "numero": 21,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773371155d72a00507f9c",
+          "quantidade": 1,
+          "precoUnitario": 40,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "685773551155d72a00507fad",
+              "quantidade": 1,
+              "_id": "685a12cd8d4bd03f9aab58ea"
+            }
+          ],
+          "borda": "685773981155d72a00508001",
+          "observacoes": "",
+          "subtotal": 40,
+          "_id": "685a12cd8d4bd03f9aab58e9",
+          "pizzas": []
+        }
+      ],
+      "tipo": "retirada",
+      "status": "finalizado_pago",
+      "progressoPizzas": {
+        "direct-0": true
+      },
+      "tempoEstimado": 45,
+      "observacoes": "Observações do Pedido",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-24T02:51:57.575Z",
+          "observacao": "",
+          "_id": "685a12cd8d4bd03f9aab58eb"
+        }
+      ],
+      "createdAt": "2025-06-24T02:51:57.576Z",
+      "updatedAt": "2025-06-25T22:39:26.043Z",
+      "__v": 0,
+      "pizzaiolo": "68570a97f5c44f9f5330f148"
+    },
+    {
+      "endereco": {
+        "rua": "Rua Sebastião Alzemir dos Santos",
+        "numero": "387",
+        "complemento": "B5 A302",
+        "bairro": "Bela Vista",
+        "cidade": "Palhoça",
+        "cep": "88137-640",
+        "referencia": ""
+      },
+      "formaPagamento": {
+        "tipo": "pix",
+        "necessitaTroco": false,
+        "valorTroco": 0
+      },
+      "valores": {
+        "subtotal": 100,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 105,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-24T11:13:22.622Z",
+        "finalizado": "2025-06-24T11:13:39.301Z",
+        "pronto": "2025-06-24T11:14:25.229Z",
+        "saiu_entrega": "2025-06-25T04:41:34.887Z",
+        "entregue": "2025-06-25T04:41:50.498Z",
+        "finalizado_pago": "2025-06-25T22:39:26.422Z"
+      },
+      "_id": "685a8807e97527668a41d0cf",
+      "numero": 22,
+      "cliente": "6854d2c411ab0a453568d08c",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773b51155d72a00508023",
+          "quantidade": 1,
+          "precoUnitario": 100,
+          "valorEspecial": 0,
+          "sabores": [],
+          "borda": null,
+          "observacoes": "",
+          "pizzas": [
+            {
+              "nome": "Pequena",
+              "categoria": "pizza",
+              "quantidade": 1,
+              "sabores": [
+                {
+                  "_id": "685773551155d72a00507fad",
+                  "nome": "Sabor 1",
+                  "descricao": "Sabor 1",
+                  "categoria": "sabor",
+                  "valorEspecial": 0,
+                  "preco": 0,
+                  "ingredientes": [],
+                  "itensCombo": []
+                }
+              ],
+              "borda": {
+                "_id": "685773981155d72a00508001",
+                "nome": "Requeijão",
+                "descricao": "Requeijão",
+                "categoria": "borda",
+                "valorEspecial": 0,
+                "preco": 0,
+                "ingredientes": [],
+                "itensCombo": []
+              },
+              "observacoes": "",
+              "_id": "685a8807e97527668a41d0d1"
+            }
+          ],
+          "subtotal": 100,
+          "_id": "685a8807e97527668a41d0d0"
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "progressoPizzas": {
+        "combo-0-0": true
+      },
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-24T11:12:07.207Z",
+          "observacao": "",
+          "_id": "685a8807e97527668a41d0d2"
+        }
+      ],
+      "createdAt": "2025-06-24T11:12:07.226Z",
+      "updatedAt": "2025-06-25T22:39:26.421Z",
+      "__v": 0,
+      "pizzaiolo": "68598ad1f5eb11c2d666dc95",
+      "motoboy": "68577970e3c169e355d8e3ea"
+    },
+    {
+      "endereco": {
+        "rua": "Joaquim nambuco",
+        "numero": "1100",
+        "complemento": "B25 A3",
+        "bairro": "Monte Cristo",
+        "cidade": "Florianopolis",
+        "cep": "88060-090",
+        "referencia": "Predio com cobertura no portão"
+      },
+      "formaPagamento": {
+        "tipo": "dinheiro",
+        "necessitaTroco": true,
+        "valorTroco": 30
+      },
+      "valores": {
+        "subtotal": 40,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 45,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-24T20:38:23.403Z",
+        "finalizado": "2025-06-24T20:38:25.029Z",
+        "pronto": "2025-06-24T20:38:28.635Z",
+        "saiu_entrega": "2025-06-24T20:38:30.267Z",
+        "entregue": "2025-06-25T04:41:43.373Z",
+        "finalizado_pago": "2025-06-25T22:39:26.814Z"
+      },
+      "_id": "685b0cb1e97527668a41f685",
+      "numero": 23,
+      "cliente": "685b0cb1e97527668a41f679",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773371155d72a00507f9c",
+          "quantidade": 1,
+          "precoUnitario": 40,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "685773551155d72a00507fad",
+              "quantidade": 1,
+              "_id": "685b0cb1e97527668a41f687"
+            }
+          ],
+          "borda": "685773981155d72a00508001",
+          "observacoes": "",
+          "subtotal": 40,
+          "_id": "685b0cb1e97527668a41f686",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "progressoPizzas": {
+        "direct-0": true
+      },
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-24T20:38:09.901Z",
+          "observacao": "",
+          "_id": "685b0cb1e97527668a41f688"
+        }
+      ],
+      "createdAt": "2025-06-24T20:38:09.904Z",
+      "updatedAt": "2025-06-25T22:39:26.814Z",
+      "__v": 0,
+      "pizzaiolo": "68570a97f5c44f9f5330f148",
+      "motoboy": "68577970e3c169e355d8e3ea"
+    },
+    {
+      "endereco": {
+        "rua": "Varese ",
+        "numero": "1885",
+        "complemento": "A302",
+        "bairro": "Pagani",
+        "cidade": "Palhoça",
+        "cep": "88132-269",
+        "referencia": "Cond. Rimini"
+      },
+      "formaPagamento": {
+        "tipo": "cartao_debito",
+        "necessitaTroco": true,
+        "valorTroco": 30
+      },
+      "valores": {
+        "subtotal": 40,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 45,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-24T21:04:30.666Z",
+        "finalizado": "2025-06-24T21:04:32.183Z",
+        "pronto": "2025-06-24T21:04:36.054Z",
+        "saiu_entrega": "2025-06-24T21:04:37.772Z",
+        "entregue": "2025-06-24T21:08:00.528Z",
+        "finalizado_pago": "2025-06-24T21:08:29.016Z"
+      },
+      "_id": "685b12d6e97527668a42072b",
+      "numero": 24,
+      "cliente": "685b12d5e97527668a42071f",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773371155d72a00507f9c",
+          "quantidade": 1,
+          "precoUnitario": 40,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "685773551155d72a00507fad",
+              "quantidade": 1,
+              "_id": "685b12d6e97527668a42072d"
+            }
+          ],
+          "borda": "685773981155d72a00508001",
+          "observacoes": "",
+          "subtotal": 40,
+          "_id": "685b12d6e97527668a42072c",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "progressoPizzas": {
+        "direct-0": true
+      },
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-24T21:04:22.017Z",
+          "observacao": "",
+          "_id": "685b12d6e97527668a42072e"
+        }
+      ],
+      "createdAt": "2025-06-24T21:04:22.019Z",
+      "updatedAt": "2025-06-24T21:08:29.016Z",
+      "__v": 0,
+      "pizzaiolo": "68570a97f5c44f9f5330f148",
+      "motoboy": "68577970e3c169e355d8e3ea"
+    },
+    {
+      "endereco": {
+        "rua": "Varese ",
+        "numero": "1885",
+        "complemento": "A302",
+        "bairro": "Pagani",
+        "cidade": "Palhoça",
+        "cep": "88132-269",
+        "referencia": "Cond. Rimini"
+      },
+      "formaPagamento": {
+        "tipo": "cartao_debito",
+        "necessitaTroco": true,
+        "valorTroco": 30
+      },
+      "valores": {
+        "subtotal": 40,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 45,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-24T23:10:55.623Z",
+        "finalizado": "2025-06-24T23:10:57.218Z",
+        "pronto": "2025-06-24T23:11:01.021Z",
+        "saiu_entrega": "2025-06-25T04:41:33.979Z",
+        "entregue": "2025-06-25T04:41:49.570Z",
+        "finalizado_pago": "2025-06-25T22:39:27.167Z"
+      },
+      "_id": "685b306fe97527668a42573a",
+      "numero": 25,
+      "cliente": "685b12d5e97527668a42071f",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773371155d72a00507f9c",
+          "quantidade": 1,
+          "precoUnitario": 40,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "685773551155d72a00507fad",
+              "quantidade": 1,
+              "_id": "685b306fe97527668a42573c"
+            }
+          ],
+          "borda": "685773981155d72a00508001",
+          "observacoes": "",
+          "subtotal": 40,
+          "_id": "685b306fe97527668a42573b",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "progressoPizzas": {
+        "direct-0": true
+      },
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-24T23:10:39.802Z",
+          "observacao": "",
+          "_id": "685b306fe97527668a42573d"
+        }
+      ],
+      "createdAt": "2025-06-24T23:10:39.805Z",
+      "updatedAt": "2025-06-25T22:39:27.167Z",
+      "__v": 0,
+      "pizzaiolo": "68570a97f5c44f9f5330f148",
+      "motoboy": "68577970e3c169e355d8e3ea"
+    },
+    {
+      "endereco": {
+        "rua": "Varese",
+        "numero": "1885",
+        "complemento": "A302",
+        "bairro": "Pagani",
+        "cidade": "Palhoça",
+        "cep": "88132-269",
+        "referencia": "Cond. Rimini"
+      },
+      "formaPagamento": {
+        "tipo": "cartao_debito",
+        "necessitaTroco": true,
+        "valorTroco": 30
+      },
+      "valores": {
+        "subtotal": 40,
+        "taxaEntrega": 5,
+        "desconto": 0,
+        "total": 45,
+        "comissaoMotoboy": 2.5
+      },
+      "tempos": {
+        "preparando": "2025-06-24T23:12:15.679Z",
+        "finalizado": "2025-06-24T23:12:17.693Z",
+        "pronto": "2025-06-24T23:12:21.614Z",
+        "saiu_entrega": "2025-06-24T23:12:26.910Z",
+        "entregue": "2025-06-25T04:41:42.383Z",
+        "finalizado_pago": "2025-06-25T04:49:57.104Z"
+      },
+      "_id": "685b30c1e97527668a42619a",
+      "numero": 26,
+      "cliente": "685b12d5e97527668a42071f",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itens": [
+        {
+          "item": "685773371155d72a00507f9c",
+          "quantidade": 1,
+          "precoUnitario": 40,
+          "valorEspecial": 0,
+          "sabores": [
+            {
+              "sabor": "685773551155d72a00507fad",
+              "quantidade": 1,
+              "_id": "685b30c1e97527668a42619c"
+            }
+          ],
+          "borda": "685773981155d72a00508001",
+          "observacoes": "",
+          "subtotal": 40,
+          "_id": "685b30c1e97527668a42619b",
+          "pizzas": []
+        }
+      ],
+      "tipo": "delivery",
+      "status": "finalizado_pago",
+      "progressoPizzas": {
+        "direct-0": true
+      },
+      "tempoEstimado": 45,
+      "observacoes": "",
+      "historico": [
+        {
+          "status": "recebido",
+          "timestamp": "2025-06-24T23:12:01.714Z",
+          "observacao": "",
+          "_id": "685b30c1e97527668a42619d"
+        }
+      ],
+      "createdAt": "2025-06-24T23:12:01.715Z",
+      "updatedAt": "2025-06-25T04:49:57.104Z",
+      "__v": 0,
+      "pizzaiolo": "68570a97f5c44f9f5330f148",
+      "motoboy": "68577970e3c169e355d8e3ea"
+    }
+  ],
+  "exportDate": "2025-06-26T15:06:45.654Z"
+}

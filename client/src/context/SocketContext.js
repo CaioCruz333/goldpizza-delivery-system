@@ -38,7 +38,11 @@ export const SocketProvider = ({ children }) => {
     console.log('🔌 Inicializando conexão WebSocket...');
     
     // Criar nova conexão socket
-    const newSocket = io('http://localhost:5000', {
+    const socketUrl = process.env.NODE_ENV === 'production' 
+      ? 'https://goldpizza-backend.onrender.com'
+      : 'http://localhost:5000';
+    
+    const newSocket = io(socketUrl, {
       auth: {
         token: localStorage.getItem('token')
       },

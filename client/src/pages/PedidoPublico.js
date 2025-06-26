@@ -65,7 +65,11 @@ const PedidoPublico = () => {
 
     console.log('🔌 Conectando WebSocket para cardápio em tempo real...');
     
-    const newSocket = io('http://localhost:5000', {
+    const socketUrl = process.env.NODE_ENV === 'production' 
+      ? 'https://goldpizza-backend.onrender.com'
+      : 'http://localhost:5000';
+    
+    const newSocket = io(socketUrl, {
       transports: ['websocket', 'polling']
     });
 

@@ -10,6 +10,7 @@ import MotoboyDashboard from './pages/MotoboyDashboard';
 import AtendenteDashboard from './pages/AtendenteDashboard';
 import PedidoPublico from './pages/PedidoPublico';
 import ProtectedRoute from './components/ProtectedRoute';
+import InstallPWA from './components/InstallPWA';
 
 function App() {
   return (
@@ -73,6 +74,9 @@ function App() {
           </Routes>
         </div>
         </Router>
+        
+        {/* PWA Install Prompt */}
+        <InstallPWA />
       </SocketProvider>
     </AuthProvider>
   );
