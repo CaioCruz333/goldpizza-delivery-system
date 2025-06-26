@@ -4,6 +4,7 @@
   "description": "Sistema de gerenciamento multi-pizzaria",
   "main": "server.js",
   "scripts": {
+    "start": "node server/server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon server/server.js",
     "client": "cd client && npm start",

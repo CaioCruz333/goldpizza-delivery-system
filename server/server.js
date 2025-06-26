@@ -11,12 +11,15 @@ const io = socketIo(server, {
   cors: {
     origin: function (origin, callback) {
       if (!origin) return callback(null, true);
+      
       if (origin.includes('goldpizza-delivery-system') && origin.includes('vercel.app')) {
-        return callback(null, true);
+        return callback(null, origin);
       }
+      
       if (allowedOrigins.includes(origin)) {
-        return callback(null, true);
+        return callback(null, origin);
       }
+      
       return callback(new Error('Não permitido pelo CORS'), false);
     },
     methods: ["GET", "POST"],
@@ -39,11 +42,11 @@ app.use(cors({
     
     // Permitir qualquer subdomínio do Vercel para este projeto
     if (origin.includes('goldpizza-delivery-system') && origin.includes('vercel.app')) {
-      return callback(null, true);
+      return callback(null, origin);
     }
     
     if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
+      return callback(null, origin);
     }
     
     return callback(new Error('Não permitido pelo CORS'), false);
