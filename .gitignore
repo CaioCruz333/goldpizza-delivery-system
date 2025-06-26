@@ -56,7 +56,12 @@ server/scripts/REMOVIDO_*
 server/scripts/*-reset.js
 
 # Test HTML files (development only)
-*.html
+test-*.html
+borda-obrigatoria.html
+combo-bebida-tamanho.html
+exemplo-*.html
+mapa-motoboy.html
+test-*.html
 test-*.js
 
 # Development scripts
