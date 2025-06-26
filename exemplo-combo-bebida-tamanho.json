@@ -1,0 +1,25 @@
+{
+  "nome": "Combo Familiar",
+  "descricao": "2 Pizzas Grandes + 2 Bebidas 2L",
+  "categoria": "combo",
+  "preco": 150,
+  "itensCombo": [
+    {
+      "item": "68537f5f25ec23bea78ee19c",
+      "quantidade": 2,
+      "tipo": "pizza"
+    },
+    {
+      "quantidade": 2,
+      "tipo": "bebida",
+      "tamanhoBebida": "2L"
+    }
+  ]
+}
+
+// Estrutura resultante no frontend:
+// Lista de itens para configurar:
+// 1. Pizza Grande (personalizar sabores/bordas)
+// 2. Pizza Grande (personalizar sabores/bordas) 
+// 3. Bebida 2L (escolher entre bebidas de 2L disponíveis)
+// 4. Bebida 2L (escolher entre bebidas de 2L disponíveis)
