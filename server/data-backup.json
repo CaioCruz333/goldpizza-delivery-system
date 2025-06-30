@@ -3123,5 +3123,4964 @@
       "motoboy": "68577970e3c169e355d8e3ea"
     }
   ],
-  "exportDate": "2025-06-26T15:06:45.654Z"
+  "cardapio": [
+    {
+      "pizzasCompativeis": [],
+      "visivelCardapio": true,
+      "_id": "68537a5c4e42399574e4351c",
+      "nome": "Margherita",
+      "descricao": "Sabor Margherita",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "ingredientes": [],
+      "opcionais": [],
+      "precosPorTipo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-19T02:47:56.052Z",
+      "__v": 0,
+      "tipoSabor": "salgado",
+      "itensCombo": []
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "68537a5c4e42399574e4351e",
+      "nome": "Pepperoni",
+      "descricao": "Sabor Pepperoni",
+      "categoria": "sabor",
+      "valorEspecial": 2.5,
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "ingredientes": [],
+      "opcionais": [],
+      "precosPorTipo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-19T02:47:56.077Z",
+      "__v": 1,
+      "itensCombo": [],
+      "pizzasCompativeis": [],
+      "tipoSabor": "salgado"
+    },
+    {
+      "pizzasCompativeis": [],
+      "visivelCardapio": true,
+      "_id": "68537a5c4e42399574e43520",
+      "nome": "Quatro Queijos",
+      "descricao": "Sabor Quatro Queijos",
+      "categoria": "sabor",
+      "valorEspecial": 5,
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "ingredientes": [],
+      "opcionais": [],
+      "precosPorTipo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-19T02:47:56.080Z",
+      "__v": 0,
+      "tipoSabor": "salgado",
+      "itensCombo": []
+    },
+    {
+      "pizzasCompativeis": [],
+      "visivelCardapio": true,
+      "_id": "68537a5c4e42399574e43522",
+      "nome": "Portuguesa",
+      "descricao": "Sabor Portuguesa",
+      "categoria": "sabor",
+      "valorEspecial": 3,
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "ingredientes": [],
+      "opcionais": [],
+      "precosPorTipo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-19T02:47:56.084Z",
+      "__v": 0,
+      "tipoSabor": "salgado",
+      "itensCombo": []
+    },
+    {
+      "tempoPreparoMinutos": 20,
+      "visivelCardapio": true,
+      "_id": "68537a5c4e42399574e43524",
+      "nome": "Calabresa",
+      "descricao": "Sabor Calabresa",
+      "categoria": "sabor",
+      "valorEspecial": 5,
+      "preco": 0,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "ingredientes": [],
+      "opcionais": [],
+      "precosPorTipo": [],
+      "createdAt": "2025-06-19T02:47:56.087Z",
+      "__v": 1,
+      "pizzasCompativeis": [],
+      "tipoSabor": "salgado",
+      "itensCombo": [],
+      "tamanhos": []
+    },
+    {
+      "pizzasCompativeis": [],
+      "visivelCardapio": true,
+      "_id": "68537a5c4e42399574e43526",
+      "nome": "Frango com Catupiry",
+      "descricao": "Sabor Frango com Catupiry",
+      "categoria": "sabor",
+      "valorEspecial": 3.5,
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "ingredientes": [],
+      "opcionais": [],
+      "precosPorTipo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-19T02:47:56.091Z",
+      "__v": 0,
+      "tipoSabor": "salgado",
+      "itensCombo": []
+    },
+    {
+      "tempoPreparoMinutos": 20,
+      "visivelCardapio": true,
+      "_id": "68537a5c4e42399574e43528",
+      "nome": "Camarão",
+      "descricao": "Sabor Camarão",
+      "categoria": "sabor",
+      "valorEspecial": 10,
+      "preco": 0,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "ingredientes": [],
+      "opcionais": [],
+      "precosPorTipo": [],
+      "createdAt": "2025-06-19T02:47:56.094Z",
+      "__v": 1,
+      "pizzasCompativeis": [],
+      "tipoSabor": "salgado",
+      "itensCombo": [],
+      "tamanhos": []
+    },
+    {
+      "pizzasCompativeis": [],
+      "visivelCardapio": true,
+      "_id": "68537a5c4e42399574e4352a",
+      "nome": "Chocolate",
+      "descricao": "Sabor Chocolate",
+      "categoria": "sabor",
+      "valorEspecial": 4,
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "ingredientes": [],
+      "opcionais": [],
+      "precosPorTipo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-19T02:47:56.098Z",
+      "__v": 0,
+      "tipoSabor": "salgado",
+      "itensCombo": []
+    },
+    {
+      "tempoPreparoMinutos": 20,
+      "visivelCardapio": true,
+      "_id": "68537a90c01375f98d3cb5ca",
+      "nome": "Pizza Pequena",
+      "descricao": "Pizza tradicional com massa artesanal - escolha seus sabores",
+      "categoria": "pizza",
+      "valorEspecial": 0,
+      "preco": 30,
+      "precosPorTipo": [
+        {
+          "tipoPizza": "6852e1ff5b29b82a2a9d0dc6",
+          "preco": 25,
+          "_id": "68537a90c01375f98d3cb5cb"
+        },
+        {
+          "tipoPizza": "6852e1ff5b29b82a2a9d0dc8",
+          "preco": 35,
+          "_id": "68537a90c01375f98d3cb5cc"
+        },
+        {
+          "tipoPizza": "6852e1ff5b29b82a2a9d0dca",
+          "preco": 45,
+          "_id": "68537a90c01375f98d3cb5cd"
+        },
+        {
+          "tipoPizza": "6852e1ff5b29b82a2a9d0dcd",
+          "preco": 55,
+          "_id": "68537a90c01375f98d3cb5ce"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "ingredientes": [],
+      "opcionais": [],
+      "createdAt": "2025-06-19T02:48:48.679Z",
+      "__v": 2,
+      "tipoPizza": "6852e1ff5b29b82a2a9d0dc6",
+      "itensCombo": [],
+      "pizzasCompativeis": [],
+      "quantidadeFatias": 4,
+      "quantidadeSabores": 2,
+      "tamanhos": []
+    },
+    {
+      "tempoPreparoMinutos": 20,
+      "visivelCardapio": true,
+      "_id": "68537f5f25ec23bea78ee19c",
+      "nome": "Pizza Grande",
+      "descricao": "Pizza Grande",
+      "categoria": "pizza",
+      "preco": 60,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "precosPorTipo": [],
+      "createdAt": "2025-06-19T03:09:19.671Z",
+      "__v": 2,
+      "valorEspecial": 0,
+      "tipoPizza": "6852e1ff5b29b82a2a9d0dca",
+      "itensCombo": [],
+      "pizzasCompativeis": [],
+      "quantidadeFatias": 8,
+      "quantidadeSabores": 3,
+      "tamanhos": []
+    },
+    {
+      "tempoPreparoMinutos": 20,
+      "visivelCardapio": true,
+      "_id": "68538b302c198c40819b7f2c",
+      "nome": "Pizza Média",
+      "descricao": "Pizza Média",
+      "categoria": "pizza",
+      "valorEspecial": 0,
+      "tipoPizza": "6852e1ff5b29b82a2a9d0dc8",
+      "preco": 40,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "createdAt": "2025-06-19T03:59:44.852Z",
+      "__v": 1,
+      "itensCombo": [],
+      "pizzasCompativeis": [],
+      "quantidadeFatias": 6,
+      "quantidadeSabores": 2,
+      "tamanhos": []
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "68541522524f697bde30f298",
+      "nome": "Requeijão",
+      "descricao": "Requeijão",
+      "categoria": "borda",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-19T13:48:18.744Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "68541534524f697bde30f2f4",
+      "nome": "Requeijão especial",
+      "descricao": "Requeijão especial",
+      "categoria": "borda",
+      "valorEspecial": 7.5,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-19T13:48:36.730Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "68544cf879ef209d38cb4801",
+      "nome": "Sem borda",
+      "descricao": "Sem borda",
+      "categoria": "borda",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-19T17:46:32.697Z",
+      "__v": 0
+    },
+    {
+      "pizzasCompativeis": [],
+      "tempoPreparoMinutos": 20,
+      "visivelCardapio": true,
+      "_id": "68548f2f12d47e27b4f20f27",
+      "nome": "Coca Cola 600ml",
+      "descricao": "Coca Cola - 600ml",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "600ml",
+      "preco": 8.9,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "createdAt": "2025-06-19T22:29:03.943Z",
+      "__v": 0,
+      "itensCombo": [],
+      "tamanhos": []
+    },
+    {
+      "pizzasCompativeis": [],
+      "tempoPreparoMinutos": 20,
+      "visivelCardapio": true,
+      "_id": "68548f2f12d47e27b4f20f2b",
+      "nome": "Coca Cola 2L",
+      "descricao": "Coca Cola - 2L",
+      "categoria": "bebida",
+      "valorEspecial": 7.5,
+      "tamanho": "2L",
+      "preco": 15,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "createdAt": "2025-06-19T22:29:03.958Z",
+      "__v": 0,
+      "itensCombo": [],
+      "tamanhos": []
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "68548f6c12d47e27b4f20f73",
+      "nome": "Coca Cola Zero 2L",
+      "descricao": "Coca Cola Zero - 2L",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "2L",
+      "pizzasCompativeis": [],
+      "preco": 15,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-19T22:30:04.838Z",
+      "__v": 0
+    },
+    {
+      "pizzasCompativeis": [],
+      "tempoPreparoMinutos": 20,
+      "visivelCardapio": true,
+      "_id": "68548f6c12d47e27b4f20f77",
+      "nome": "Coca Cola Zero 600ml",
+      "descricao": "Coca Cola Zero - 600ml",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "600ml",
+      "preco": 8.9,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "createdAt": "2025-06-19T22:30:04.853Z",
+      "__v": 0,
+      "itensCombo": [],
+      "tamanhos": []
+    },
+    {
+      "pizzasCompativeis": [],
+      "tempoPreparoMinutos": 20,
+      "visivelCardapio": true,
+      "_id": "6854901b12d47e27b4f20faa",
+      "nome": "COMBO GIGANTE FAMILIA",
+      "descricao": "2 Pizzas gigantes 12 fatias 2 Bordas recheadas 2 guaraná pureza 1,5 litros",
+      "categoria": "combo",
+      "valorEspecial": 0,
+      "itensCombo": [
+        {
+          "item": "685494ff3140b09daaa75eeb",
+          "quantidade": 2,
+          "tipo": "pizza",
+          "_id": "68549f3769318a551d6a68f6"
+        },
+        {
+          "quantidade": 2,
+          "tipo": "bebida",
+          "_id": "68549f4d69318a551d6a6957",
+          "item": "68548f2f12d47e27b4f20f2b"
+        }
+      ],
+      "preco": 200,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "createdAt": "2025-06-19T22:32:59.868Z",
+      "__v": 7,
+      "tamanhos": []
+    },
+    {
+      "tempoPreparoMinutos": 20,
+      "visivelCardapio": true,
+      "_id": "685494ff3140b09daaa75eeb",
+      "nome": "Pizza Gigante",
+      "descricao": "Pizza Gigante",
+      "categoria": "pizza",
+      "valorEspecial": 0,
+      "quantidadeFatias": 12,
+      "quantidadeSabores": 3,
+      "pizzasCompativeis": [],
+      "preco": 89.9,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-19T22:53:51.338Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6854ecdd89328bce1074d7bc",
+      "nome": "Pizza Margherita",
+      "descricao": "Pizza tradicional com molho de tomate, mussarela e manjericão",
+      "categoria": "pizza",
+      "valorEspecial": 0,
+      "quantidadeFatias": 8,
+      "quantidadeSabores": 2,
+      "pizzasCompativeis": [],
+      "preco": 35.9,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-20T05:08:45.240Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6854ecdd89328bce1074d7c0",
+      "nome": "Coca-Cola 350ml",
+      "descricao": "Refrigerante Coca-Cola lata 350ml",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "350ml",
+      "pizzasCompativeis": [],
+      "preco": 5.5,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6852bbe82a4d58c0a099d5f5",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-20T05:08:45.251Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c1860bf95e23b608cba5",
+      "nome": "Pizza Tradicional",
+      "descricao": "Pizza tradicional com massa artesanal - escolha seus sabores",
+      "categoria": "pizza",
+      "valorEspecial": 0,
+      "quantidadeFatias": 8,
+      "quantidadeSabores": 2,
+      "pizzasCompativeis": [],
+      "preco": 30,
+      "tempoPreparoMinutos": 25,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:28:22.446Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c18cf3b74b1e77fd84e4",
+      "nome": "Margherita",
+      "descricao": "Sabor Margherita",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:28:28.164Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c18cf3b74b1e77fd84e6",
+      "nome": "Pepperoni",
+      "descricao": "Sabor Pepperoni",
+      "categoria": "sabor",
+      "valorEspecial": 2.5,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:28:28.175Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c18cf3b74b1e77fd84e8",
+      "nome": "Quatro Queijos",
+      "descricao": "Sabor Quatro Queijos",
+      "categoria": "sabor",
+      "valorEspecial": 5,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:28:28.179Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c18cf3b74b1e77fd84ea",
+      "nome": "Portuguesa",
+      "descricao": "Sabor Portuguesa",
+      "categoria": "sabor",
+      "valorEspecial": 3,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:28:28.181Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c18cf3b74b1e77fd84ec",
+      "nome": "Calabresa",
+      "descricao": "Sabor Calabresa",
+      "categoria": "sabor",
+      "valorEspecial": 1,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:28:28.184Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c18cf3b74b1e77fd84ee",
+      "nome": "Frango com Catupiry",
+      "descricao": "Sabor Frango com Catupiry",
+      "categoria": "sabor",
+      "valorEspecial": 3.5,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:28:28.187Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c18cf3b74b1e77fd84f0",
+      "nome": "Camarão",
+      "descricao": "Sabor Camarão",
+      "categoria": "sabor",
+      "valorEspecial": 8,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:28:28.189Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c18cf3b74b1e77fd84f2",
+      "nome": "Chocolate",
+      "descricao": "Sabor Chocolate",
+      "categoria": "sabor",
+      "valorEspecial": 4,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:28:28.192Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c1b1f4153f7219a74dd9",
+      "nome": "Coca-Cola 350ml",
+      "descricao": "Refrigerante de cola tradicional - Lata",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "350ml",
+      "pizzasCompativeis": [],
+      "preco": 4.5,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:29:05.243Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c1b1f4153f7219a74ddb",
+      "nome": "Coca-Cola 600ml",
+      "descricao": "Refrigerante de cola tradicional - Garrafa",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "600ml",
+      "pizzasCompativeis": [],
+      "preco": 6.5,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:29:05.256Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c1b1f4153f7219a74ddd",
+      "nome": "Coca-Cola 2L",
+      "descricao": "Refrigerante de cola tradicional - Garrafa família",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "2L",
+      "pizzasCompativeis": [],
+      "preco": 8.5,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:29:05.260Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c1b1f4153f7219a74ddf",
+      "nome": "Guaraná Antarctica 350ml",
+      "descricao": "Refrigerante de guaraná natural - Lata",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "350ml",
+      "pizzasCompativeis": [],
+      "preco": 4.5,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:29:05.263Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c1b1f4153f7219a74de1",
+      "nome": "Guaraná Antarctica 600ml",
+      "descricao": "Refrigerante de guaraná natural - Garrafa",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "600ml",
+      "pizzasCompativeis": [],
+      "preco": 6.5,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:29:05.266Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c1b1f4153f7219a74de3",
+      "nome": "Guaraná Antarctica 2L",
+      "descricao": "Refrigerante de guaraná natural - Garrafa família",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "2L",
+      "pizzasCompativeis": [],
+      "preco": 8.5,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:29:05.269Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c1b1f4153f7219a74de5",
+      "nome": "Suco de Laranja 300ml",
+      "descricao": "Suco natural de laranja - Copo",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "300ml",
+      "pizzasCompativeis": [],
+      "preco": 5,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:29:05.272Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c1b1f4153f7219a74de7",
+      "nome": "Suco de Laranja 500ml",
+      "descricao": "Suco natural de laranja - Garrafa",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "500ml",
+      "pizzasCompativeis": [],
+      "preco": 7.5,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:29:05.275Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c1b1f4153f7219a74de9",
+      "nome": "Água Mineral 500ml",
+      "descricao": "Água mineral sem gás - Garrafa",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "500ml",
+      "pizzasCompativeis": [],
+      "preco": 2.5,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:29:05.279Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c1b1f4153f7219a74deb",
+      "nome": "Água Mineral 1.5L",
+      "descricao": "Água mineral sem gás - Garrafa grande",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "1.5L",
+      "pizzasCompativeis": [],
+      "preco": 4,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:29:05.282Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c1b1f4153f7219a74ded",
+      "nome": "Cerveja Heineken 330ml",
+      "descricao": "Cerveja premium importada - Long neck",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "330ml",
+      "pizzasCompativeis": [],
+      "preco": 8.5,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:29:05.285Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c1b1f4153f7219a74def",
+      "nome": "Cerveja Heineken 600ml",
+      "descricao": "Cerveja premium importada - Garrafa",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "600ml",
+      "pizzasCompativeis": [],
+      "preco": 12,
+      "tempoPreparoMinutos": 20,
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "ingredientes": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T14:29:05.287Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c9679bacbad85cda019a",
+      "nome": "Requeijão",
+      "descricao": "Requeijão",
+      "categoria": "borda",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T15:01:59.369Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c982a5842585d23cd234",
+      "nome": "Requeijão especial",
+      "descricao": "Requeijão especial",
+      "categoria": "borda",
+      "valorEspecial": 7.5,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-21T15:02:26.621Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "6856c99fa5842585d23cd268",
+      "nome": "Combo especial",
+      "descricao": "Combo especial",
+      "categoria": "combo",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "itensCombo": [
+        {
+          "item": "6856c1860bf95e23b608cba5",
+          "quantidade": 1,
+          "tipo": "pizza",
+          "_id": "6856c99fa5842585d23cd26a"
+        },
+        {
+          "quantidade": 1,
+          "tipo": "bebida",
+          "_id": "6856c99fa5842585d23cd269",
+          "item": "68548f2f12d47e27b4f20f2b"
+        }
+      ],
+      "preco": 200,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "6856c02c76e74a0fa77dc436",
+      "tamanhos": [],
+      "createdAt": "2025-06-21T15:02:55.954Z",
+      "__v": 1
+    },
+    {
+      "_id": "685773371155d72a00507f9c",
+      "nome": "Pizza Grande",
+      "descricao": "1 Pizza grande 8 fatias 1 borda recheada 1 guaraná pureza 1,5 litros",
+      "categoria": "pizza",
+      "valorEspecial": 0,
+      "quantidadeFatias": 8,
+      "quantidadeSabores": 3,
+      "pizzasCompativeis": [],
+      "preco": 84.9,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-22T03:06:31.079Z",
+      "__v": 0,
+      "tempoPreparoMinutos": 20,
+      "visivelCardapio": true
+    },
+    {
+      "pizzasCompativeis": [],
+      "tempoPreparoMinutos": 20,
+      "visivelCardapio": true,
+      "_id": "6857737b1155d72a00507fcf",
+      "nome": "Coca-Cola 2L",
+      "descricao": "Coca - 2L",
+      "categoria": "bebida",
+      "valorEspecial": 7.9,
+      "tamanho": "2L",
+      "preco": 15,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "createdAt": "2025-06-22T03:07:39.125Z",
+      "__v": 0,
+      "itensCombo": [],
+      "tamanhos": []
+    },
+    {
+      "pizzasCompativeis": [],
+      "tempoPreparoMinutos": 20,
+      "visivelCardapio": true,
+      "_id": "6857737b1155d72a00507fd2",
+      "nome": "Coca-Cola 600ml",
+      "descricao": "Coca-Cola 600ml",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "600ml",
+      "preco": 8.9,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "createdAt": "2025-06-22T03:07:39.134Z",
+      "__v": 0,
+      "itensCombo": [],
+      "tamanhos": []
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685773981155d72a00508001",
+      "nome": "Requeijão",
+      "descricao": "Requeijão",
+      "categoria": "borda",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-22T03:08:08.648Z",
+      "__v": 0
+    },
+    {
+      "pizzasCompativeis": [],
+      "tempoPreparoMinutos": 20,
+      "visivelCardapio": true,
+      "_id": "685773a61155d72a00508012",
+      "nome": "Catupiry Original",
+      "descricao": "Catupiry Original",
+      "categoria": "borda",
+      "valorEspecial": 12.9,
+      "preco": 0,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "createdAt": "2025-06-22T03:08:22.064Z",
+      "__v": 0,
+      "itensCombo": [],
+      "tamanhos": []
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b32a9e97527668a42716f",
+      "nome": "Chocolate Preto",
+      "descricao": "Chocolate Preto",
+      "categoria": "borda",
+      "valorEspecial": 9.9,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-24T23:20:09.052Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b32bbe97527668a4271e4",
+      "nome": "Sem borda",
+      "descricao": "Sem borda",
+      "categoria": "borda",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-24T23:20:27.087Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b32cde97527668a427259",
+      "nome": "Chocolate Branco",
+      "descricao": "Chocolate Branco",
+      "categoria": "borda",
+      "valorEspecial": 9.9,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-24T23:20:45.354Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b32ebe97527668a42733b",
+      "nome": "Cheddar",
+      "descricao": "Cheddar",
+      "categoria": "borda",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-24T23:21:15.492Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf890fcd",
+      "nome": "5 Queijos",
+      "descricao": "Sabor 5 Queijos",
+      "categoria": "sabor",
+      "valorEspecial": 10,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fce"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fcf"
+        },
+        {
+          "nome": "gorgonzola",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fd0"
+        },
+        {
+          "nome": "requeijão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fd1"
+        },
+        {
+          "nome": "provolone",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fd2"
+        },
+        {
+          "nome": "parmesão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fd3"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fd4"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fd5"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.351Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf890fd8",
+      "nome": "A baita",
+      "descricao": "Sabor A baita",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fd9"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fda"
+        },
+        {
+          "nome": "peito de peru",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fdb"
+        },
+        {
+          "nome": "abacaxi",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fdc"
+        },
+        {
+          "nome": "cheddar",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fdd"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fde"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fdf"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.377Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf890fe2",
+      "nome": "Alho e óleo",
+      "descricao": "Sabor Alho e óleo",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fe3"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fe4"
+        },
+        {
+          "nome": "parmesão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fe5"
+        },
+        {
+          "nome": "alho e óleo",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fe6"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fe7"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fe8"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.386Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf890feb",
+      "nome": "Atum com queijo",
+      "descricao": "Sabor Atum com queijo",
+      "categoria": "sabor",
+      "valorEspecial": 10,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fec"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fed"
+        },
+        {
+          "nome": "atum",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fee"
+        },
+        {
+          "nome": "cebola",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fef"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890ff0"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890ff1"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.400Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf890ff4",
+      "nome": "Bacon",
+      "descricao": "Sabor Bacon",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890ff5"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890ff6"
+        },
+        {
+          "nome": "bacon",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890ff7"
+        },
+        {
+          "nome": "ovo",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890ff8"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890ff9"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890ffa"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.409Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf890ffd",
+      "nome": "Baiana",
+      "descricao": "Sabor Baiana",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890ffe"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf890fff"
+        },
+        {
+          "nome": "calabresa moída",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891000"
+        },
+        {
+          "nome": "molho de pimenta",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891001"
+        },
+        {
+          "nome": "requeijão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891002"
+        },
+        {
+          "nome": "cebola",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891003"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891004"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891005"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.418Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891008",
+      "nome": "Banana flambada",
+      "descricao": "Sabor Banana flambada",
+      "categoria": "sabor",
+      "valorEspecial": 10,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891009"
+        },
+        {
+          "nome": "Banana",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89100a"
+        },
+        {
+          "nome": "chocolate branco flambado",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89100b"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.426Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf89100e",
+      "nome": "Bananinha",
+      "descricao": "Sabor Bananinha",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89100f"
+        },
+        {
+          "nome": "Banana com doce de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891010"
+        },
+        {
+          "nome": "canela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891011"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.431Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891014",
+      "nome": "Beijinho",
+      "descricao": "Sabor Beijinho",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891015"
+        },
+        {
+          "nome": "chocolate branco",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891016"
+        },
+        {
+          "nome": "coco",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891017"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.437Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf89101a",
+      "nome": "Brigadeiro",
+      "descricao": "Sabor Brigadeiro",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89101b"
+        },
+        {
+          "nome": "chocolate preto",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89101c"
+        },
+        {
+          "nome": "granulado",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89101d"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.444Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891020",
+      "nome": "Brócolis",
+      "descricao": "Sabor Brócolis",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891021"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891022"
+        },
+        {
+          "nome": "brócolis",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891023"
+        },
+        {
+          "nome": "alho",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891024"
+        },
+        {
+          "nome": "bacon",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891025"
+        },
+        {
+          "nome": "requeijão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891026"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891027"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891028"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.450Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf89102b",
+      "nome": "Caipira",
+      "descricao": "Sabor Caipira",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89102c"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89102d"
+        },
+        {
+          "nome": "frango",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89102e"
+        },
+        {
+          "nome": "bacon",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89102f"
+        },
+        {
+          "nome": "milho",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891030"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891031"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891032"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.459Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891035",
+      "nome": "Calabresa",
+      "descricao": "Sabor Calabresa",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891036"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891037"
+        },
+        {
+          "nome": "calabresa",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891038"
+        },
+        {
+          "nome": "cebola",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891039"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89103a"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89103b"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.467Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf89103e",
+      "nome": "Calabresa a parmesão",
+      "descricao": "Sabor Calabresa a parmesão",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89103f"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891040"
+        },
+        {
+          "nome": "calabresa",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891041"
+        },
+        {
+          "nome": "parmesão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891042"
+        },
+        {
+          "nome": "catupiry",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891043"
+        },
+        {
+          "nome": "alho e óleo",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891044"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891045"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891046"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.479Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891049",
+      "nome": "Califórnia",
+      "descricao": "Sabor Califórnia",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89104a"
+        },
+        {
+          "nome": "Creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89104b"
+        },
+        {
+          "nome": "pêssego",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89104c"
+        },
+        {
+          "nome": "abacaxi",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89104d"
+        },
+        {
+          "nome": "figo",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89104e"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.483Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891051",
+      "nome": "Camarão alho e oleo",
+      "descricao": "Sabor Camarão alho e oleo",
+      "categoria": "sabor",
+      "valorEspecial": 30,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Camarão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891052"
+        },
+        {
+          "nome": "alho",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891053"
+        },
+        {
+          "nome": "óleo",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891054"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.488Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891057",
+      "nome": "Camarão catupiry",
+      "descricao": "Sabor Camarão catupiry",
+      "categoria": "sabor",
+      "valorEspecial": 30,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Camarão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891058"
+        },
+        {
+          "nome": "catupiry",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891059"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.492Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf89105c",
+      "nome": "Carne seca",
+      "descricao": "Sabor Carne seca",
+      "categoria": "sabor",
+      "valorEspecial": 15,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89105d"
+        },
+        {
+          "nome": "mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89105e"
+        },
+        {
+          "nome": "carne seca desfiada",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89105f"
+        },
+        {
+          "nome": "molho barbecue",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891060"
+        },
+        {
+          "nome": "pimentão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891061"
+        },
+        {
+          "nome": "cebola",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891062"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891063"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891064"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.496Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891067",
+      "nome": "Catuperu",
+      "descricao": "Sabor Catuperu",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891068"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891069"
+        },
+        {
+          "nome": "peito de peru",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89106a"
+        },
+        {
+          "nome": "Catupiry",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89106b"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89106c"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89106d"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.501Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891070",
+      "nome": "Champignon",
+      "descricao": "Sabor Champignon",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891071"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891072"
+        },
+        {
+          "nome": "champignon",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891073"
+        },
+        {
+          "nome": "parmesão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891074"
+        },
+        {
+          "nome": "alho e óleo",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891075"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891076"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891077"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.507Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf89107a",
+      "nome": "Charge",
+      "descricao": "Sabor Charge",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89107b"
+        },
+        {
+          "nome": "Chocolate preto",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89107c"
+        },
+        {
+          "nome": "amendoim",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89107d"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.512Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891080",
+      "nome": "Choco-ninho branco",
+      "descricao": "Sabor Choco-ninho branco",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891081"
+        },
+        {
+          "nome": "chocolate branco",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891082"
+        },
+        {
+          "nome": "leite Ninho em pó",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891083"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.517Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891086",
+      "nome": "Choco-ninho preto",
+      "descricao": "Sabor Choco-ninho preto",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891087"
+        },
+        {
+          "nome": "chocolate preto",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891088"
+        },
+        {
+          "nome": "leite Ninho em pó",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891089"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.522Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf89108c",
+      "nome": "Chocolate branco",
+      "descricao": "Sabor Chocolate branco",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89108d"
+        },
+        {
+          "nome": "Chocolate branco",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89108e"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.526Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891091",
+      "nome": "Chocolate preto",
+      "descricao": "Sabor Chocolate preto",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891092"
+        },
+        {
+          "nome": "Chocolate preto",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891093"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.531Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891096",
+      "nome": "Confete branco",
+      "descricao": "Sabor Confete branco",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891097"
+        },
+        {
+          "nome": "chocolate branco",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891098"
+        },
+        {
+          "nome": "confetes",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891099"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.535Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf89109c",
+      "nome": "Confetes",
+      "descricao": "Sabor Confetes",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89109d"
+        },
+        {
+          "nome": "chocolate preto",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89109e"
+        },
+        {
+          "nome": "confetes",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89109f"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.540Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8910a2",
+      "nome": "Divina",
+      "descricao": "Sabor Divina",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910a3"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910a4"
+        },
+        {
+          "nome": "alho porró",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910a5"
+        },
+        {
+          "nome": "parmesão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910a6"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910a7"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910a8"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.545Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8910ab",
+      "nome": "Do pizzaiolo",
+      "descricao": "Sabor Do pizzaiolo",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910ac"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910ad"
+        },
+        {
+          "nome": "lombinho",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910ae"
+        },
+        {
+          "nome": "palmito",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910af"
+        },
+        {
+          "nome": "requeijão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910b0"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910b1"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910b2"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.550Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8910b5",
+      "nome": "Dois amores",
+      "descricao": "Sabor Dois amores",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910b6"
+        },
+        {
+          "nome": "Chocolate preto e branco misturados",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910b7"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.556Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8910ba",
+      "nome": "Executiva",
+      "descricao": "Sabor Executiva",
+      "categoria": "sabor",
+      "valorEspecial": 15,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910bb"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910bc"
+        },
+        {
+          "nome": "lombo canadense",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910bd"
+        },
+        {
+          "nome": "palmito",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910be"
+        },
+        {
+          "nome": "cheddar",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910bf"
+        },
+        {
+          "nome": "bacon",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910c0"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910c1"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910c2"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.562Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8910c5",
+      "nome": "Ferrero",
+      "descricao": "Sabor Ferrero",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910c6"
+        },
+        {
+          "nome": "chocolate preto",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910c7"
+        },
+        {
+          "nome": "creme de avelã",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910c8"
+        },
+        {
+          "nome": "amendoim",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910c9"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.566Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8910cc",
+      "nome": "File alho e óleo",
+      "descricao": "Sabor File alho e óleo",
+      "categoria": "sabor",
+      "valorEspecial": 15,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910cd"
+        },
+        {
+          "nome": "mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910ce"
+        },
+        {
+          "nome": "file",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910cf"
+        },
+        {
+          "nome": "alho e oleo",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910d0"
+        },
+        {
+          "nome": "azeitona",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910d1"
+        },
+        {
+          "nome": "oregano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910d2"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.574Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8910d5",
+      "nome": "File com Catupiry",
+      "descricao": "Sabor File com Catupiry",
+      "categoria": "sabor",
+      "valorEspecial": 15,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910d6"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910d7"
+        },
+        {
+          "nome": "file",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910d8"
+        },
+        {
+          "nome": "alho e óleo",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910d9"
+        },
+        {
+          "nome": "Catupiry",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910da"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910db"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910dc"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.579Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8910df",
+      "nome": "File com cheddar",
+      "descricao": "Sabor File com cheddar",
+      "categoria": "sabor",
+      "valorEspecial": 15,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910e0"
+        },
+        {
+          "nome": "mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910e1"
+        },
+        {
+          "nome": "file",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910e2"
+        },
+        {
+          "nome": "alho e oleo",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910e3"
+        },
+        {
+          "nome": "cheddar",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910e4"
+        },
+        {
+          "nome": "azeitona",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910e5"
+        },
+        {
+          "nome": "oregano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910e6"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.583Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8910e9",
+      "nome": "Frango com catupiry",
+      "descricao": "Sabor Frango com catupiry",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910ea"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910eb"
+        },
+        {
+          "nome": "frango",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910ec"
+        },
+        {
+          "nome": "requeijão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910ed"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910ee"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910ef"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.587Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8910f2",
+      "nome": "Frango com cheddar",
+      "descricao": "Sabor Frango com cheddar",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910f3"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910f4"
+        },
+        {
+          "nome": "frango",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910f5"
+        },
+        {
+          "nome": "cheddar",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910f6"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910f7"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910f8"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.593Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8910fb",
+      "nome": "Frango supremo",
+      "descricao": "Sabor Frango supremo",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910fc"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910fd"
+        },
+        {
+          "nome": "frango",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910fe"
+        },
+        {
+          "nome": "creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8910ff"
+        },
+        {
+          "nome": "milho verde",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891100"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891101"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891102"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.597Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891105",
+      "nome": "Italiana",
+      "descricao": "Sabor Italiana",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891106"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891107"
+        },
+        {
+          "nome": "salame italiano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891108"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891109"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89110a"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.600Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf89110d",
+      "nome": "Lauro Miliense",
+      "descricao": "Sabor Lauro Miliense",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89110e"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89110f"
+        },
+        {
+          "nome": "salame italiano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891110"
+        },
+        {
+          "nome": "milho",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891111"
+        },
+        {
+          "nome": "bacon",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891112"
+        },
+        {
+          "nome": "cebola",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891113"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891114"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891115"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.604Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891118",
+      "nome": "Lombinho",
+      "descricao": "Sabor Lombinho",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891119"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89111a"
+        },
+        {
+          "nome": "Lombo canadense",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89111b"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89111c"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89111d"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.608Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891120",
+      "nome": "Lombo ao creme",
+      "descricao": "Sabor Lombo ao creme",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891121"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891122"
+        },
+        {
+          "nome": "lombo canadense",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891123"
+        },
+        {
+          "nome": "creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891124"
+        },
+        {
+          "nome": "milho verde",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891125"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891126"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891127"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.612Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf89112a",
+      "nome": "Madre",
+      "descricao": "Sabor Madre",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89112b"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89112c"
+        },
+        {
+          "nome": "palmito",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89112d"
+        },
+        {
+          "nome": "bacon",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89112e"
+        },
+        {
+          "nome": "parmesão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89112f"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891130"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891131"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.616Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891134",
+      "nome": "Marguerita",
+      "descricao": "Sabor Marguerita",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891135"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891136"
+        },
+        {
+          "nome": "manjericão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891137"
+        },
+        {
+          "nome": "parmesão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891138"
+        },
+        {
+          "nome": "tomates picados",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891139"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89113a"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89113b"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.622Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf89113e",
+      "nome": "Mexicana",
+      "descricao": "Sabor Mexicana",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89113f"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891140"
+        },
+        {
+          "nome": "Carne moída",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891141"
+        },
+        {
+          "nome": "pimentão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891142"
+        },
+        {
+          "nome": "molho de pimenta",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891143"
+        },
+        {
+          "nome": "cebola",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891144"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891145"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891146"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.627Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891149",
+      "nome": "Mico leão",
+      "descricao": "Sabor Mico leão",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89114a"
+        },
+        {
+          "nome": "chocolate preto",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89114b"
+        },
+        {
+          "nome": "banana",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89114c"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.631Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf89114f",
+      "nome": "Milho com bacon",
+      "descricao": "Sabor Milho com bacon",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891150"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891151"
+        },
+        {
+          "nome": "milho verde",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891152"
+        },
+        {
+          "nome": "bacon",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891153"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891154"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891155"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.635Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891158",
+      "nome": "Mista",
+      "descricao": "Sabor Mista",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891159"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89115a"
+        },
+        {
+          "nome": "frango",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89115b"
+        },
+        {
+          "nome": "presunto",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89115c"
+        },
+        {
+          "nome": "palmito",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89115d"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89115e"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89115f"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.646Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891162",
+      "nome": "Modinha",
+      "descricao": "Sabor Modinha",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891163"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891164"
+        },
+        {
+          "nome": "presunto",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891165"
+        },
+        {
+          "nome": "bacon",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891166"
+        },
+        {
+          "nome": "alho",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891167"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891168"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891169"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.651Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf89116c",
+      "nome": "Mussarela",
+      "descricao": "Sabor Mussarela",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89116d"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89116e"
+        },
+        {
+          "nome": "tomates picados",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89116f"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891170"
+        },
+        {
+          "nome": "oregano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891171"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.656Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891174",
+      "nome": "Napolitana",
+      "descricao": "Sabor Napolitana",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891175"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891176"
+        },
+        {
+          "nome": "presunto",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891177"
+        },
+        {
+          "nome": "parmesão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891178"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891179"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89117a"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.660Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf89117d",
+      "nome": "Palmito",
+      "descricao": "Sabor Palmito",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89117e"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89117f"
+        },
+        {
+          "nome": "palmito",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891180"
+        },
+        {
+          "nome": "Catupiry",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891181"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891182"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891183"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.664Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891186",
+      "nome": "Pasqualina",
+      "descricao": "Sabor Pasqualina",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891187"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891188"
+        },
+        {
+          "nome": "bacon",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891189"
+        },
+        {
+          "nome": "parmesão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89118a"
+        },
+        {
+          "nome": "alho",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89118b"
+        },
+        {
+          "nome": "requeijao",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89118c"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89118d"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89118e"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.668Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891191",
+      "nome": "Pepperoni",
+      "descricao": "Sabor Pepperoni",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891192"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891193"
+        },
+        {
+          "nome": "pepperoni",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891194"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891195"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891196"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.674Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891199",
+      "nome": "Portuguesa",
+      "descricao": "Sabor Portuguesa",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89119a"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89119b"
+        },
+        {
+          "nome": "presunto",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89119c"
+        },
+        {
+          "nome": "ovos",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89119d"
+        },
+        {
+          "nome": "cebola",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89119e"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89119f"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911a0"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.678Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8911a3",
+      "nome": "Prestigio",
+      "descricao": "Sabor Prestigio",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Chocolate preto",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911a4"
+        },
+        {
+          "nome": "coco",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911a5"
+        },
+        {
+          "nome": "creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911a6"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.683Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8911a9",
+      "nome": "Quatro queijos",
+      "descricao": "Sabor Quatro queijos",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911aa"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911ab"
+        },
+        {
+          "nome": "provolone",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911ac"
+        },
+        {
+          "nome": "parmesão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911ad"
+        },
+        {
+          "nome": "requeijão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911ae"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911af"
+        },
+        {
+          "nome": "oregano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911b0"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.688Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8911b3",
+      "nome": "Romanesca",
+      "descricao": "Sabor Romanesca",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911b4"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911b5"
+        },
+        {
+          "nome": "calabresa moída",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911b6"
+        },
+        {
+          "nome": "bacon",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911b7"
+        },
+        {
+          "nome": "ovos",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911b8"
+        },
+        {
+          "nome": "cebola",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911b9"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911ba"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911bb"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.692Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8911be",
+      "nome": "Romeu e Julieta",
+      "descricao": "Sabor Romeu e Julieta",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911bf"
+        },
+        {
+          "nome": "goiabada",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911c0"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.698Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8911c3",
+      "nome": "Salada doce",
+      "descricao": "Sabor Salada doce",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911c4"
+        },
+        {
+          "nome": "chocolate preto",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911c5"
+        },
+        {
+          "nome": "pêssego",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911c6"
+        },
+        {
+          "nome": "coco",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911c7"
+        },
+        {
+          "nome": "morango",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911c8"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.703Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8911cb",
+      "nome": "Sedução",
+      "descricao": "Sabor Sedução",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911cc"
+        },
+        {
+          "nome": "Chocolate branco",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911cd"
+        },
+        {
+          "nome": "morangos",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911ce"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.708Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8911d1",
+      "nome": "Sensação",
+      "descricao": "Sabor Sensação",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911d2"
+        },
+        {
+          "nome": "chocolate preto",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911d3"
+        },
+        {
+          "nome": "morango",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911d4"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.712Z",
+      "__v": 0,
+      "tipoSabor": "doce"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8911d7",
+      "nome": "Siciliana",
+      "descricao": "Sabor Siciliana",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911d8"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911d9"
+        },
+        {
+          "nome": "frango",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911da"
+        },
+        {
+          "nome": "catupiry",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911db"
+        },
+        {
+          "nome": "batata palha",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911dc"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911dd"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911de"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.716Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8911e1",
+      "nome": "Speciale",
+      "descricao": "Sabor Speciale",
+      "categoria": "sabor",
+      "valorEspecial": 15,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911e2"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911e3"
+        },
+        {
+          "nome": "Pepperoni",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911e4"
+        },
+        {
+          "nome": "alho",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911e5"
+        },
+        {
+          "nome": "cebola",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911e6"
+        },
+        {
+          "nome": "bacon",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911e7"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911e8"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911e9"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.723Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8911ec",
+      "nome": "Strogonoff de Camarão",
+      "descricao": "Sabor Strogonoff de Camarão",
+      "categoria": "sabor",
+      "valorEspecial": 30,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Strogonoff de camarão",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911ed"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.728Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8911f0",
+      "nome": "Strogonoff de carne",
+      "descricao": "Sabor Strogonoff de carne",
+      "categoria": "sabor",
+      "valorEspecial": 15,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911f1"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911f2"
+        },
+        {
+          "nome": "file",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911f3"
+        },
+        {
+          "nome": "alho e óleo",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911f4"
+        },
+        {
+          "nome": "creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911f5"
+        },
+        {
+          "nome": "champignon",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911f6"
+        },
+        {
+          "nome": "batata palha",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911f7"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911f8"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911f9"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.732Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf8911fc",
+      "nome": "Strogonoff de frango",
+      "descricao": "Sabor Strogonoff de frango",
+      "categoria": "sabor",
+      "valorEspecial": 15,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911fd"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911fe"
+        },
+        {
+          "nome": "frango desfiado",
+          "preco": 0,
+          "_id": "685b68f591b65041bf8911ff"
+        },
+        {
+          "nome": "creme de leite",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891200"
+        },
+        {
+          "nome": "champignon",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891201"
+        },
+        {
+          "nome": "batata palha",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891202"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891203"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891204"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.737Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891207",
+      "nome": "Tomate Seco",
+      "descricao": "Sabor Tomate Seco",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891208"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891209"
+        },
+        {
+          "nome": "tomate seco",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89120a"
+        },
+        {
+          "nome": "rúcula",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89120b"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89120c"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf89120d"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.743Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b68f591b65041bf891210",
+      "nome": "Vegetariana",
+      "descricao": "Sabor Vegetariana",
+      "categoria": "sabor",
+      "valorEspecial": 0,
+      "pizzasCompativeis": [],
+      "preco": 0,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [
+        {
+          "nome": "Mussarela",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891211"
+        },
+        {
+          "nome": "molho de tomate",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891212"
+        },
+        {
+          "nome": "brócolis",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891213"
+        },
+        {
+          "nome": "palmito",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891214"
+        },
+        {
+          "nome": "champignon",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891215"
+        },
+        {
+          "nome": "milho",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891216"
+        },
+        {
+          "nome": "azeitonas",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891217"
+        },
+        {
+          "nome": "orégano",
+          "preco": 0,
+          "_id": "685b68f591b65041bf891218"
+        }
+      ],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "opcionais": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:11:49.746Z",
+      "__v": 0,
+      "tipoSabor": "salgado"
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b7411764755b963c308b0",
+      "nome": "Coca-Cola Zero 600ml",
+      "descricao": "Coca-Cola Zero 600ml - 600ml",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "600ml",
+      "pizzasCompativeis": [],
+      "preco": 8.9,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:59:13.351Z",
+      "__v": 0
+    },
+    {
+      "visivelCardapio": true,
+      "_id": "685b7432764755b963c30ed0",
+      "nome": "Coca-Cola Zero 2L",
+      "descricao": "Coca-Cola Zero - 2L",
+      "categoria": "bebida",
+      "valorEspecial": 7.9,
+      "tamanho": "2L",
+      "pizzasCompativeis": [],
+      "preco": 15,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T03:59:46.588Z",
+      "__v": 0
+    },
+    {
+      "pizzasCompativeis": [],
+      "tempoPreparoMinutos": 20,
+      "visivelCardapio": true,
+      "_id": "685b7496764755b963c31989",
+      "nome": "Agua sem gas 1.5L",
+      "descricao": "Agua sem gas - 1.5L",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "1.5L",
+      "preco": 8.9,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "createdAt": "2025-06-25T04:01:26.519Z",
+      "__v": 0,
+      "itensCombo": [],
+      "tamanhos": []
+    },
+    {
+      "pizzasCompativeis": [],
+      "tempoPreparoMinutos": 20,
+      "_id": "685b74ef764755b963c3274f",
+      "nome": "COMBO GIGANTE FAMILIA",
+      "descricao": "2 Pizzas gigantes 12 fatias 2 Bordas recheadas 2 guaraná pureza 1,5 litros",
+      "categoria": "combo",
+      "valorEspecial": 0,
+      "itensCombo": [
+        {
+          "item": "685b7540764755b963c32e78",
+          "quantidade": 2,
+          "tipo": "pizza",
+          "_id": "685c81c55bae359be63a6a1c"
+        },
+        {
+          "item": "685b7496764755b963c31989",
+          "quantidade": 2,
+          "tipo": "bebida",
+          "_id": "685c81c55bae359be63a6a1d"
+        }
+      ],
+      "preco": 179.8,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "createdAt": "2025-06-25T04:02:55.264Z",
+      "__v": 1,
+      "visivelCardapio": true,
+      "tamanhos": []
+    },
+    {
+      "tempoPreparoMinutos": 20,
+      "_id": "685b7540764755b963c32e78",
+      "nome": "Pizza Gigante",
+      "descricao": "1 Pizza gigante 12 fatias 1 borda recheada 1 Guaraná pureza 1,5 litros",
+      "categoria": "pizza",
+      "valorEspecial": 0,
+      "quantidadeFatias": 12,
+      "quantidadeSabores": 3,
+      "pizzasCompativeis": [],
+      "preco": 89.9,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T04:04:16.781Z",
+      "__v": 0,
+      "visivelCardapio": true
+    },
+    {
+      "_id": "685b75f8764755b963c34e3a",
+      "nome": "Pizza Média",
+      "descricao": "1 Pizza média 6 fatias 1 borda recheada 1 refrigerante 600ml",
+      "categoria": "pizza",
+      "valorEspecial": 0,
+      "quantidadeFatias": 6,
+      "quantidadeSabores": 2,
+      "pizzasCompativeis": [],
+      "preco": 79.9,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T04:07:20.272Z",
+      "__v": 0,
+      "tempoPreparoMinutos": 20,
+      "visivelCardapio": true
+    },
+    {
+      "_id": "685b7682764755b963c35bd4",
+      "nome": "Pizza Broto Doce",
+      "descricao": "Pizza Broto Doce",
+      "categoria": "pizza",
+      "valorEspecial": 0,
+      "quantidadeFatias": 4,
+      "quantidadeSabores": 1,
+      "pizzasCompativeis": [],
+      "preco": 0.01,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T04:09:38.019Z",
+      "__v": 0,
+      "tempoPreparoMinutos": 20,
+      "visivelCardapio": false
+    },
+    {
+      "_id": "685c83365bae359be63a904e",
+      "nome": "Pureza 1.5L",
+      "descricao": "Pureza - 1.5L",
+      "categoria": "bebida",
+      "valorEspecial": 0,
+      "tamanho": "1.5L",
+      "pizzasCompativeis": [],
+      "preco": 12,
+      "tempoPreparoMinutos": 20,
+      "ingredientes": [],
+      "opcionais": [],
+      "disponivel": true,
+      "visivelCardapio": true,
+      "destaque": false,
+      "imagem": "",
+      "pizzaria": "68570a97f5c44f9f5330f144",
+      "itensCombo": [],
+      "tamanhos": [],
+      "createdAt": "2025-06-25T23:16:06.380Z",
+      "__v": 0
+    }
+  ],
+  "exportDate": "2025-06-26T16:16:39.014Z"
 }

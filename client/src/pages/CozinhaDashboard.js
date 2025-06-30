@@ -170,6 +170,17 @@ const CozinhaDashboard = () => {
       const response = await api.get(`/pedidos/cozinha/${pizzariaId}`);
       setPedidos(response.data);
       
+      // Carregar progresso das pizzas finalizadas do backend
+      const novoPizzasFinalizadas = {};
+      response.data.forEach(pedido => {
+        if (pedido.progressoPizzas && Object.keys(pedido.progressoPizzas).length > 0) {
+          novoPizzasFinalizadas[pedido._id] = pedido.progressoPizzas;
+          console.log(`📥 Carregando progresso do pedido ${pedido.numero}:`, pedido.progressoPizzas);
+        }
+      });
+      setPizzasFinalizadasPorPedido(novoPizzasFinalizadas);
+      console.log(`📊 Total de pedidos com progresso carregados:`, Object.keys(novoPizzasFinalizadas).length);
+      
       // Inicializar timers para pedidos em preparação
       const novosTimers = {};
       response.data.forEach(pedido => {
@@ -373,10 +384,14 @@ const CozinhaDashboard = () => {
 
   const confirmarPizzaFinalizada = async () => {
     if (pizzaSelecionada !== null && pedidoSelecionado) {
+      console.log(`✅ Confirmando pizza ${pizzaSelecionada} do pedido ${pedidoSelecionado.numero}`);
+      
       const novoProgresso = {
         ...pizzasFinalizadasPorPedido[pedidoSelecionado._id],
         [pizzaSelecionada]: true
       };
+      
+      console.log(`📝 Novo progresso:`, novoProgresso);
       
       // Atualizar estado local
       setPizzasFinalizadasPorPedido(prev => ({
@@ -515,6 +530,31 @@ const CozinhaDashboard = () => {
     const abaConfig = abasCozinha.find(aba => aba.key === abaAtiva);
     if (!abaConfig) return [];
     
+    // Lógica especial para aba de finalização
+    if (abaConfig.key === 'finalizacao') {
+      return pedidos.filter(pedido => {
+        // Pedidos completamente finalizados (como antes)
+        if (pedido.status === 'finalizado') return true;
+        
+        // Pedidos com pelo menos uma pizza pronta
+        const pizzasDoAtualPedido = pizzasFinalizadasPorPedido[pedido._id] || {};
+        const temPizzaPronta = Object.values(pizzasDoAtualPedido).some(pronta => pronta === true);
+        
+        // Debug: Log para verificar se pizzas prontas são detectadas
+        if (temPizzaPronta) {
+          console.log(`🍕 Pedido ${pedido.numero} tem pizzas prontas:`, pizzasDoAtualPedido);
+          console.log(`📊 Status do pedido ${pedido.numero}: ${pedido.status}`);
+        }
+        
+        // Incluir pedidos em preparação que tenham pelo menos uma pizza pronta
+        const statusValido = ['recebido', 'preparando'].includes(pedido.status);
+        console.log(`🔍 Pedido ${pedido.numero}: pizzas prontas=${temPizzaPronta}, status válido=${statusValido} (${pedido.status})`);
+        
+        return temPizzaPronta && statusValido;
+      });
+    }
+    
+    // Lógica normal para outras abas
     return pedidos.filter(pedido => {
       const statusMatch = abaConfig.statusRelevantes.includes(pedido.status);
       
@@ -527,6 +567,85 @@ const CozinhaDashboard = () => {
     });
   };
 
+  // Função auxiliar para calcular pizzas prontas de um pedido
+  const calcularPizzasProntas = (pedido, pizzasDoAtualPedido) => {
+    const pizzasProntas = [];
+    
+    pedido.itens.forEach((item, itemIndex) => {
+      // Pizza direta
+      if (item.item?.categoria === 'pizza' || item.categoria === 'pizza') {
+        const pizzaKey = `direct-${itemIndex}`;
+        if (pizzasDoAtualPedido[pizzaKey]) {
+          pizzasProntas.push({
+            key: pizzaKey,
+            nome: item.item?.nome || item.nome,
+            detalhes: item.observacoes || 'Pizza personalizada',
+            isFromCombo: false
+          });
+        }
+      }
+      // Pizzas de combo
+      else if (item.item?.categoria === 'combo' || item.categoria === 'combo') {
+        if (item.pizzas && item.pizzas.length > 0) {
+          item.pizzas.forEach((pizza, pizzaIndex) => {
+            const pizzaKey = `combo-${itemIndex}-${pizzaIndex}`;
+            if (pizzasDoAtualPedido[pizzaKey]) {
+              pizzasProntas.push({
+                key: pizzaKey,
+                nome: pizza.item?.nome || pizza.nome,
+                detalhes: `${item.item?.nome || item.nome} - Pizza ${pizzaIndex + 1}`,
+                isFromCombo: true,
+                comboName: item.item?.nome || item.nome
+              });
+            }
+          });
+        }
+      }
+    });
+    
+    return pizzasProntas;
+  };
+
+  // Função auxiliar para calcular TODAS as pizzas de um pedido (prontas e não prontas)
+  const calcularTodasAsPizzas = (pedido, pizzasDoAtualPedido) => {
+    const todasPizzas = [];
+    
+    pedido.itens.forEach((item, itemIndex) => {
+      // Pizza direta
+      if (item.item?.categoria === 'pizza' || item.categoria === 'pizza') {
+        const pizzaKey = `direct-${itemIndex}`;
+        const estaPronta = pizzasDoAtualPedido[pizzaKey] || false;
+        todasPizzas.push({
+          key: pizzaKey,
+          nome: item.item?.nome || item.nome,
+          detalhes: item.observacoes || 'Pizza personalizada',
+          isFromCombo: false,
+          estaPronta: estaPronta,
+          status: estaPronta ? 'pronta' : 'preparando'
+        });
+      }
+      // Pizzas de combo
+      else if (item.item?.categoria === 'combo' || item.categoria === 'combo') {
+        if (item.pizzas && item.pizzas.length > 0) {
+          item.pizzas.forEach((pizza, pizzaIndex) => {
+            const pizzaKey = `combo-${itemIndex}-${pizzaIndex}`;
+            const estaPronta = pizzasDoAtualPedido[pizzaKey] || false;
+            todasPizzas.push({
+              key: pizzaKey,
+              nome: pizza.item?.nome || pizza.nome,
+              detalhes: `${item.item?.nome || item.nome} - Pizza ${pizzaIndex + 1}`,
+              isFromCombo: true,
+              comboName: item.item?.nome || item.nome,
+              estaPronta: estaPronta,
+              status: estaPronta ? 'pronta' : 'preparando'
+            });
+          });
+        }
+      }
+    });
+    
+    return todasPizzas;
+  };
 
   const getStatusColor = (status) => {
     const colors = {
@@ -750,6 +869,9 @@ const CozinhaDashboard = () => {
                   getStatusIcon={getStatusIcon}
                   getTempoDecorrido={getTempoDecorrido}
                   getCorTempo={getCorTempo}
+                  pizzasFinalizadasPorPedido={pizzasFinalizadasPorPedido}
+                  calcularPizzasProntas={calcularPizzasProntas}
+                  calcularTodasAsPizzas={calcularTodasAsPizzas}
                 />
               );
             } else if (abaAtiva === 'expedicao') {
@@ -1322,7 +1444,10 @@ const PedidoCardFinalizacao = ({
   getStatusColor, 
   getStatusIcon, 
   getTempoDecorrido, 
-  getCorTempo 
+  getCorTempo,
+  pizzasFinalizadasPorPedido,
+  calcularPizzasProntas,
+  calcularTodasAsPizzas
 }) => {
   // Função para formatar número do pedido com 3 dígitos
   const formatarNumeroPedido = (numero) => {
@@ -1335,31 +1460,23 @@ const PedidoCardFinalizacao = ({
   const [pizzaSelecionada, setPizzaSelecionada] = useState(null);
   const [toast, setToast] = useState({ show: false, message: '', type: '' });
   
-  // Extrair todas as pizzas, incluindo as que estão dentro de combos
-  const pizzas = [];
+  // Buscar todas as pizzas do pedido (prontas e não prontas)
+  const pizzasDoAtualPedido = pizzasFinalizadasPorPedido[pedido._id] || {};
+  const pizzasProntas = calcularPizzasProntas(pedido, pizzasDoAtualPedido);
+  const todasAsPizzas = calcularTodasAsPizzas(pedido, pizzasDoAtualPedido);
   
+  // Calcular total de pizzas do pedido para mostrar progresso
+  const totalPizzas = [];
   pedido.itens.forEach((item, itemIndex) => {
     // Pizza direta
     if (item.item?.categoria === 'pizza' || item.categoria === 'pizza') {
-      pizzas.push({
-        ...item,
-        originalIndex: itemIndex,
-        isFromCombo: false,
-        pizzaKey: `direct-${itemIndex}`
-      });
+      totalPizzas.push(`direct-${itemIndex}`);
     }
     // Pizzas dentro de combos
     else if (item.item?.categoria === 'combo' || item.categoria === 'combo') {
       if (item.pizzas && item.pizzas.length > 0) {
         item.pizzas.forEach((pizza, pizzaIndex) => {
-          pizzas.push({
-            ...pizza,
-            originalIndex: itemIndex,
-            pizzaIndex: pizzaIndex,
-            isFromCombo: true,
-            comboName: item.item?.nome || item.nome,
-            pizzaKey: `combo-${itemIndex}-${pizzaIndex}`
-          });
+          totalPizzas.push(`combo-${itemIndex}-${pizzaIndex}`);
         });
       }
     }
@@ -1385,11 +1502,11 @@ const PedidoCardFinalizacao = ({
           [pizzaSelecionada]: true
         };
         
-        // Verificar se todas as pizzas foram validadas após esta confirmação
-        const todasValidadas = pizzas.length > 0 && pizzas.every(pizza => novasPizzasValidadas[pizza.pizzaKey]);
+        // Verificar se todas as pizzas PRONTAS foram validadas após esta confirmação
+        const todasProntasValidadas = pizzasProntas.length > 0 && pizzasProntas.every(pizza => novasPizzasValidadas[pizza.key]);
         
-        // Se todas estão validadas, enviar automaticamente para expedição
-        if (todasValidadas) {
+        // Se todas as pizzas prontas foram validadas E o pedido está finalizado, enviar para expedição
+        if (todasProntasValidadas && pedido.status === 'finalizado') {
           setTimeout(() => {
             showToast(`✅ Pedido #${formatarNumeroPedido(pedido.numero)} finalizado!`);
             setTimeout(() => {
@@ -1410,11 +1527,11 @@ const PedidoCardFinalizacao = ({
     setPizzaSelecionada(null);
   };
 
-  // Verificar se todas as pizzas foram validadas
-  const todasPizzasValidadas = pizzas.length > 0 && pizzas.every(pizza => pizzasValidadas[pizza.pizzaKey]);
+  // Verificar se todas as pizzas PRONTAS foram validadas
+  const todasPizzasProntasValidadas = pizzasProntas.length > 0 && pizzasProntas.every(pizza => pizzasValidadas[pizza.key]);
 
   const getCorBorda = () => {
-    return todasPizzasValidadas ? 'border-l-green-500' : 'border-l-orange-500';
+    return todasPizzasProntasValidadas ? 'border-l-green-500' : 'border-l-orange-500';
   };
 
   return (
@@ -1424,12 +1541,31 @@ const PedidoCardFinalizacao = ({
         <div className="flex items-center justify-between mb-4">
           <span className="text-2xl font-bold text-gray-900">#{formatarNumeroPedido(pedido.numero)}</span>
           <div className={`px-2 py-1 rounded-full text-xs font-medium border ${
-            todasPizzasValidadas 
+            todasPizzasProntasValidadas 
               ? 'bg-green-100 text-green-800 border-green-200' 
               : 'bg-yellow-100 text-yellow-800 border-yellow-200'
           }`}>
-            {pizzas.filter(pizza => pizzasValidadas[pizza.pizzaKey]).length}/{pizzas.length} validadas
+            {pizzasProntas.filter(pizza => pizzasValidadas[pizza.key]).length}/{pizzasProntas.length} prontas validadas
           </div>
+        </div>
+
+        {/* Progresso do pedido */}
+        <div className="mb-4 p-3 bg-gray-50 rounded-lg">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm font-medium text-gray-700">Progresso do pedido:</span>
+            <span className="text-sm text-gray-600">{pizzasProntas.length}/{totalPizzas.length} pizzas prontas</span>
+          </div>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div 
+              className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+              style={{ width: `${totalPizzas.length > 0 ? (pizzasProntas.length / totalPizzas.length) * 100 : 0}%` }}
+            />
+          </div>
+          {pedido.status !== 'finalizado' && (
+            <p className="text-xs text-orange-600 mt-2">
+              ⚠️ Ainda há pizzas sendo preparadas
+            </p>
+          )}
         </div>
 
         {/* Pizzaiolo em seção destacada */}
@@ -1442,56 +1578,66 @@ const PedidoCardFinalizacao = ({
           </div>
         )}
 
-        {/* Lista de pizzas para validação com espaçamento space-y-3 */}
+        {/* Lista de TODAS as pizzas do pedido */}
         <div className="space-y-3">
-            {pizzas.map((pizza) => (
-              <div key={pizza.pizzaKey} className="flex items-center justify-between p-3 bg-white border rounded-lg">
+          <h4 className="text-sm font-medium text-gray-700 mb-3">
+            🍕 Todas as pizzas do pedido ({todasAsPizzas.length}):
+          </h4>
+          {todasAsPizzas.length === 0 ? (
+            <div className="text-center py-4 text-gray-500">
+              <p>Nenhuma pizza encontrada no pedido.</p>
+            </div>
+          ) : (
+            todasAsPizzas.map((pizza) => (
+              <div key={pizza.key} className={`flex items-center justify-between p-3 border rounded-lg ${
+                pizza.estaPronta ? 'bg-green-50 border-green-200' : 'bg-orange-50 border-orange-200'
+              }`}>
                 <div className="flex items-center space-x-3">
-                  <span className="bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium">
-                    {pizza.quantidade || 1}x
+                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                    pizza.estaPronta 
+                      ? 'bg-green-600 text-white' 
+                      : 'bg-orange-600 text-white'
+                  }`}>
+                    {pizza.estaPronta ? '✓ PRONTA' : '⏳ PREPARANDO'}
                   </span>
                   <div>
                     <div className="font-medium text-gray-900">
-                      {pizza.item?.nome || pizza.nome}
+                      {pizza.nome}
                     </div>
-                    {/* Sabores em linha compacta */}
-                    {(pizza.sabores && pizza.sabores.length > 0) && (
-                      <div className="text-xs text-gray-600">
-                        {pizza.sabores.map(s => {
-                          if (typeof s === 'string') return s;
-                          return s.sabor?.nome || s.nome || 'Sabor';
-                        }).join(', ')}
-                      </div>
-                    )}
-                    {/* Observações da pizza */}
-                    {pizza.observacoes && (
-                      <div className="text-xs text-orange-600 italic mt-1">
-                        <span className="text-red-600 font-bold">{pizza.observacoes}</span>
+                    <div className="text-xs text-gray-600">
+                      {pizza.detalhes}
+                    </div>
+                    {pizza.isFromCombo && (
+                      <div className="text-xs text-blue-600 mt-1">
+                        📦 {pizza.comboName}
                       </div>
                     )}
                   </div>
                 </div>
 
-                {/* Botão de validação compacto */}
+                {/* Botão de ação baseado no status */}
                 <div>
-                  {pizzasValidadas[pizza.pizzaKey] ? (
+                  {!pizza.estaPronta ? (
+                    <div className="bg-gray-100 text-gray-600 px-3 py-2 rounded-lg border border-gray-200">
+                      <span className="text-sm font-medium">Aguardando</span>
+                    </div>
+                  ) : pizzasValidadas[pizza.key] ? (
                     <div className="bg-green-100 text-green-700 px-3 py-2 rounded-lg border border-green-200">
-                      <span className="text-sm font-medium">Validada</span>
+                      <span className="text-sm font-medium">Embalada</span>
                     </div>
                   ) : (
                     <button
-                      onClick={() => abrirModalConfirmacao(pizza.pizzaKey)}
-                      className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-lg transition-colors"
+                      onClick={() => abrirModalConfirmacao(pizza.key)}
+                      className="bg-orange-600 hover:bg-orange-700 text-white px-3 py-2 rounded-lg transition-colors"
                     >
-                      ✓
+                      📦 Embalar
                     </button>
                   )}
                 </div>
               </div>
-            ))}
-          </div>
+            ))
+          )}
         </div>
-
 
         {/* Modal de Confirmação */}
         {modalAberto && pizzaSelecionada !== null && (
@@ -1502,15 +1648,15 @@ const PedidoCardFinalizacao = ({
             </h3>
             
 {(() => {
-              const pizzaSelecionadaObj = pizzas.find(pizza => pizza.pizzaKey === pizzaSelecionada);
+              const pizzaSelecionadaObj = pizzasProntas.find(pizza => pizza.key === pizzaSelecionada);
               return pizzaSelecionadaObj && (
                 <div className="mb-4 p-4 bg-gray-50 rounded-lg">
                   <div className="flex items-center space-x-2 mb-2">
-                    <span className="bg-blue-600 text-white px-2 py-1 rounded-full text-sm font-medium">
-                      {pizzaSelecionadaObj.quantidade || 1}x
+                    <span className="bg-green-600 text-white px-2 py-1 rounded-full text-sm font-medium">
+                      ✓ PRONTA
                     </span>
                     <span className="font-semibold">
-                      {pizzaSelecionadaObj.item?.nome || pizzaSelecionadaObj.nome}
+                      {pizzaSelecionadaObj.nome}
                     </span>
                     {pizzaSelecionadaObj.isFromCombo && (
                       <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs font-medium">
@@ -1519,14 +1665,9 @@ const PedidoCardFinalizacao = ({
                     )}
                   </div>
                   
-                  {pizzaSelecionadaObj.sabores && pizzaSelecionadaObj.sabores.length > 0 && (
-                    <div className="text-sm text-gray-700 mb-1">
-                      <strong>Sabores:</strong> {pizzaSelecionadaObj.sabores.map(s => {
-                        if (typeof s === 'string') return s;
-                        return s.sabor?.nome || s.nome || 'Sabor';
-                      }).join(', ')}
-                    </div>
-                  )}
+                  <div className="text-sm text-gray-700 mb-1">
+                    <strong>Detalhes:</strong> {pizzaSelecionadaObj.detalhes}
+                  </div>
                   
                   {pizzaSelecionadaObj.borda && (
                     <div className="text-sm text-gray-700 mb-1">
@@ -1548,9 +1689,9 @@ const PedidoCardFinalizacao = ({
             </p>
             
             {(() => {
-              const pizzasJaValidadas = pizzas.filter(pizza => pizzasValidadas[pizza.pizzaKey]).length;
-              const totalPizzas = pizzas.length;
-              const seraUltima = pizzasJaValidadas === totalPizzas - 1;
+              const pizzasJaValidadas = pizzasProntas.filter(pizza => pizzasValidadas[pizza.key]).length;
+              const totalPizzasProntas = pizzasProntas.length;
+              const seraUltima = pizzasJaValidadas === totalPizzasProntas - 1;
               
               return seraUltima && (
                 <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
@@ -1596,6 +1737,7 @@ const PedidoCardFinalizacao = ({
           </div>
         </div>
       )}
+      </div>
     </>
   );
 };

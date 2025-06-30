@@ -6,6 +6,7 @@ require('dotenv').config();
 const User = require('./models/User');
 const Pizzaria = require('./models/Pizzaria');
 const Pedido = require('./models/Pedido');
+const ItemCardapio = require('./models/Cardapio');
 
 async function exportData() {
   try {
@@ -17,11 +18,13 @@ async function exportData() {
     const users = await User.find({});
     const pizzarias = await Pizzaria.find({});
     const pedidos = await Pedido.find({});
+    const cardapio = await ItemCardapio.find({});
 
     const exportData = {
       users,
       pizzarias,
       pedidos,
+      cardapio,
       exportDate: new Date()
     };
 
@@ -32,6 +35,7 @@ async function exportData() {
     console.log(`   - ${users.length} usuários`);
     console.log(`   - ${pizzarias.length} pizzarias`);
     console.log(`   - ${pedidos.length} pedidos`);
+    console.log(`   - ${cardapio.length} itens de cardápio`);
     console.log(`   - Arquivo: data-backup.json`);
 
     await mongoose.connection.close();

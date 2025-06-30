@@ -14,6 +14,7 @@ import {
   CreditCard,
   Check,
   Pizza,
+  CupSoda,
   X
 } from 'lucide-react';
 import api from '../services/api';
@@ -172,12 +173,24 @@ const PedidoPublico = () => {
 
   const calcularSubtotal = () => {
     return carrinho.reduce((acc, item) => {
-      // Se for pizza personalizada, usar precoTotal
+      // Se for pizza personalizada ou combo configurado, usar precoTotal
       if (item.precoTotal) {
         return acc + item.precoTotal;
       }
-      // Senão, usar preço normal
-      return acc + (item.item.preco * item.quantidade);
+      // Validar se item.item existe antes de acessar preco
+      if (item.item && typeof item.item.preco === 'number') {
+        return acc + (item.item.preco * item.quantidade);
+      }
+      // Se for um combo antigo sem estrutura correta, usar valorTotal
+      if (item.valorTotal) {
+        return acc + item.valorTotal;
+      }
+      // Fallback: tentar usar preco diretamente do item
+      if (typeof item.preco === 'number') {
+        return acc + (item.preco * (item.quantidade || 1));
+      }
+      console.warn('Item no carrinho com estrutura inválida:', item);
+      return acc;
     }, 0);
   };
 
@@ -531,9 +544,19 @@ const CardapioStep = ({ cardapio, carrinho, onAdicionarItem, onRemoverItem, onSe
       </div>
 
       {ordemCategorias.map(categoria => {
-        const itensCategoria = cardapio.filter(item => 
-          item.categoria === categoria && categoriasVisiveis.includes(item.categoria)
-        );
+        const itensCategoria = cardapio.filter(item => {
+          // Verificar categoria e se está nas categorias visíveis
+          if (item.categoria !== categoria || !categoriasVisiveis.includes(item.categoria)) {
+            return false;
+          }
+          
+          // Para pizzas, verificar se está visível no cardápio
+          if (item.categoria === 'pizza') {
+            return item.visivelCardapio === true;
+          }
+          
+          return true;
+        });
         
         if (itensCategoria.length === 0) return null;
 
@@ -1019,8 +1042,21 @@ const PizzaPersonalizacaoModal = ({ pizza, cardapio, onConfirmar, onCancelar }) 
   const [observacoes, setObservacoes] = useState('');
   const [bebidasSelecionadas, setBebidasSelecionadas] = useState([]);
 
-  // Filtrar sabores, bordas e bebidas do cardápio
-  const sabores = cardapio.filter(item => item.categoria === 'sabor');
+  // Filtrar sabores baseado na nova estrutura configuracoesPizza
+  const sabores = cardapio.filter(item => {
+    if (item.categoria !== 'sabor') return false;
+    
+    // NOVA LÓGICA: Verificar se o sabor está configurado para esta pizza
+    if (item.configuracoesPizza && item.configuracoesPizza.length > 0) {
+      const configuracao = item.configuracoesPizza.find(config => 
+        config.pizza && config.pizza._id === pizza._id
+      );
+      return configuracao && configuracao.permitido;
+    }
+    
+    // Se não tem configuracoesPizza definido, não mostrar o sabor
+    return false;
+  });
   const bordas = cardapio.filter(item => item.categoria === 'borda');
   const bebidas = cardapio.filter(item => item.categoria === 'bebida');
 
@@ -1051,10 +1087,22 @@ const PizzaPersonalizacaoModal = ({ pizza, cardapio, onConfirmar, onCancelar }) 
     
     const valorSabores = saboresSelecionados.reduce((acc, sabor) => {
       if (saboresSelecionadosCount > 0) {
+        // NOVA LÓGICA: Buscar valor específico da configuração da pizza
+        let valorEspecialSabor = sabor.valorEspecial; // Fallback para compatibilidade
+        
+        if (sabor.configuracoesPizza && sabor.configuracoesPizza.length > 0) {
+          const configuracao = sabor.configuracoesPizza.find(config => 
+            config.pizza && config.pizza._id === pizza._id
+          );
+          if (configuracao && configuracao.permitido) {
+            valorEspecialSabor = configuracao.valorEspecial;
+          }
+        }
+        
         // Cada sabor ocupa uma fração da pizza (ex: 2 sabores = 1/2 cada)
         // O valor especial é multiplicado por: (fração da pizza × 4 divisões totais)
         const fracaoPizza = 1 / saboresSelecionadosCount;
-        const valorPorSabor = sabor.valorEspecial * fracaoPizza * maxSabores;
+        const valorPorSabor = valorEspecialSabor * fracaoPizza * maxSabores;
         return acc + (valorPorSabor * quantidade);
       }
       return acc;
@@ -1150,116 +1198,134 @@ const PizzaPersonalizacaoModal = ({ pizza, cardapio, onConfirmar, onCancelar }) 
           </button>
         </div>
 
-        {/* Conteúdo com scroll */}
-        <div className="flex-1 overflow-y-auto p-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Sabores */}
-          <div className="lg:col-span-2">
-            <h4 className="text-lg font-semibold text-gray-900 mb-4">
-              Escolha os Sabores {saboresSelecionados.length > 0 && `(${saboresSelecionados.length}/${pizza.quantidadeSabores || 4})`}
-              {saboresSelecionados.length > 0 && (
-                <span className="ml-3 text-sm font-normal text-gray-600">
-                  - {obterDivisaoPizza(saboresSelecionados.length)}
-                </span>
-              )}
-            </h4>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              {sabores.map(sabor => {
-                const jaSelecionado = saboresSelecionados.find(s => s._id === sabor._id);
-                const maxSabores = pizza.quantidadeSabores || 4;
-                const limitingido = saboresSelecionados.length >= maxSabores && !jaSelecionado;
-                
-                return (
-                  <div
-                    key={sabor._id}
-                    className={`p-4 border-2 rounded-lg transition-colors ${
-                      jaSelecionado
-                        ? 'border-gold-500 bg-gold-50 cursor-pointer'
-                        : limitingido
-                        ? 'border-gray-300 bg-gray-100 cursor-not-allowed opacity-50'
-                        : 'border-gray-200 hover:border-gold-300 cursor-pointer'
-                    }`}
-                    onClick={() => {
-                      if (jaSelecionado) {
-                        removerSabor(sabor._id);
-                      } else if (!limitingido) {
-                        adicionarSabor(sabor);
-                      }
-                    }}
-                  >
-                    <div className="flex justify-between items-start">
-                      <div className="flex-1">
-                        <h5 className="font-medium text-gray-900">{sabor.nome}</h5>
-                        <p className="text-sm text-gray-500">{sabor.descricao}</p>
+        {/* Conteúdo com layout fixo */}
+        <div className="flex-1 flex overflow-hidden">
+          {/* Área principal esquerda com sabores, bordas, bebidas e observações */}
+          <div className="flex-1 p-6 overflow-y-auto">
+            {/* Sabores */}
+            <div className="mb-8">
+              <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                Escolha os Sabores {saboresSelecionados.length > 0 && `(${saboresSelecionados.length}/${pizza.quantidadeSabores || 4})`}
+                {saboresSelecionados.length > 0 && (
+                  <span className="ml-3 text-sm font-normal text-gray-600">
+                    - {obterDivisaoPizza(saboresSelecionados.length)}
+                  </span>
+                )}
+              </h4>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                {sabores.map(sabor => {
+                  const jaSelecionado = saboresSelecionados.find(s => s._id === sabor._id);
+                  const maxSabores = pizza.quantidadeSabores || 4;
+                  const atingiuLimite = saboresSelecionados.length >= maxSabores && !jaSelecionado;
+                  
+                  return (
+                    <div
+                      key={sabor._id}
+                      className={`p-4 border-2 rounded-lg transition-colors ${
+                        jaSelecionado
+                          ? 'border-gold-500 bg-gold-50 cursor-pointer'
+                          : atingiuLimite
+                          ? 'border-gray-300 bg-gray-100 cursor-not-allowed opacity-50'
+                          : 'border-gray-200 hover:border-gold-300 cursor-pointer'
+                      }`}
+                      onClick={() => {
+                        if (jaSelecionado) {
+                          removerSabor(sabor._id);
+                        } else if (!atingiuLimite) {
+                          adicionarSabor(sabor);
+                        }
+                      }}
+                    >
+                      <div className="flex justify-between items-start">
+                        <div className="flex-1">
+                          <h5 className="font-medium text-gray-900">{sabor.nome}</h5>
+                          <p className="text-sm text-gray-500">{sabor.descricao}</p>
+                        </div>
+                        <div className="ml-2">
+                          {(() => {
+                            // NOVA LÓGICA: Buscar valor específico da configuração da pizza
+                            let valorEspecialSabor = sabor.valorEspecial; // Fallback para compatibilidade
+                            
+                            if (sabor.configuracoesPizza && sabor.configuracoesPizza.length > 0) {
+                              const configuracao = sabor.configuracoesPizza.find(config => 
+                                config.pizza && config.pizza._id === pizza._id
+                              );
+                              if (configuracao && configuracao.permitido) {
+                                valorEspecialSabor = configuracao.valorEspecial;
+                              }
+                            }
+                            
+                            return valorEspecialSabor > 0 ? (
+                              <span className="text-sm text-purple-600">
+                                +R$ {valorEspecialSabor.toFixed(2)}
+                              </span>
+                            ) : (
+                              <span className="text-sm text-green-600">Incluso</span>
+                            );
+                          })()}
+                        </div>
                       </div>
-                      <div className="ml-2">
-                        {sabor.valorEspecial > 0 ? (
-                          <span className="text-sm text-purple-600">
-                            +R$ {sabor.valorEspecial.toFixed(2)}
-                          </span>
-                        ) : (
-                          <span className="text-sm text-green-600">Incluso</span>
-                        )}
-                      </div>
+                      {jaSelecionado && (
+                        <div className="mt-2">
+                          <Check className="h-4 w-4 text-gold-600" />
+                        </div>
+                      )}
                     </div>
-                    {jaSelecionado && (
-                      <div className="mt-2">
-                        <Check className="h-4 w-4 text-gold-600" />
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
 
             {/* Bordas */}
-            <h4 className="text-lg font-semibold text-gray-900 mb-4">Escolha a Borda</h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {bordas.map(borda => {
-                const jaSelecionada = bordaSelecionada?._id === borda._id;
-                return (
-                  <div
-                    key={borda._id}
-                    className={`p-4 border-2 rounded-lg cursor-pointer transition-colors ${
-                      jaSelecionada
-                        ? 'border-amber-500 bg-amber-50'
-                        : 'border-gray-200 hover:border-amber-300'
-                    }`}
-                    onClick={() => setBordaSelecionada(jaSelecionada ? null : borda)}
-                  >
-                    <div className="flex justify-between items-start">
-                      <div className="flex-1">
-                        <h5 className="font-medium text-gray-900">{borda.nome}</h5>
-                        <p className="text-sm text-gray-500">{borda.descricao}</p>
+            <div className="mb-8">
+              <h4 className="text-lg font-semibold text-gray-900 mb-4">Escolha a Borda</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {bordas.map(borda => {
+                  const jaSelecionada = bordaSelecionada?._id === borda._id;
+                  return (
+                    <div
+                      key={borda._id}
+                      className={`p-3 border-2 rounded-lg cursor-pointer transition-colors ${
+                        jaSelecionada
+                          ? 'border-amber-500 bg-amber-50'
+                          : 'border-gray-200 hover:border-amber-300 bg-white'
+                      }`}
+                      onClick={() => setBordaSelecionada(jaSelecionada ? null : borda)}
+                    >
+                      <div className="flex justify-between items-start">
+                        <div className="flex-1">
+                          <h5 className="font-medium text-gray-900 text-sm">{borda.nome}</h5>
+                          <p className="text-xs text-gray-500">{borda.descricao}</p>
+                        </div>
+                        <div className="ml-2">
+                          {(borda.preco + borda.valorEspecial) > 0 ? (
+                            <span className="text-xs text-amber-600">
+                              +R$ {(borda.preco + borda.valorEspecial).toFixed(2)}
+                            </span>
+                          ) : (
+                            <span className="text-xs text-green-600">Grátis</span>
+                          )}
+                        </div>
                       </div>
-                      <div className="ml-2">
-                        {(borda.preco + borda.valorEspecial) > 0 ? (
-                          <span className="text-sm text-amber-600">
-                            +R$ {(borda.preco + borda.valorEspecial).toFixed(2)}
-                          </span>
-                        ) : (
-                          <span className="text-sm text-green-600">Grátis</span>
-                        )}
-                      </div>
+                      {jaSelecionada && (
+                        <div className="mt-2">
+                          <Check className="h-4 w-4 text-amber-600" />
+                        </div>
+                      )}
                     </div>
-                    {jaSelecionada && (
-                      <div className="mt-2">
-                        <Check className="h-4 w-4 text-amber-600" />
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
 
             {/* Bebidas */}
-            <div className="mb-6">
+            <div className="mb-8">
               <h4 className="text-lg font-semibold text-gray-900 mb-4">
-                Adicione Bebidas (opcional)
+                Escolha sua Bebida <span className="text-red-500">*</span>
               </h4>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-3">
                 {bebidas.map(bebida => {
                   const bebidaSelecionada = bebidasSelecionadas.find(b => b._id === bebida._id);
                   const quantidade = bebidaSelecionada ? bebidaSelecionada.quantidade : 0;
@@ -1267,31 +1333,31 @@ const PizzaPersonalizacaoModal = ({ pizza, cardapio, onConfirmar, onCancelar }) 
                   return (
                     <div
                       key={bebida._id}
-                      className={`p-4 border rounded-lg transition-colors ${
+                      className={`p-3 border rounded-lg transition-colors ${
                         quantidade > 0 
-                          ? 'border-gray-300 bg-gray-50' 
-                          : 'border-gray-200 hover:border-gray-300'
+                          ? 'border-blue-600 bg-blue-50' 
+                          : 'border-gray-200 hover:border-blue-300 bg-white'
                       }`}
                     >
                       <div className="flex justify-between items-start">
                         <div className="flex-1">
-                          <h5 className="font-medium text-gray-900">{bebida.nome}</h5>
-                          <p className="text-sm text-gray-500">{bebida.descricao}</p>
-                          <div className="mt-2">
+                          <h5 className="font-medium text-gray-900 text-sm">{bebida.nome}</h5>
+                          <p className="text-xs text-gray-500">{bebida.descricao}</p>
+                          <div className="mt-1">
                             {bebida.valorEspecial > 0 ? (
-                              <span className="text-sm text-blue-600">
+                              <span className="text-xs text-blue-600">
                                 +R$ {bebida.valorEspecial.toFixed(2)}
                               </span>
                             ) : (
-                              <span className="text-sm text-green-600">
+                              <span className="text-xs text-green-600">
                                 Grátis
                               </span>
                             )}
                           </div>
                         </div>
                         
-                        {/* Contador de quantidade dentro do card */}
-                        <div className="ml-4 flex flex-col items-center space-y-1">
+                        {/* Contador de quantidade */}
+                        <div className="ml-2 flex flex-col items-center space-y-1">
                           {quantidade > 0 ? (
                             <>
                               <div className="flex items-center space-x-1">
@@ -1300,45 +1366,28 @@ const PizzaPersonalizacaoModal = ({ pizza, cardapio, onConfirmar, onCancelar }) 
                                     e.stopPropagation();
                                     alterarQuantidadeBebida(bebida._id, quantidade - 1);
                                   }}
-                                  className="w-6 h-6 bg-gray-300 text-gray-700 flex items-center justify-center hover:bg-gray-400 transition-colors"
-                                  title="Diminuir quantidade"
+                                  className="w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center text-xs hover:bg-red-600"
                                 >
                                   <Minus className="h-3 w-3" />
                                 </button>
-                                <span className="w-8 text-center text-sm font-medium text-gray-800">
-                                  {quantidade}
-                                </span>
+                                <span className="text-sm font-medium w-6 text-center">{quantidade}</span>
                                 <button
                                   onClick={(e) => {
                                     e.stopPropagation();
-                                    adicionarBebida(bebida);
+                                    alterarQuantidadeBebida(bebida._id, quantidade + 1);
                                   }}
-                                  className="w-8 h-6 bg-gray-300 text-gray-700 flex items-center justify-center hover:bg-gray-400 transition-colors"
-                                  title="Aumentar quantidade"
+                                  className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs hover:bg-green-600"
                                 >
                                   <Plus className="h-3 w-3" />
                                 </button>
                               </div>
-                              <button
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  removerBebida(bebida._id);
-                                }}
-                                className="text-xs text-gray-500 hover:text-gray-700"
-                              >
-                                ×
-                              </button>
                             </>
                           ) : (
                             <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                adicionarBebida(bebida);
-                              }}
-                              className="w-8 h-6 bg-gray-300 text-gray-700 hover:bg-gray-400 transition-colors flex items-center justify-center"
-                              title="Adicionar bebida"
+                              onClick={() => adicionarBebida(bebida)}
+                              className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs hover:bg-blue-600"
                             >
-                              <Plus className="h-4 w-4" />
+                              <Plus className="h-3 w-3" />
                             </button>
                           )}
                         </div>
@@ -1347,25 +1396,36 @@ const PizzaPersonalizacaoModal = ({ pizza, cardapio, onConfirmar, onCancelar }) 
                   );
                 })}
               </div>
+            </div>
 
+            {/* Observações */}
+            <div className="mb-6">
+              <h4 className="text-lg font-semibold text-gray-900 mb-4">Observações (opcional)</h4>
+              <textarea
+                value={observacoes}
+                onChange={(e) => setObservacoes(e.target.value)}
+                placeholder="Alguma observação especial para sua pizza?"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent"
+                rows="3"
+              />
             </div>
           </div>
 
-          {/* Resumo e Controles */}
-          <div className="bg-gray-50 p-6 rounded-lg">
-            <h4 className="text-lg font-semibold text-gray-900 mb-4">Resumo</h4>
+          {/* Sidebar direita com resumo */}
+          <div className="w-80 border-l bg-white p-4 overflow-y-auto">
+            <h4 className="text-lg font-semibold text-gray-900 mb-4">Resumo do Pedido</h4>
             
             {/* Quantidade */}
-            <div className="mb-4">
+            <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-2">Quantidade</label>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center justify-center space-x-3">
                 <button
                   onClick={() => setQuantidade(Math.max(1, quantidade - 1))}
                   className="p-2 border border-gray-300 rounded-lg hover:bg-gray-100"
                 >
                   <Minus className="h-4 w-4" />
                 </button>
-                <span className="w-12 text-center font-medium">{quantidade}</span>
+                <span className="w-12 text-center font-bold text-lg">{quantidade}</span>
                 <button
                   onClick={() => setQuantidade(quantidade + 1)}
                   className="p-2 border border-gray-300 rounded-lg hover:bg-gray-100"
@@ -1378,27 +1438,41 @@ const PizzaPersonalizacaoModal = ({ pizza, cardapio, onConfirmar, onCancelar }) 
             {/* Sabores Selecionados */}
             {saboresSelecionados.length > 0 && (
               <div className="mb-4">
-                <h5 className="text-sm font-medium text-gray-700 mb-2">Sabores:</h5>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  {saboresSelecionados.map(sabor => {
-                    const saboresSelecionadosCount = saboresSelecionados.length;
-                    const maxSabores = pizza.quantidadeSabores || 4;
-                    const fracaoPizza = 1 / saboresSelecionadosCount;
-                    const valorPorSabor = sabor.valorEspecial * fracaoPizza * maxSabores;
-                    const valorTotal = valorPorSabor * quantidade;
-                    
-                    return (
-                      <li key={sabor._id} className="flex justify-between items-center">
-                        <span>• {sabor.nome} ({Math.round(fracaoPizza * 100)}% da pizza)</span>
-                        {valorTotal > 0 && (
-                          <span className="text-gold-600 font-medium">
-                            +R$ {valorTotal.toFixed(2)}
-                          </span>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
+                <h5 className="text-sm font-medium text-gray-700 mb-2">Sabores Selecionados:</h5>
+                <div className="bg-gray-50 p-3 rounded-lg">
+                  <ul className="text-sm text-gray-600 space-y-1">
+                    {saboresSelecionados.map(sabor => {
+                      const saboresSelecionadosCount = saboresSelecionados.length;
+                      const maxSabores = pizza.quantidadeSabores || 4;
+                      const fracaoPizza = 1 / saboresSelecionadosCount;
+                      // NOVA LÓGICA: Buscar valor específico da configuração da pizza
+                      let valorEspecialSabor = sabor.valorEspecial; // Fallback para compatibilidade
+                      
+                      if (sabor.configuracoesPizza && sabor.configuracoesPizza.length > 0) {
+                        const configuracao = sabor.configuracoesPizza.find(config => 
+                          config.pizza && config.pizza._id === pizza._id
+                        );
+                        if (configuracao && configuracao.permitido) {
+                          valorEspecialSabor = configuracao.valorEspecial;
+                        }
+                      }
+                      
+                      const valorPorSabor = valorEspecialSabor * fracaoPizza * maxSabores;
+                      const valorTotal = valorPorSabor * quantidade;
+                      
+                      return (
+                        <li key={sabor._id} className="flex justify-between items-center">
+                          <span>• {sabor.nome} ({Math.round(fracaoPizza * 100)}%)</span>
+                          {valorTotal > 0 && (
+                            <span className="text-gold-600 font-medium text-xs">
+                              +R$ {valorTotal.toFixed(2)}
+                            </span>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               </div>
             )}
 
@@ -1406,13 +1480,15 @@ const PizzaPersonalizacaoModal = ({ pizza, cardapio, onConfirmar, onCancelar }) 
             {bordaSelecionada && (
               <div className="mb-4">
                 <h5 className="text-sm font-medium text-gray-700 mb-2">Borda:</h5>
-                <div className="flex justify-between items-center text-sm text-gray-600">
-                  <span>• {bordaSelecionada.nome} (x{quantidade})</span>
-                  {((bordaSelecionada.preco + bordaSelecionada.valorEspecial) * quantidade) > 0 && (
-                    <span className="text-gold-600 font-medium">
-                      +R$ {((bordaSelecionada.preco + bordaSelecionada.valorEspecial) * quantidade).toFixed(2)}
-                    </span>
-                  )}
+                <div className="bg-amber-50 p-3 rounded-lg">
+                  <div className="flex justify-between items-center text-sm text-gray-600">
+                    <span>• {bordaSelecionada.nome}</span>
+                    {((bordaSelecionada.preco + bordaSelecionada.valorEspecial) * quantidade) > 0 && (
+                      <span className="text-amber-600 font-medium text-xs">
+                        +R$ {((bordaSelecionada.preco + bordaSelecionada.valorEspecial) * quantidade).toFixed(2)}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
             )}
@@ -1421,123 +1497,48 @@ const PizzaPersonalizacaoModal = ({ pizza, cardapio, onConfirmar, onCancelar }) 
             {bebidasSelecionadas.length > 0 && (
               <div className="mb-4">
                 <h5 className="text-sm font-medium text-gray-700 mb-2">Bebidas:</h5>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  {bebidasSelecionadas.map(bebida => (
-                    <li key={bebida._id} className="flex justify-between items-center">
-                      <span>• {bebida.nome} (x{bebida.quantidade * quantidade})</span>
-                      <span className="text-blue-600 font-medium">
-                        {(bebida.valorEspecial * bebida.quantidade * quantidade) > 0 ? 
-                          `+R$ ${(bebida.valorEspecial * bebida.quantidade * quantidade).toFixed(2)}` : 
-                          'Grátis'
-                        }
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="bg-blue-50 p-3 rounded-lg">
+                  <ul className="text-sm text-gray-600 space-y-1">
+                    {bebidasSelecionadas.map(bebida => (
+                      <li key={bebida._id} className="flex justify-between items-center">
+                        <span>• {bebida.nome} (x{bebida.quantidade})</span>
+                        <span className="text-blue-600 font-medium text-xs">
+                          {(bebida.valorEspecial * bebida.quantidade * quantidade) > 0 ? 
+                            `+R$ ${(bebida.valorEspecial * bebida.quantidade * quantidade).toFixed(2)}` : 
+                            'Incluso'
+                          }
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             )}
 
-            {/* Observações */}
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Observações (opcional)
-              </label>
-              <textarea
-                value={observacoes}
-                onChange={(e) => setObservacoes(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
-                rows="3"
-                placeholder="Ex: massa fina, sem cebola..."
-              />
-            </div>
-          </div>
-        </div>
-        </div>
-
-        {/* Footer fixo com resumo e botões */}
-        <div className="border-t bg-white p-6 rounded-b-md">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2">
-              {/* Espaço reservado ou informações adicionais */}
-            </div>
-            <div>
-              {/* Preço Total */}
-              <div className="mb-6">
-                {/* Detalhamento do preço */}
-                <div className="space-y-2 mb-3">
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-gray-600">{pizza.nome} (x{quantidade}):</span>
-                    <span className="text-gray-900">R$ {(pizza.preco * quantidade).toFixed(2)}</span>
-                  </div>
-                  
-                  {/* Valor dos sabores */}
-                  {saboresSelecionados.length > 0 && (() => {
-                    const valorSabores = saboresSelecionados.reduce((acc, sabor) => {
-                      const saboresSelecionadosCount = saboresSelecionados.length;
-                      const maxSabores = pizza.quantidadeSabores || 4;
-                      const fracaoPizza = 1 / saboresSelecionadosCount;
-                      const valorPorSabor = sabor.valorEspecial * fracaoPizza * maxSabores;
-                      return acc + (valorPorSabor * quantidade);
-                    }, 0);
-                    
-                    return valorSabores > 0 && (
-                      <div className="flex justify-between items-center text-sm">
-                        <span className="text-gray-600">Adicionais (sabores):</span>
-                        <span className="text-gold-600">+R$ {valorSabores.toFixed(2)}</span>
-                      </div>
-                    );
-                  })()}
-                  
-                  {/* Valor da borda */}
-                  {bordaSelecionada && (() => {
-                    const valorBorda = (bordaSelecionada.preco + bordaSelecionada.valorEspecial) * quantidade;
-                    return valorBorda > 0 && (
-                      <div className="flex justify-between items-center text-sm">
-                        <span className="text-gray-600">Borda:</span>
-                        <span className="text-gold-600">+R$ {valorBorda.toFixed(2)}</span>
-                      </div>
-                    );
-                  })()}
-                  
-                  {/* Valor das bebidas */}
-                  {bebidasSelecionadas.length > 0 && (() => {
-                    const valorBebidas = bebidasSelecionadas.reduce((acc, bebida) => {
-                      return acc + ((bebida.valorEspecial || 0) * bebida.quantidade * quantidade);
-                    }, 0);
-                    
-                    return valorBebidas > 0 && (
-                      <div className="flex justify-between items-center text-sm">
-                        <span className="text-gray-600">Adicionais (bebidas):</span>
-                        <span className="text-blue-600">+R$ {valorBebidas.toFixed(2)}</span>
-                      </div>
-                    );
-                  })()}
-                </div>
-                
-                <div className="flex justify-between items-center border-t pt-2">
-                  <span className="text-lg font-semibold text-gray-900">Total:</span>
-                  <span className="text-xl font-bold text-gold-600">
-                    R$ {calcularPrecoTotal().toFixed(2)}
-                  </span>
-                </div>
+            {/* Preço Total */}
+            <div className="border-t pt-4 mb-6">
+              <div className="flex justify-between items-center">
+                <span className="text-lg font-semibold text-gray-900">Total:</span>
+                <span className="text-xl font-bold text-gold-600">
+                  R$ {calcularPrecoTotal().toFixed(2)}
+                </span>
               </div>
+            </div>
 
-              {/* Botões */}
-              <div className="space-y-3">
-                <button
-                  onClick={confirmarPizza}
-                  className="w-full bg-gold-600 text-white py-3 rounded-lg hover:bg-gold-700 font-medium"
-                  disabled={saboresSelecionados.length === 0 || !bordaSelecionada}
-                >
-                  Adicionar ao Carrinho
-                </button>
-                <button
-                  onClick={onCancelar}
-                  className="w-full bg-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-400 font-medium"
-                >
-                  Cancelar
-                </button>
-              </div>
+            {/* Botões */}
+            <div className="space-y-3">
+              <button
+                onClick={confirmarPizza}
+                className="w-full bg-gold-600 text-white py-3 px-4 rounded-lg hover:bg-gold-700 font-medium"
+              >
+                Adicionar ao Carrinho
+              </button>
+              <button
+                onClick={onCancelar}
+                className="w-full bg-gray-200 text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-300 font-medium"
+              >
+                Cancelar
+              </button>
             </div>
           </div>
         </div>
@@ -1552,10 +1553,48 @@ const ComboPersonalizacaoModal = ({ combo, cardapio, onConfirmar, onCancelar }) 
   const [itemPersonalizando, setItemPersonalizando] = useState(null);
   const [tipoPersonalizando, setTipoPersonalizando] = useState(null); // 'pizza' ou 'bebida'
 
-  // Filtrar sabores, bordas e bebidas do cardápio
-  const sabores = cardapio.filter(item => item.categoria === 'sabor');
+  // Função para filtrar sabores baseado em uma pizza específica
+  const filtrarSaboresPorPizza = (pizzaItem) => {
+    return cardapio.filter(item => {
+      if (item.categoria !== 'sabor') return false;
+      
+      if (!pizzaItem) return false;
+      
+      // NOVA LÓGICA: Verificar se o sabor está configurado para esta pizza específica
+      if (item.configuracoesPizza !== undefined) {
+        if (item.configuracoesPizza.length > 0) {
+          const configuracao = item.configuracoesPizza.find(config => 
+            config.pizza && config.pizza._id === pizzaItem._id
+          );
+          return configuracao && configuracao.permitido;
+        } else {
+          return false;
+        }
+      }
+      
+      // FALLBACK: Buscar configurações específicas do combo para esta pizza (sistema antigo)
+      const configCombo = combo.itensCombo?.find(comboItem => 
+        comboItem.item && comboItem.item._id === pizzaItem._id
+      );
+      
+      if (configCombo && configCombo.configuracaoPizza) {
+        // Usar configurações específicas do combo (sistema antigo)
+        if (item.tipoSabor === 'doce' && !configCombo.configuracaoPizza.permiteDoce) return false;
+        if (item.tipoSabor === 'salgado' && !configCombo.configuracaoPizza.permiteSalgado) return false;
+        return true;
+      }
+      // Se não tem configuracoesPizza definido, não mostrar o sabor
+      return false;
+    });
+  };
+
+  // Filtrar sabores baseado na pizza sendo personalizada
+  const sabores = itemPersonalizando && itemPersonalizando.item 
+    ? filtrarSaboresPorPizza(itemPersonalizando.item)
+    : [];
   const bordas = cardapio.filter(item => item.categoria === 'borda');
   const bebidas = cardapio.filter(item => item.categoria === 'bebida');
+  
   
   // Criar lista de itens do combo para configurar
   const itensDoCombo = [];
@@ -1605,10 +1644,10 @@ const ComboPersonalizacaoModal = ({ combo, cardapio, onConfirmar, onCancelar }) 
             itensDoCombo.push({
               id: `${configIndex}-${i}`,
               tipo: config.tipo,
-              tamanhoBebida: '2L', // Valor padrão
+              tamanhoBebida: '1.5L', // Valor padrão
               item: {
-                nome: `Bebida 2L`,
-                descricao: `Escolha uma bebida de 2L`
+                nome: `Bebida 1.5L`,
+                descricao: `Escolha uma bebida de 1.5L`
               },
               configurado: false,
               configuracao: null
@@ -1632,27 +1671,33 @@ const ComboPersonalizacaoModal = ({ combo, cardapio, onConfirmar, onCancelar }) 
     // Adicionar valores especiais dos itens configurados
     const valorEspeciais = itensConfigurados.reduce((acc, item) => {
       if (item.tipo === 'pizza' && item.configuracao) {
-        // Calcular valor dos sabores baseado na divisão da pizza
-        const maxSabores = item.item.quantidadeSabores || 4; // Usar propriedade da pizza
-        const saboresSelecionadosCount = item.configuracao.sabores.length;
+        // Verificar se este item do combo cobra especiais
+        const configCombo = combo.itensCombo?.find(comboItem => 
+          comboItem.item && comboItem.item._id === item.item._id
+        );
+        const cobraEspecial = configCombo?.configuracaoPizza?.cobraEspecial !== false;
         
-        const valorSabores = item.configuracao.sabores.reduce((accSabores, sabor) => {
-          if (saboresSelecionadosCount > 0) {
-            // Cada sabor ocupa uma fração da pizza (ex: 2 sabores = 1/2 cada)
-            // O valor especial é multiplicado por: (fração da pizza × 4 divisões totais)
-            const fracaoPizza = 1 / saboresSelecionadosCount;
-            const valorPorSabor = sabor.valorEspecial * fracaoPizza * maxSabores;
-            return accSabores + valorPorSabor;
+        const valorSabores = cobraEspecial ? item.configuracao.sabores.reduce((accSabores, sabor) => {
+          // NOVA LÓGICA: Buscar valor específico da configuração da pizza
+          let valorEspecialSabor = sabor.valorEspecial; // Fallback para compatibilidade
+          
+          if (sabor.configuracoesPizza && sabor.configuracoesPizza.length > 0) {
+            const configuracao = sabor.configuracoesPizza.find(config => 
+              config.pizza && config.pizza._id === item.item._id
+            );
+            if (configuracao && configuracao.permitido) {
+              valorEspecialSabor = configuracao.valorEspecial;
+            }
           }
-          return accSabores;
-        }, 0);
+          
+          return accSabores + valorEspecialSabor;
+        }, 0) : 0;
         
-        const valorBorda = item.configuracao.borda ? 
-          (item.configuracao.borda.preco + item.configuracao.borda.valorEspecial) : 0;
+        const valorBorda = item.configuracao.borda ? item.configuracao.borda.valorEspecial : 0;
+        
         return acc + valorSabores + valorBorda;
-      } else if (item.tipo === 'bebida' && item.configuracao && item.configuracao.bebida) {
-        // Adicionar valor premium da bebida selecionada
-        return acc + (item.configuracao.bebida.valorEspecial || 0);
+      } else if (item.tipo === 'bebida' && item.configuracao) {
+        return acc + item.configuracao.valorEspecial;
       }
       return acc;
     }, 0);
@@ -1660,279 +1705,292 @@ const ComboPersonalizacaoModal = ({ combo, cardapio, onConfirmar, onCancelar }) 
     return precoBase + valorEspeciais;
   };
 
-  const iniciarPersonalizacaoItem = (itemCombo) => {
-    // Verificar se o item já foi configurado antes
-    const itemConfigurado = itensConfigurados.find(item => item.id === itemCombo.id);
+  const iniciarPersonalizacaoItem = (item) => {
+    // Buscar configuração existente se o item já foi configurado
+    const existingConfig = itensConfigurados.find(i => i.id === item.id);
     
-    if (itemConfigurado && itemConfigurado.configuracao) {
-      // Se já foi configurado, usar os dados existentes
-      setItemPersonalizando({
-        ...itemCombo,
-        configuracao: itemConfigurado.configuracao
-      });
-    } else {
-      // Se não foi configurado, iniciar com dados vazios
-      setItemPersonalizando(itemCombo);
-    }
+    // Criar item com configuração existente mesclada
+    const itemWithConfig = {
+      ...item,
+      configuracao: existingConfig?.configuracao || null
+    };
     
-    setTipoPersonalizando(itemCombo.tipo);
+    setItemPersonalizando(itemWithConfig);
+    setTipoPersonalizando(item.tipo);
   };
 
   const confirmarConfiguracaoItem = (configuracao) => {
-    const novosItensConfigurados = [...itensConfigurados];
-    const itemExistente = novosItensConfigurados.find(item => item.id === itemPersonalizando.id);
-    
-    if (itemExistente) {
-      itemExistente.configuracao = configuracao;
-      itemExistente.configurado = true;
-    } else {
-      novosItensConfigurados.push({
+    if (itemPersonalizando) {
+      const itemAtualizado = {
         ...itemPersonalizando,
-        configuracao,
-        configurado: true
+        configurado: true,
+        configuracao
+      };
+      
+      setItensConfigurados(prev => {
+        const existing = prev.find(i => i.id === itemPersonalizando.id);
+        if (existing) {
+          return prev.map(i => i.id === itemPersonalizando.id ? itemAtualizado : i);
+        }
+        return [...prev, itemAtualizado];
       });
+      
+      setItemPersonalizando(null);
+      setTipoPersonalizando(null);
     }
-    
-    setItensConfigurados(novosItensConfigurados);
-    setItemPersonalizando(null);
-    setTipoPersonalizando(null);
   };
 
   const confirmarCombo = () => {
-    // Verificar se todos os itens obrigatórios foram configurados
-    const itensObrigatorios = itensDoCombo.filter(item => item.tipo === 'pizza');
-    const itensConfiguradosIds = itensConfigurados.map(item => item.id);
-    const itensNaoConfigurados = itensObrigatorios.filter(item => !itensConfiguradosIds.includes(item.id));
-    
-    if (itensNaoConfigurados.length > 0) {
-      alert(`Configure todas as pizzas do combo!`);
-      return;
-    }
-
-    // Verificar se todas as pizzas têm bordas selecionadas
-    const pizzasSemBorda = itensConfigurados.filter(item => 
-      item.tipo === 'pizza' && (!item.configuracao?.borda)
+    const todosConfigurados = itensDoComboOrdenados.every(item => 
+      itensConfigurados.some(configurado => configurado.id === item.id)
     );
     
-    if (pizzasSemBorda.length > 0) {
-      alert(`Todas as pizzas devem ter uma borda selecionada!`);
-      return;
+    if (todosConfigurados) {
+      // Criar combo com estrutura padrão do carrinho
+      const comboPersonalizado = {
+        item: combo,
+        quantidade: 1,
+        precoTotal: calcularPrecoTotal(),
+        itensConfigurados,
+        tipo: 'combo'
+      };
+      
+      onConfirmar(comboPersonalizado);
     }
-
-    const comboPersonalizado = {
-      item: combo,
-      quantidade: 1,
-      itensConfigurados,
-      precoTotal: calcularPrecoTotal(),
-      id: Date.now() // ID único para o carrinho
-    };
-
-    onConfirmar(comboPersonalizado);
   };
 
   const renderListaItens = () => {
     return (
-      <div>
-        <h4 className="text-lg font-semibold text-gray-900 mb-4">
-          Configure os itens do combo
-        </h4>
-        
-        <div className="space-y-3">
-          {itensDoComboOrdenados.map((itemCombo, index) => {
-            const itemConfigurado = itensConfigurados.find(item => item.id === itemCombo.id);
-            const jaConfigurado = itemConfigurado?.configurado || false;
-            
-            return (
-              <div
-                key={itemCombo.id}
-                className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 ${
-                  jaConfigurado
-                    ? 'bg-green-50 border-green-200 hover:bg-green-100 hover:border-green-300'
-                    : 'bg-gray-50 border-gray-200 hover:bg-blue-50 hover:border-blue-300'
-                }`}
-                onClick={() => iniciarPersonalizacaoItem(itemCombo)}
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-3">
-                      <span className="flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-full text-sm font-medium">
-                        {index + 1}
-                      </span>
-                      <div>
-                        <h5 className="font-medium text-gray-900">{itemCombo.item.nome}</h5>
-                        <p className="text-sm text-gray-500">{itemCombo.item.descricao}</p>
-                        {jaConfigurado && itemCombo.tipo === 'pizza' && itemConfigurado.configuracao && (
-                          <div className="mt-1 space-y-1">
+      <div className="space-y-3">
+        {itensDoComboOrdenados.map((item, index) => {
+          const itemConfigurado = itensConfigurados.find(i => i.id === item.id);
+          const numeroItem = index + 1;
+          
+          return (
+            <div
+              key={item.id}
+              className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 ${
+                itemConfigurado 
+                  ? 'bg-green-50 border-green-200 hover:bg-green-100 hover:border-green-300'
+                  : 'bg-gray-50 border-gray-200 hover:bg-blue-50 hover:border-blue-300'
+              }`}
+              onClick={() => iniciarPersonalizacaoItem(item)}
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex-1">
+                  <div className="flex items-center space-x-3">
+                    <span className="flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-full text-sm font-medium">
+                      {numeroItem}
+                    </span>
+                    <div>
+                      <h5 className="font-medium text-gray-900">{item.item.nome}</h5>
+                      <p className="text-sm text-gray-500">{item.item.descricao}</p>
+                      
+                      {itemConfigurado && (
+                        <div className="mt-1 space-y-1">
+                          {/* Mostrar sabores para pizza */}
+                          {item.tipo === 'pizza' && itemConfigurado.configuracao && itemConfigurado.configuracao.sabores && (
                             <p className="text-sm text-green-600">
-                              ✓ Sabores: {itemConfigurado.configuracao.sabores.map(s => s.nome).join(', ')}
-                              {(() => {
-                                const maxSabores = itemCombo.item.quantidadeSabores || 4;
-                                const saboresSelecionadosCount = itemConfigurado.configuracao.sabores.length;
-                                const valorSabores = itemConfigurado.configuracao.sabores.reduce((acc, sabor) => {
-                                  if (saboresSelecionadosCount > 0) {
-                                    const fracaoPizza = 1 / saboresSelecionadosCount;
-                                    const valorPorSabor = sabor.valorEspecial * fracaoPizza * maxSabores;
-                                    return acc + valorPorSabor;
-                                  }
-                                  return acc;
-                                }, 0);
+                              ✓ Sabores: {itemConfigurado.configuracao.sabores.map((s, index) => {
+                                // NOVA LÓGICA: Buscar valor específico da configuração da pizza
+                                let valorEspecialSabor = s.valorEspecial; // Fallback para compatibilidade
                                 
-                                return valorSabores > 0 && (
-                                  <span className="text-blue-600 ml-2">
-                                    (+R$ {valorSabores.toFixed(2)})
+                                if (s.configuracoesPizza && s.configuracoesPizza.length > 0) {
+                                  const configuracao = s.configuracoesPizza.find(config => 
+                                    config.pizza && config.pizza._id === item.item._id
+                                  );
+                                  if (configuracao && configuracao.permitido) {
+                                    valorEspecialSabor = configuracao.valorEspecial;
+                                  }
+                                }
+                                
+                                return (
+                                  <span key={s._id}>
+                                    {s.nome}
+                                    {valorEspecialSabor > 0 && (
+                                      <span className="text-blue-600 ml-1">
+                                        (+R$ {valorEspecialSabor.toFixed(2)})
+                                      </span>
+                                    )}
+                                    {index < itemConfigurado.configuracao.sabores.length - 1 && ', '}
                                   </span>
                                 );
-                              })()}
+                              })}
                             </p>
-                            {itemConfigurado.configuracao.borda && (
-                              <p className="text-sm text-green-600">
-                                ✓ Borda: {itemConfigurado.configuracao.borda.nome}
-                                {((itemConfigurado.configuracao.borda.preco + itemConfigurado.configuracao.borda.valorEspecial) > 0) && (
-                                  <span className="text-blue-600 ml-2">
-                                    (+R$ {(itemConfigurado.configuracao.borda.preco + itemConfigurado.configuracao.borda.valorEspecial).toFixed(2)})
-                                  </span>
-                                )}
-                              </p>
-                            )}
-                          </div>
-                        )}
-                        {jaConfigurado && itemCombo.tipo === 'bebida' && itemConfigurado.configuracao && (
-                          <p className="text-sm text-green-600 mt-1">
-                            ✓ {itemConfigurado.configuracao.bebida.nome}
-                            {itemConfigurado.configuracao.bebida.valorEspecial > 0 && (
-                              <span className="text-blue-600 ml-2">
-                                (+R$ {itemConfigurado.configuracao.bebida.valorEspecial.toFixed(2)})
-                              </span>
-                            )}
-                          </p>
-                        )}
-                      </div>
+                          )}
+                          
+                          {/* Mostrar borda para pizza */}
+                          {item.tipo === 'pizza' && itemConfigurado.configuracao && itemConfigurado.configuracao.borda && (
+                            <p className="text-sm text-green-600">
+                              ✓ Borda: {itemConfigurado.configuracao.borda.nome}
+                              {itemConfigurado.configuracao.borda.valorEspecial > 0 && (
+                                <span className="text-blue-600 ml-2">
+                                  (+R$ {itemConfigurado.configuracao.borda.valorEspecial.toFixed(2)})
+                                </span>
+                              )}
+                            </p>
+                          )}
+                          
+                          {/* Mostrar bebida selecionada */}
+                          {item.tipo === 'bebida' && itemConfigurado.configuracao && (
+                            <p className="text-sm text-green-600">
+                              ✓ Bebida: {itemConfigurado.configuracao.nome}
+                              {itemConfigurado.configuracao.valorEspecial > 0 && (
+                                <span className="text-blue-600 ml-2">
+                                  (+R$ {itemConfigurado.configuracao.valorEspecial.toFixed(2)})
+                                </span>
+                              )}
+                            </p>
+                          )}
+                          
+                          {/* Mostrar observações se houver */}
+                          {item.tipo === 'pizza' && itemConfigurado.configuracao && itemConfigurado.configuracao.observacoes && (
+                            <p className="text-sm text-gray-600">
+                              📝 Obs: {itemConfigurado.configuracao.observacoes}
+                            </p>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    {jaConfigurado ? (
-                      <div className="flex items-center text-green-600">
-                        <Check className="h-5 w-5" />
-                        <span className="ml-1 font-medium">Configurado</span>
-                      </div>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className={`flex items-center ${itemConfigurado ? 'text-green-600' : 'text-blue-600'}`}>
+                    {itemConfigurado ? (
+                      <Check className="h-5 w-5" />
                     ) : (
-                      <div className="flex items-center text-blue-600">
-                        {itemCombo.tipo === 'pizza' ? (
-                          <>
-                            <Pizza className="h-5 w-5" />
-                            <span className="ml-1 font-medium">Personalizar</span>
-                          </>
-                        ) : (
-                          <>
-                            <Plus className="h-5 w-5" />
-                            <span className="ml-1 font-medium">Selecionar</span>
-                          </>
-                        )}
-                      </div>
+                      item.tipo === 'pizza' ? (
+                        <Pizza className="h-5 w-5" />
+                      ) : (
+                        <CupSoda className="h-5 w-5" />
+                      )
                     )}
+                    <span className="ml-1 font-medium">
+                      {itemConfigurado ? 'Configurado' : (item.tipo === 'pizza' ? 'Personalizar' : 'Selecionar')}
+                    </span>
                   </div>
                 </div>
               </div>
-            );
-          })}
-        </div>
-
-        {/* Botões de ação */}
-        <div className="mt-6 flex space-x-4">
-          <button
-            onClick={onCancelar}
-            className="flex-1 bg-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-400 font-medium"
-          >
-            Cancelar
-          </button>
-          <button
-            onClick={confirmarCombo}
-            className="flex-1 bg-orange-600 text-white py-3 rounded-lg hover:bg-orange-700 font-medium"
-            disabled={
-              itensConfigurados.filter(item => item.configurado).length < itensDoCombo.filter(item => item.tipo === 'pizza').length ||
-              itensConfigurados.some(item => item.tipo === 'pizza' && !item.configuracao?.borda)
-            }
-          >
-            Adicionar Combo - R$ {calcularPrecoTotal().toFixed(2)}
-          </button>
-        </div>
+            </div>
+          );
+        })}
       </div>
     );
   };
 
   const renderSelecaoBebida = () => {
-    // Filtrar bebidas pelo tamanho especificado no combo
-    const tamanhoRequerido = itemPersonalizando?.tamanhoBebida;
-    const bebidasDisponiveis = bebidas.filter(bebida => 
-      bebida.tamanho === tamanhoRequerido
+    const bebidasFiltradas = bebidas.filter(bebida => 
+      bebida.tamanho === itemPersonalizando.tamanhoBebida
     );
     
+    // Adicionar bebidas de upgrade disponíveis
+    const bebidasUpgrade = [];
+    if (combo.upgradesDisponiveis) {
+      Object.keys(combo.upgradesDisponiveis).forEach(bebidaId => {
+        const upgrade = combo.upgradesDisponiveis[bebidaId];
+        if (upgrade.permitir) {
+          const bebida = cardapio.find(item => item._id === bebidaId);
+          if (bebida && bebida.categoria === 'bebida') {
+            bebidasUpgrade.push({
+              ...bebida,
+              valorEspecial: upgrade.valor // Usar valor do upgrade ao invés do valor original
+            });
+          }
+        }
+      });
+    }
+    
+    // Combinar bebidas filtradas do tamanho + bebidas de upgrade
+    const todasBebidas = [...bebidasFiltradas, ...bebidasUpgrade];
+    
     return (
-      <div>
-        <h4 className="text-lg font-semibold text-gray-900 mb-4">
-          Selecionar Bebida de {tamanhoRequerido}
-        </h4>
+      <div className="space-y-4">
+        <div className="flex items-center mb-4">
+          <button
+            onClick={() => {
+              setItemPersonalizando(null);
+              setTipoPersonalizando(null);
+            }}
+            className="mr-3 text-gray-500 hover:text-gray-700"
+          >
+            ← Voltar
+          </button>
+          <h4 className="text-lg font-semibold text-gray-900">
+            Escolha sua {itemPersonalizando.item.nome}
+          </h4>
+        </div>
         
-        {bebidasDisponiveis.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            {bebidasDisponiveis.map(bebida => (
-              <div
-                key={bebida._id}
-                className="p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-300 transition-colors"
-                onClick={() => confirmarConfiguracaoItem({ bebida })}
-              >
-                <div className="flex justify-between items-start">
-                  <div className="flex-1">
-                    <h5 className="font-medium text-gray-900">{bebida.nome}</h5>
-                    <p className="text-sm text-gray-500">{bebida.descricao}</p>
-                    <p className="text-xs text-blue-600 mt-1">{bebida.tamanho}</p>
-                  </div>
-                  <div className="ml-2 text-right">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {todasBebidas.map(bebida => (
+            <div
+              key={bebida._id}
+              className="p-4 border-2 rounded-lg cursor-pointer transition-colors border-gray-200 hover:border-blue-300 bg-white hover:bg-blue-50"
+              onClick={() => confirmarConfiguracaoItem(bebida)}
+            >
+              <div className="flex justify-between items-start">
+                <div className="flex-1">
+                  <h5 className="font-medium text-gray-900">{bebida.nome}</h5>
+                  <p className="text-sm text-gray-500 mt-1">{bebida.descricao}</p>
+                  <div className="mt-2">
                     {bebida.valorEspecial > 0 ? (
                       <span className="text-sm text-blue-600">
                         +R$ {bebida.valorEspecial.toFixed(2)}
                       </span>
                     ) : (
-                      <span className="text-sm text-green-600">
-                        Grátis
-                      </span>
+                      <span className="text-sm text-green-600">Incluso</span>
                     )}
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-8">
-            <p className="text-gray-500">
-              Nenhuma bebida de {tamanhoRequerido} disponível no momento
-            </p>
-          </div>
-        )}
-
-        <button
-          onClick={() => {
-            setItemPersonalizando(null);
-            setTipoPersonalizando(null);
-          }}
-          className="w-full bg-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-400 font-medium"
-        >
-          Voltar
-        </button>
+            </div>
+          ))}
+        </div>
       </div>
     );
   };
 
+  if (!combo) return null;
+
+  // Se estiver personalizando um item
+  if (itemPersonalizando) {
+    if (tipoPersonalizando === 'pizza') {
+      return (
+        <PizzaPersonalizacaoCombo
+          pizza={itemPersonalizando.item}
+          sabores={sabores}
+          bordas={bordas}
+          configuracaoExistente={itemPersonalizando.configuracao}
+          configCombo={combo.itensCombo?.find(comboItem => 
+            comboItem.item && comboItem.item._id === itemPersonalizando.item._id
+          )}
+          onConfirmar={confirmarConfiguracaoItem}
+          onCancelar={() => {
+            setItemPersonalizando(null);
+            setTipoPersonalizando(null);
+          }}
+        />
+      );
+    } else if (tipoPersonalizando === 'bebida') {
+      return (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+          <div className="relative top-8 mx-auto p-6 border w-full max-w-4xl shadow-lg rounded-md bg-white max-h-[90vh] overflow-y-auto">
+            {renderSelecaoBebida()}
+          </div>
+        </div>
+      );
+    }
+  }
+
+  // Modal principal do combo
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
       <div className="relative top-8 mx-auto p-6 border w-full max-w-4xl shadow-lg rounded-md bg-white max-h-[90vh] overflow-y-auto">
-        {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <div>
-            <h3 className="text-2xl font-bold text-gray-900">Montar {combo.nome}</h3>
+            <h3 className="text-2xl font-bold text-gray-900">{combo.nome}</h3>
             <p className="text-gray-600">{combo.descricao}</p>
           </div>
-          <button
+          <button 
             onClick={onCancelar}
             className="text-gray-400 hover:text-gray-600"
           >
@@ -1940,305 +1998,912 @@ const ComboPersonalizacaoModal = ({ combo, cardapio, onConfirmar, onCancelar }) 
           </button>
         </div>
 
-        {/* Content */}
-        {!itemPersonalizando && renderListaItens()}
-        
-        {itemPersonalizando && tipoPersonalizando === 'pizza' && (
-          <PizzaPersonalizacaoInline
-            pizza={{ pizza: itemPersonalizando.item }}
-            sabores={sabores}
-            bordas={bordas}
-            configuracaoExistente={itemPersonalizando.configuracao}
-            onConfirmar={(config) => confirmarConfiguracaoItem({
-              sabores: config.sabores,
-              borda: config.borda,
-              observacoes: config.observacoes
-            })}
-            onCancelar={() => {
-              setItemPersonalizando(null);
-              setTipoPersonalizando(null);
-            }}
-          />
-        )}
-        
-        {itemPersonalizando && tipoPersonalizando === 'bebida' && renderSelecaoBebida()}
-
-        {/* Resumo de Preços */}
-        {!itemPersonalizando && itensConfigurados.length > 0 && (
-          <div className="mt-6 pt-4 border-t">
-            <h4 className="text-lg font-semibold text-gray-900 mb-4">Resumo dos Adicionais</h4>
-            <div className="space-y-2 mb-4">
-              <div className="flex justify-between items-center text-sm">
-                <span className="text-gray-600">{combo.nome} (base):</span>
-                <span className="text-gray-900">R$ {combo.preco.toFixed(2)}</span>
-              </div>
-              
-              {/* Valores dos sabores */}
-              {(() => {
-                const valorTotalSabores = itensConfigurados.reduce((acc, item) => {
-                  if (item.tipo === 'pizza' && item.configuracao) {
-                    const maxSabores = item.item.quantidadeSabores || 4;
-                    const saboresSelecionadosCount = item.configuracao.sabores.length;
-                    const valorSabores = item.configuracao.sabores.reduce((accSabores, sabor) => {
-                      if (saboresSelecionadosCount > 0) {
-                        const fracaoPizza = 1 / saboresSelecionadosCount;
-                        const valorPorSabor = sabor.valorEspecial * fracaoPizza * maxSabores;
-                        return accSabores + valorPorSabor;
-                      }
-                      return accSabores;
-                    }, 0);
-                    return acc + valorSabores;
-                  }
-                  return acc;
-                }, 0);
-                
-                return valorTotalSabores > 0 && (
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-gray-600">Adicionais (sabores):</span>
-                    <span className="text-gold-600">+R$ {valorTotalSabores.toFixed(2)}</span>
-                  </div>
-                );
-              })()}
-              
-              {/* Valores das bordas */}
-              {(() => {
-                const valorTotalBordas = itensConfigurados.reduce((acc, item) => {
-                  if (item.tipo === 'pizza' && item.configuracao && item.configuracao.borda) {
-                    return acc + (item.configuracao.borda.preco + item.configuracao.borda.valorEspecial);
-                  }
-                  return acc;
-                }, 0);
-                
-                return valorTotalBordas > 0 && (
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-gray-600">Bordas:</span>
-                    <span className="text-gold-600">+R$ {valorTotalBordas.toFixed(2)}</span>
-                  </div>
-                );
-              })()}
-              
-              {/* Valores das bebidas */}
-              {(() => {
-                const valorTotalBebidas = itensConfigurados.reduce((acc, item) => {
-                  if (item.tipo === 'bebida' && item.configuracao && item.configuracao.bebida) {
-                    return acc + (item.configuracao.bebida.valorEspecial || 0);
-                  }
-                  return acc;
-                }, 0);
-                
-                return valorTotalBebidas > 0 && (
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-gray-600">Adicionais (bebidas):</span>
-                    <span className="text-blue-600">+R$ {valorTotalBebidas.toFixed(2)}</span>
-                  </div>
-                );
-              })()}
-            </div>
-            
-            <div className="flex justify-between items-center border-t pt-2">
-              <span className="text-lg font-semibold text-gray-900">Total:</span>
-              <span className="text-xl font-bold text-gold-600">
-                R$ {calcularPrecoTotal().toFixed(2)}
-              </span>
-            </div>
+        <div>
+          <h4 className="text-lg font-semibold text-gray-900 mb-4">Configure os itens do combo</h4>
+          {renderListaItens()}
+          
+          <div className="mt-6 flex space-x-4">
+            <button 
+              onClick={onCancelar}
+              className="flex-1 bg-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-400 font-medium"
+            >
+              Cancelar
+            </button>
+            <button 
+              onClick={confirmarCombo}
+              disabled={itensDoComboOrdenados.length !== itensConfigurados.length}
+              className={`flex-1 py-3 rounded-lg font-medium ${
+                itensDoComboOrdenados.length === itensConfigurados.length
+                  ? 'bg-orange-600 text-white hover:bg-orange-700'
+                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              }`}
+            >
+              Adicionar Combo - R$ {calcularPrecoTotal().toFixed(2)}
+            </button>
           </div>
-        )}
-
+        </div>
       </div>
     </div>
   );
 };
 
-// Componente inline para personalização de pizza dentro do combo
-const PizzaPersonalizacaoInline = ({ pizza, sabores, bordas, configuracaoExistente, onConfirmar, onCancelar }) => {
-  // Acessar corretamente os dados da pizza (pode estar aninhado em combos)
-  const pizzaData = pizza.pizza || pizza;
-  
-  const [saboresSelecionados, setSaboresSelecionados] = useState(
-    configuracaoExistente?.sabores || []
-  );
+// Componente para personalização de pizza dentro do combo
+const PizzaPersonalizacaoCombo = ({ pizza, sabores, bordas, configuracaoExistente, configCombo, onConfirmar, onCancelar }) => {
+  const [saboresSelecionados, setSaboresSelecionados] = useState(() => {
+    if (configuracaoExistente?.sabores && configuracaoExistente.sabores.length > 0) {
+      // Se já existe configuração, usar ela
+      return configuracaoExistente.sabores;
+    } else {
+      // Inicializar com array de nulls baseado na quantidade inicial
+      return [null];
+    }
+  });
   const [bordaSelecionada, setBordaSelecionada] = useState(
     configuracaoExistente?.borda || null
   );
   const [observacoes, setObservacoes] = useState(
     configuracaoExistente?.observacoes || ''
   );
+  const [showIngredientes, setShowIngredientes] = useState(false);
+  const [saborIngredientes, setSaborIngredientes] = useState(null);
+  const [termoBusca, setTermoBusca] = useState('');
+  const [quantidadeSabores, setQuantidadeSabores] = useState(1);
+  const [showModalSabor, setShowModalSabor] = useState(false);
+  const [fracaoSelecionada, setFracaoSelecionada] = useState(null);
 
-  // Função para determinar o texto da divisão da pizza
   const obterDivisaoPizza = (quantidadeSabores) => {
     switch(quantidadeSabores) {
       case 0:
-        return "Nenhum sabor selecionado";
+        return "Sem sabores selecionados";
       case 1:
         return "Pizza Inteira";
       case 2:
-        return "Meia a Meia (1/2 + 1/2)";
+        return "Meia a Meia";
       case 3:
-        return "Três Sabores (1/3 + 1/3 + 1/3)";
+        return "Três Sabores";
       case 4:
-        return "Quatro Sabores (1/4 + 1/4 + 1/4 + 1/4)";
+        return "Quatro Sabores";
       default:
-        return `${quantidadeSabores} Sabores (1/${quantidadeSabores} cada)`;
+        return `${quantidadeSabores} Sabores`;
     }
   };
 
-  const adicionarSabor = (sabor) => {
-    const maxSabores = pizzaData.quantidadeSabores || 4;
-    if (saboresSelecionados.length < maxSabores && !saboresSelecionados.find(s => s._id === sabor._id)) {
-      setSaboresSelecionados([...saboresSelecionados, sabor]);
-    }
+  const adicionarSaborFracao = (sabor, fracaoIndex) => {
+    const novosSabores = [...saboresSelecionados];
+    novosSabores[fracaoIndex] = sabor;
+    setSaboresSelecionados(novosSabores);
+    setShowModalSabor(false);
+    setFracaoSelecionada(null);
   };
 
-  const removerSabor = (saborId) => {
-    setSaboresSelecionados(saboresSelecionados.filter(s => s._id !== saborId));
+  const removerSaborFracao = (fracaoIndex) => {
+    const novosSabores = [...saboresSelecionados];
+    novosSabores[fracaoIndex] = null;
+    setSaboresSelecionados(novosSabores);
   };
 
-  const confirmar = () => {
-    if (saboresSelecionados.length === 0) {
-      alert('Selecione pelo menos um sabor!');
-      return;
-    }
+  const abrirModalSabor = (fracaoIndex) => {
+    setFracaoSelecionada(fracaoIndex);
+    setShowModalSabor(true);
+  };
 
-    if (!bordaSelecionada) {
-      alert('Selecione uma borda!');
-      return;
-    }
+  const calcularValorEspecialProporcional = (valorEspecial, quantidadeSabores) => {
+    return valorEspecial / quantidadeSabores;
+  };
 
+  const alterarQuantidadeSabores = (novaQuantidade) => {
+    setQuantidadeSabores(novaQuantidade);
+    // Limpar sabores que excedem a nova quantidade
+    const novosSabores = Array(novaQuantidade).fill(null);
+    // Manter os sabores existentes que cabem na nova quantidade
+    for (let i = 0; i < Math.min(saboresSelecionados.length, novaQuantidade); i++) {
+      novosSabores[i] = saboresSelecionados[i];
+    }
+    setSaboresSelecionados(novosSabores);
+  };
+
+  const confirmarPersonalizacao = () => {
+    // Filtrar apenas sabores que foram selecionados (não null)
+    const saboresConfirmados = saboresSelecionados.filter(sabor => sabor !== null);
+    
     onConfirmar({
-      pizza: pizzaData,
-      sabores: saboresSelecionados,
+      sabores: saboresConfirmados,
       borda: bordaSelecionada,
       observacoes
     });
   };
 
-  return (
-    <div>
-      <h4 className="text-lg font-semibold text-gray-900 mb-4">
-        {configuracaoExistente ? 'Editando' : 'Personalizando'}: {pizzaData.nome}
-        {configuracaoExistente && (
-          <span className="ml-2 text-sm text-green-600 font-normal">
-            (já configurada - editando)
-          </span>
-        )}
-      </h4>
+  const abrirIngredientes = (sabor) => {
+    setSaborIngredientes(sabor);
+    setShowIngredientes(true);
+  };
 
-      {/* Sabores */}
-      <div className="mb-6">
-        <h5 className="font-medium text-gray-900 mb-3">
-          Escolha os Sabores {saboresSelecionados.length > 0 && `(${saboresSelecionados.length}/${pizzaData.quantidadeSabores || 4})`}
-          {saboresSelecionados.length > 0 && (
-            <span className="ml-2 text-xs font-normal text-gray-600">
-              - {obterDivisaoPizza(saboresSelecionados.length)}
-            </span>
+  // Função para renderizar a pizza visual
+  const renderPizzaVisual = () => {
+    const raio = 80;
+    const centro = 140;
+    const maxSabores = pizza.quantidadeSabores || 4;
+
+    const fatias = [];
+    
+    // Para 1 sabor, usar círculo completo em vez de path
+    if (quantidadeSabores === 1) {
+      const sabor = saboresSelecionados[0];
+      fatias.push(
+        <g key={0}>
+          <circle
+            cx={centro}
+            cy={centro}
+            r={raio}
+            fill={sabor ? `hsl(0, 70%, 80%)` : '#f3f4f6'}
+            stroke="#8B4513"
+            strokeWidth="2"
+            className="cursor-pointer hover:opacity-80 transition-opacity"
+            onClick={() => abrirModalSabor(0)}
+          />
+          
+          {/* Nome do sabor se selecionado */}
+          {sabor && (
+            <text
+              x={centro}
+              y={centro + 4}
+              textAnchor="middle"
+              fontSize="10"
+              fill="#333"
+              className="pointer-events-none"
+            >
+              {sabor.nome.length > 12 ? sabor.nome.substring(0, 12) + '...' : sabor.nome}
+            </text>
           )}
-        </h5>
+        </g>
+      );
+    } else {
+      // Para múltiplos sabores, usar paths como antes
+      for (let i = 0; i < quantidadeSabores; i++) {
+        const sabor = saboresSelecionados[i];
+        const anguloInicio = (i * 360) / quantidadeSabores;
+        const anguloFim = ((i + 1) * 360) / quantidadeSabores;
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {sabores.map(sabor => {
-            const jaSelecionado = saboresSelecionados.find(s => s._id === sabor._id);
-            const maxSabores = pizzaData.quantidadeSabores || 4;
-            const limitingido = saboresSelecionados.length >= maxSabores && !jaSelecionado;
+        // Criar path SVG para cada fatia
+        const anguloInicioRad = (anguloInicio * Math.PI) / 180;
+        const anguloFimRad = (anguloFim * Math.PI) / 180;
+        
+        const x1 = centro + raio * Math.cos(anguloInicioRad);
+        const y1 = centro + raio * Math.sin(anguloInicioRad);
+        const x2 = centro + raio * Math.cos(anguloFimRad);
+        const y2 = centro + raio * Math.sin(anguloFimRad);
+        
+        const largeArcFlag = anguloFim - anguloInicio > 180 ? 1 : 0;
+        
+        const pathData = [
+          `M ${centro} ${centro}`,
+          `L ${x1} ${y1}`,
+          `A ${raio} ${raio} 0 ${largeArcFlag} 1 ${x2} ${y2}`,
+          'Z'
+        ].join(' ');
+
+        fatias.push(
+          <g key={i}>
+            <path
+              d={pathData}
+              fill={sabor ? `hsl(${(i * 360) / quantidadeSabores}, 70%, 80%)` : '#f3f4f6'}
+              stroke="#8B4513"
+              strokeWidth="2"
+              className="cursor-pointer hover:opacity-80 transition-opacity"
+              onClick={() => abrirModalSabor(i)}
+            />
             
-            return (
-              <div
-                key={sabor._id}
-                className={`p-3 border-2 rounded-lg transition-colors ${
-                  jaSelecionado
-                    ? 'border-gold-500 bg-gold-50 cursor-pointer'
-                    : limitingido
-                    ? 'border-gray-300 bg-gray-100 cursor-not-allowed opacity-50'
-                    : 'border-gray-200 hover:border-gold-300 cursor-pointer'
-                }`}
-                onClick={() => {
-                  if (jaSelecionado) {
-                    removerSabor(sabor._id);
-                  } else if (!limitingido) {
-                    adicionarSabor(sabor);
-                  }
-                }}
+            {/* Nome do sabor se selecionado */}
+            {sabor && (
+              <text
+                x={centro + (raio * 0.4) * Math.cos((anguloInicioRad + anguloFimRad) / 2)}
+                y={centro + (raio * 0.4) * Math.sin((anguloInicioRad + anguloFimRad) / 2)}
+                textAnchor="middle"
+                fontSize="8"
+                fill="#333"
+                className="pointer-events-none"
               >
-                <div className="flex justify-between items-center">
-                  <span className="font-medium text-sm">{sabor.nome}</span>
-                  {sabor.valorEspecial > 0 && (
-                    <span className="text-xs text-purple-600">
-                      +R$ {sabor.valorEspecial.toFixed(2)}
-                    </span>
-                  )}
-                  {jaSelecionado && <Check className="h-4 w-4 text-gold-600" />}
-                </div>
+                {sabor.nome.length > 8 ? sabor.nome.substring(0, 8) + '...' : sabor.nome}
+              </text>
+            )}
+          </g>
+        );
+      }
+    }
+
+    return (
+      <div className="relative w-80 h-80 mx-auto">
+        <svg viewBox="0 0 280 280" className="w-full h-full">
+          {/* Borda da pizza */}
+          <circle
+            cx={centro}
+            cy={centro}
+            r={raio + 4}
+            fill="#8B4513"
+          />
+          <circle
+            cx={centro}
+            cy={centro}
+            r={raio}
+            fill="#DEB887"
+          />
+          {/* Fatias */}
+          {fatias}
+        </svg>
+        
+        {/* Indicador de quantidade - CLICÁVEL */}
+        <div className="absolute top-2 left-1/2 transform -translate-x-1/2 bg-white rounded-full px-3 py-1 shadow-lg border">
+          <div className="flex space-x-1">
+            {[1, 2, 3, 4].slice(0, maxSabores).map(num => (
+              <div
+                key={num}
+                className={`w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-medium cursor-pointer transition-colors ${
+                  num === quantidadeSabores
+                    ? 'bg-green-500 text-white border-green-500'
+                    : 'bg-gray-100 text-gray-400 border-gray-300 hover:bg-gray-200'
+                }`}
+                onClick={() => alterarQuantidadeSabores(num)}
+              >
+                {num}
               </div>
-            );
-          })}
+            ))}
+          </div>
+        </div>
+        
+        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center text-sm text-gray-600">
+          {obterDivisaoPizza(quantidadeSabores)}
         </div>
       </div>
+    );
+  };
 
-      {/* Bordas */}
-      <div className="mb-6">
-        <h5 className="font-medium text-gray-900 mb-3">Escolha a Borda</h5>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {bordas.map(borda => {
-            const jaSelecionada = bordaSelecionada?._id === borda._id;
-            return (
-              <div
-                key={borda._id}
-                className={`p-3 border-2 rounded-lg cursor-pointer transition-colors ${
-                  jaSelecionada
-                    ? 'border-amber-500 bg-amber-50'
-                    : 'border-gray-200 hover:border-amber-300'
-                }`}
-                onClick={() => setBordaSelecionada(jaSelecionada ? null : borda)}
+  return (
+    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+      <div className="relative top-8 mx-auto p-6 border w-full max-w-4xl shadow-lg rounded-md bg-white max-h-[90vh] overflow-y-auto">
+        <div className="flex justify-between items-center mb-6">
+          <div>
+            <h3 className="text-2xl font-bold text-gray-900">Personalizar {pizza.nome}</h3>
+            <p className="text-gray-600">{pizza.descricao}</p>
+          </div>
+          <button 
+            onClick={onCancelar}
+            className="text-gray-400 hover:text-gray-600"
+          >
+            <X className="h-6 w-6" />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Pizza Visual */}
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                Quantidade de sabores
+              </h4>
+              {renderPizzaVisual()}
+            </div>
+          </div>
+
+          {/* Resumo dos sabores selecionados */}
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-lg font-semibold text-gray-900 mb-4">Sabores Selecionados:</h4>
+              {saboresSelecionados.some(s => s) ? (
+                <div className="space-y-2">
+                  {saboresSelecionados.map((sabor, index) => (
+                    <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                      <div className="flex items-center space-x-3">
+                        <span className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
+                          {quantidadeSabores === 1 ? '1' : `1/${quantidadeSabores}`}
+                        </span>
+                        <div>
+                          {sabor ? (
+                            <>
+                              {/* Nome do sabor com indicador especial na mesma linha */}
+                              <div className="flex items-center gap-2">
+                                <p className="font-medium text-gray-900">{sabor.nome}</p>
+                                {(() => {
+                                  // NOVA LÓGICA: Buscar valor específico da configuração da pizza
+                                  let valorEspecialSabor = sabor.valorEspecial; // Fallback para compatibilidade
+                                  
+                                  if (sabor.configuracoesPizza && sabor.configuracoesPizza.length > 0) {
+                                    const configuracao = sabor.configuracoesPizza.find(config => 
+                                      config.pizza && config.pizza._id === pizza._id
+                                    );
+                                    if (configuracao && configuracao.permitido) {
+                                      valorEspecialSabor = configuracao.valorEspecial;
+                                    }
+                                  }
+                                  
+                                  // Só exibir se for especial (não exibir "Tradicional")
+                                  return valorEspecialSabor > 0 && (
+                                    configCombo?.configuracaoPizza?.cobraEspecial === false ? (
+                                      <span className="text-xs font-medium text-green-600">
+                                        ⭐ Especial Incluso
+                                      </span>
+                                    ) : (
+                                      <span className="text-xs font-medium text-orange-600">
+                                        ⭐ Especial <span className="text-green-600">+R$ {calcularValorEspecialProporcional(valorEspecialSabor, quantidadeSabores).toFixed(2)}</span>
+                                      </span>
+                                    )
+                                  );
+                                })()}
+                              </div>
+                              
+                              {/* Ingredientes do sabor */}
+                              {sabor.ingredientes && sabor.ingredientes.length > 0 && (
+                                <p className="text-xs text-gray-600 mt-1">
+                                  {sabor.ingredientes.map(ing => ing.nome).join(', ')}
+                                </p>
+                              )}
+                            </>
+                          ) : (
+                            <p className="text-gray-500 italic">Clique na fatia para escolher sabor</p>
+                          )}
+                        </div>
+                      </div>
+                      
+                      {/* Botão X para remover sabor */}
+                      {sabor && (
+                        <button
+                          onClick={() => removerSaborFracao(index)}
+                          className="w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-colors text-sm font-bold"
+                        >
+                          ×
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-gray-500 italic">Nenhum sabor selecionado</p>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Seção separada para bordas e observações */}
+        <div className="mt-8 space-y-6">
+
+          {/* Bordas */}
+          <div>
+            <h4 className="text-lg font-semibold text-gray-900 mb-4">Escolha a Borda</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {bordas.map(borda => {
+                const jaSelecionada = bordaSelecionada?._id === borda._id;
+                return (
+                  <div
+                    key={borda._id}
+                    className={`p-3 border-2 rounded-lg cursor-pointer transition-colors ${
+                      jaSelecionada
+                        ? 'border-amber-500 bg-amber-50'
+                        : 'border-gray-200 hover:border-amber-300'
+                    }`}
+                    onClick={() => setBordaSelecionada(jaSelecionada ? null : borda)}
+                  >
+                    <div className="flex justify-between items-start">
+                      <div className="flex-1">
+                        <h5 className="font-medium text-gray-900 text-sm">{borda.nome}</h5>
+                        <p className="text-xs text-gray-500">{borda.descricao}</p>
+                      </div>
+                      <div className="ml-2">
+                        {borda.valorEspecial > 0 ? (
+                          <span className="text-xs text-amber-600">
+                            +R$ {borda.valorEspecial.toFixed(2)}
+                          </span>
+                        ) : (
+                          <span className="text-xs text-green-600">Grátis</span>
+                        )}
+                      </div>
+                    </div>
+                    {jaSelecionada && (
+                      <div className="mt-2">
+                        <Check className="h-4 w-4 text-amber-600" />
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Observações */}
+          <div>
+            <h4 className="text-lg font-semibold text-gray-900 mb-4">Observações (opcional)</h4>
+            <textarea
+              value={observacoes}
+              onChange={(e) => setObservacoes(e.target.value)}
+              placeholder="Alguma observação especial para esta pizza?"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent"
+              rows="3"
+            />
+          </div>
+        </div>
+
+        <div className="mt-6 flex space-x-4">
+          <button 
+            onClick={onCancelar}
+            className="flex-1 bg-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-400 font-medium"
+          >
+            Cancelar
+          </button>
+          <button 
+            onClick={confirmarPersonalizacao}
+            disabled={!saboresSelecionados.some(sabor => sabor !== null)}
+            className={`flex-1 py-3 rounded-lg font-medium ${
+              saboresSelecionados.some(sabor => sabor !== null)
+                ? 'bg-gold-600 text-white hover:bg-gold-700'
+                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+            }`}
+          >
+            Confirmar Personalização
+          </button>
+        </div>
+      </div>
+      
+      {/* Modal de Ingredientes */}
+      {showIngredientes && saborIngredientes && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-60">
+          <div className="bg-white rounded-lg max-w-md w-full mx-4 max-h-[80vh] overflow-hidden">
+            <div className="flex items-center justify-between p-6 border-b">
+              <h3 className="text-lg font-semibold text-gray-900">Ingredientes</h3>
+              <button
+                onClick={() => setShowIngredientes(false)}
+                className="text-gray-400 hover:text-gray-600"
               >
-                <div className="flex justify-between items-center">
-                  <span className="font-medium text-sm">{borda.nome}</span>
-                  {(borda.preco + borda.valorEspecial) > 0 ? (
-                    <span className="text-xs text-amber-600">
-                      +R$ {(borda.preco + borda.valorEspecial).toFixed(2)}
-                    </span>
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+            
+            <div className="p-6">
+              <div className="mb-4">
+                <h4 className="font-medium text-gray-900 mb-2">{saborIngredientes.nome}</h4>
+                <p className="text-sm text-gray-600">{saborIngredientes.descricao}</p>
+              </div>
+              
+              <div className="mb-6">
+                <h5 className="text-sm font-medium text-gray-700 mb-3">
+                  Deseja remover algum ingrediente?
+                </h5>
+                <p className="text-xs text-gray-500 mb-3">
+                  Selecione os ingredientes que você NÃO quer no seu produto
+                </p>
+                
+                {/* Lista de ingredientes */}
+                <div className="space-y-2">
+                  {saborIngredientes.ingredientes && saborIngredientes.ingredientes.length > 0 ? (
+                    saborIngredientes.ingredientes.map((ingrediente, index) => (
+                      <div key={index} className="flex items-center justify-between p-2 border rounded">
+                        <span className="text-sm text-gray-700">{ingrediente}</span>
+                        <button className="text-red-600 hover:text-red-800">
+                          <X className="h-4 w-4" />
+                        </button>
+                      </div>
+                    ))
                   ) : (
-                    <span className="text-xs text-green-600">Grátis</span>
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between p-2 border rounded">
+                        <span className="text-sm text-gray-700">Mussarela</span>
+                        <button className="text-red-600 hover:text-red-800">
+                          <X className="h-4 w-4" />
+                        </button>
+                      </div>
+                      <div className="flex items-center justify-between p-2 border rounded">
+                        <span className="text-sm text-gray-700">Molho de tomate</span>
+                        <button className="text-red-600 hover:text-red-800">
+                          <X className="h-4 w-4" />
+                        </button>
+                      </div>
+                      <div className="flex items-center justify-between p-2 border rounded">
+                        <span className="text-sm text-gray-700">Azeitona</span>
+                        <button className="text-red-600 hover:text-red-800">
+                          <X className="h-4 w-4" />
+                        </button>
+                      </div>
+                      <div className="flex items-center justify-between p-2 border rounded">
+                        <span className="text-sm text-gray-700">Oregano</span>
+                        <button className="text-red-600 hover:text-red-800">
+                          <X className="h-4 w-4" />
+                        </button>
+                      </div>
+                    </div>
                   )}
-                  {jaSelecionada && <Check className="h-4 w-4 text-amber-600" />}
                 </div>
               </div>
-            );
-          })}
+              
+              <button
+                onClick={() => setShowIngredientes(false)}
+                className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 font-medium"
+              >
+                Confirmar
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
+      
+      {/* Modal de Seleção de Sabor Individual */}
+      {showModalSabor && fracaoSelecionada !== null && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-60">
+          <div className="bg-white rounded-lg max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden">
+            <div className="flex items-center justify-between p-6 border-b">
+              <h3 className="text-lg font-semibold text-gray-900">
+                Escolha o sabor para a fração {quantidadeSabores === 1 ? 'inteira' : `${fracaoSelecionada + 1}/${quantidadeSabores}`}
+              </h3>
+              <button
+                onClick={() => {
+                  setShowModalSabor(false);
+                  setFracaoSelecionada(null);
+                }}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+            
+            <div className="p-6">
+              <div className="mb-4">
+                <input
+                  type="text"
+                  value={termoBusca}
+                  onChange={(e) => setTermoBusca(e.target.value)}
+                  placeholder="Procurar um sabor"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent"
+                />
+              </div>
+              
+              <div className="max-h-96 overflow-y-auto space-y-3">
+                {sabores.filter(sabor => 
+                  sabor.nome.toLowerCase().includes(termoBusca.toLowerCase()) ||
+                  sabor.descricao.toLowerCase().includes(termoBusca.toLowerCase())
+                ).map(sabor => {
+                  // NOVA LÓGICA: Buscar valor específico da configuração da pizza
+                  let valorEspecialSabor = sabor.valorEspecial; // Fallback para compatibilidade
+                  
+                  if (sabor.configuracoesPizza && sabor.configuracoesPizza.length > 0) {
+                    const configuracao = sabor.configuracoesPizza.find(config => 
+                      config.pizza && config.pizza._id === pizza._id
+                    );
+                    if (configuracao && configuracao.permitido) {
+                      valorEspecialSabor = configuracao.valorEspecial;
+                    }
+                  }
+                  
+                  const valorProporcional = calcularValorEspecialProporcional(valorEspecialSabor, quantidadeSabores);
+                  
+                  return (
+                    <div
+                      key={sabor._id}
+                      className="flex items-center p-4 border rounded-lg cursor-pointer transition-colors border-gray-200 hover:border-gold-300 hover:bg-gray-50"
+                      onClick={() => adicionarSaborFracao(sabor, fracaoSelecionada)}
+                    >
+                      {/* Imagem do sabor */}
+                      <div className="w-16 h-16 bg-amber-200 rounded-lg mr-4 flex items-center justify-center overflow-hidden">
+                        {sabor.imagem ? (
+                          <img 
+                            src={sabor.imagem} 
+                            alt={sabor.nome} 
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <Pizza className="h-8 w-8 text-amber-600" />
+                        )}
+                      </div>
+                      
+                      {/* Informações do sabor */}
+                      <div className="flex-1">
+                        <h5 className="font-medium text-gray-900">{sabor.nome}</h5>
+                        <p className="text-sm text-gray-500 line-clamp-2">
+                          {sabor.ingredientes && sabor.ingredientes.length > 0 
+                            ? (() => {
+                                const ingredientesStr = sabor.ingredientes.map(ingrediente => {
+                                  // Tratar diferentes tipos de dados
+                                  if (typeof ingrediente === 'string') {
+                                    return ingrediente.toLowerCase();
+                                  } else if (ingrediente && ingrediente.nome) {
+                                    return ingrediente.nome.toLowerCase();
+                                  } else {
+                                    return String(ingrediente).toLowerCase();
+                                  }
+                                }).join(', ');
+                                return ingredientesStr.charAt(0).toUpperCase() + ingredientesStr.slice(1);
+                              })()
+                            : sabor.descricao
+                          }
+                        </p>
+                        <div className="mt-2">
+                          {(() => {
+                            // NOVA LÓGICA: Buscar valor específico da configuração da pizza
+                            let valorEspecialSabor = sabor.valorEspecial; // Fallback para compatibilidade
+                            
+                            if (sabor.configuracoesPizza && sabor.configuracoesPizza.length > 0) {
+                              const configuracao = sabor.configuracoesPizza.find(config => 
+                                config.pizza && config.pizza._id === pizza._id
+                              );
+                              if (configuracao && configuracao.permitido) {
+                                valorEspecialSabor = configuracao.valorEspecial;
+                              }
+                            }
+                            
+                            return valorEspecialSabor > 0 ? (
+                              configCombo?.configuracaoPizza?.cobraEspecial === false ? (
+                                <p className="text-xs font-medium text-green-600">
+                                  ⭐ Sabor Especial <span className="ml-2">Incluso no Combo</span>
+                                </p>
+                              ) : (
+                                <p className="text-xs font-medium text-orange-600">
+                                  ⭐ Sabor Especial <span className="text-green-600 ml-2">+R$ {valorProporcional.toFixed(2)}</span>
+                                </p>
+                              )
+                            ) : (
+                              <p className="text-xs text-gray-500">Sabor Tradicional</p>
+                            );
+                          })()}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
-      {/* Observações */}
-      <div className="mb-6">
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Observações (opcional)
-        </label>
-        <textarea
-          value={observacoes}
-          onChange={(e) => setObservacoes(e.target.value)}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
-          rows="2"
-          placeholder="Ex: massa fina, sem cebola..."
-        />
-      </div>
+const PizzaPersonalizacaoInline = ({ 
+  pizza, 
+  saboresSelecionados,
+  setSaboresSelecionados,
+  bordaSelecionada,
+  setBordaSelecionada,
+  bebidasSelecionadas, 
+  setBebidasSelecionadas,
+  observacoes,
+  setObservacoes,
+  adicionarSabor,
+  removerSabor,
+  alterarQuantidadeBebida,
+  adicionarBebida,
+  cardapio
+}) => {
+  const [quantidade, setQuantidade] = useState(1);
+  const bordas = cardapio.filter(item => item.categoria === 'borda');
+  const bebidas = cardapio.filter(item => item.categoria === 'bebida');
+  const sabores = cardapio.filter(item => {
+    if (item.categoria !== 'sabor') return false;
+    
+    // NOVA LÓGICA: Verificar se o sabor está configurado para esta pizza específica
+    if (item.configuracoesPizza && item.configuracoesPizza.length > 0) {
+      const configuracao = item.configuracoesPizza.find(config => 
+        config.pizza && config.pizza._id === pizza._id
+      );
+      return configuracao && configuracao.permitido;
+    }
+    
+    // Se não tem configuracoesPizza definido, não mostrar o sabor
+    return false;
+  });
 
-      {/* Botões */}
-      <div className="flex space-x-4">
-        <button
-          onClick={onCancelar}
-          className="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400 font-medium"
-        >
-          Cancelar
-        </button>
-        <button
-          onClick={confirmar}
-          className="flex-1 bg-gold-600 text-white py-2 rounded-lg hover:bg-gold-700 font-medium"
-          disabled={saboresSelecionados.length === 0 || !bordaSelecionada}
-        >
-          Confirmar Pizza
-        </button>
+  const obterDivisaoPizza = (numeroSabores) => {
+    switch (numeroSabores) {
+      case 1: return "Pizza inteira";
+      case 2: return "2 metades";
+      case 3: return "3 fatias (⅓, ⅓, ⅓)";
+      case 4: return "4 fatias (¼, ¼, ¼, ¼)";
+      default: return `${numeroSabores} sabores`;
+    }
+  };
+
+  return (
+    <div className="w-full">
+      <div className="flex-1 flex overflow-hidden">
+        {/* Sidebar esquerda com resumo */}
+        <div className="w-80 border-r bg-white p-4 overflow-y-auto">
+          <h4 className="text-lg font-semibold text-gray-900 mb-4">Resumo do Pedido</h4>
+          
+          {/* Sabores Selecionados */}
+          {saboresSelecionados.length > 0 && (
+            <div className="mb-4">
+              <h5 className="text-sm font-medium text-gray-700 mb-2">Sabores Selecionados:</h5>
+              <div className="bg-gray-50 p-3 rounded-lg">
+                <ul className="text-sm text-gray-600 space-y-1">
+                  {saboresSelecionados.map(sabor => {
+                    const saboresSelecionadosCount = saboresSelecionados.length;
+                    const fracaoPizza = 1 / saboresSelecionadosCount;
+                    
+                    // NOVA LÓGICA: Buscar valor específico da configuração da pizza
+                    let valorEspecialSabor = sabor.valorEspecial; // Fallback para compatibilidade
+                    
+                    if (sabor.configuracoesPizza && sabor.configuracoesPizza.length > 0) {
+                      const configuracao = sabor.configuracoesPizza.find(config => 
+                        config.pizza && config.pizza._id === pizza._id
+                      );
+                      if (configuracao && configuracao.permitido) {
+                        valorEspecialSabor = configuracao.valorEspecial;
+                      }
+                    }
+                    
+                    return (
+                      <li key={sabor._id} className="flex justify-between items-center">
+                        <span>• {sabor.nome} ({Math.round(fracaoPizza * 100)}%)</span>
+                        {valorEspecialSabor > 0 && (
+                          <span className="text-gold-600 font-medium text-xs">
+                            +R$ {valorEspecialSabor.toFixed(2)}
+                          </span>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+          )}
+
+          {/* Borda Selecionada */}
+          {bordaSelecionada && (
+            <div className="mb-4">
+              <h5 className="text-sm font-medium text-gray-700 mb-2">Borda:</h5>
+              <div className="bg-amber-50 p-3 rounded-lg">
+                <div className="flex justify-between items-center text-sm text-gray-600">
+                  <span>• {bordaSelecionada.nome}</span>
+                  {bordaSelecionada.valorEspecial > 0 && (
+                    <span className="text-amber-600 font-medium text-xs">
+                      +R$ {bordaSelecionada.valorEspecial.toFixed(2)}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Observações */}
+          {observacoes && (
+            <div className="mb-4">
+              <h5 className="text-sm font-medium text-gray-700 mb-2">Observações:</h5>
+              <div className="bg-gray-50 p-3 rounded-lg">
+                <p className="text-sm text-gray-600">{observacoes}</p>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Área principal direita com sabores, bordas e observações */}
+        <div className="flex-1 p-6 overflow-y-auto">
+          {/* Sabores */}
+          <div className="mb-8">
+            <h4 className="text-lg font-semibold text-gray-900 mb-4">
+              Escolha os Sabores {saboresSelecionados.length > 0 && `(${saboresSelecionados.length}/${pizza.quantidadeSabores || 4})`}
+              {saboresSelecionados.length > 0 && (
+                <span className="ml-3 text-sm font-normal text-gray-600">
+                  - {obterDivisaoPizza(saboresSelecionados.length)}
+                </span>
+              )}
+            </h4>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              {sabores.map(sabor => {
+                const jaSelecionado = saboresSelecionados.find(s => s._id === sabor._id);
+                const maxSabores = pizza.quantidadeSabores || 4;
+                const limitingido = saboresSelecionados.length >= maxSabores && !jaSelecionado;
+                
+                // NOVA LÓGICA: Buscar valor específico da configuração da pizza
+                let valorEspecialSabor = sabor.valorEspecial; // Fallback para compatibilidade
+                
+                if (sabor.configuracoesPizza && sabor.configuracoesPizza.length > 0) {
+                  const configuracao = sabor.configuracoesPizza.find(config => 
+                    config.pizza && config.pizza._id === pizza._id
+                  );
+                  if (configuracao && configuracao.permitido) {
+                    valorEspecialSabor = configuracao.valorEspecial;
+                  }
+                }
+                
+                return (
+                  <div
+                    key={sabor._id}
+                    className={`p-4 border-2 rounded-lg transition-colors ${
+                      jaSelecionado
+                        ? 'border-gold-500 bg-gold-50 cursor-pointer'
+                        : limitingido
+                        ? 'border-gray-300 bg-gray-100 cursor-not-allowed opacity-50'
+                        : 'border-gray-200 hover:border-gold-300 cursor-pointer'
+                    }`}
+                    onClick={() => {
+                      if (jaSelecionado) {
+                        removerSabor(sabor._id);
+                      } else if (!limitingido) {
+                        adicionarSabor(sabor);
+                      }
+                    }}
+                  >
+                    <div className="flex justify-between items-start">
+                      <div className="flex-1">
+                        <h5 className="font-medium text-gray-900">{sabor.nome}</h5>
+                        <p className="text-sm text-gray-500">{sabor.descricao}</p>
+                      </div>
+                      <div className="ml-2">
+                        {valorEspecialSabor > 0 ? (
+                          <span className="text-sm text-purple-600">
+                            +R$ {valorEspecialSabor.toFixed(2)}
+                          </span>
+                        ) : (
+                          <span className="text-sm text-green-600">Incluso</span>
+                        )}
+                      </div>
+                    </div>
+                    {jaSelecionado && (
+                      <div className="mt-2">
+                        <Check className="h-4 w-4 text-gold-600" />
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Bordas */}
+          <div className="mb-8">
+            <h4 className="text-lg font-semibold text-gray-900 mb-4">Escolha a Borda</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {bordas.map(borda => {
+                const jaSelecionada = bordaSelecionada?._id === borda._id;
+                return (
+                  <div
+                    key={borda._id}
+                    className={`p-3 border-2 rounded-lg cursor-pointer transition-colors ${
+                      jaSelecionada
+                        ? 'border-amber-500 bg-amber-50'
+                        : 'border-gray-200 hover:border-amber-300 bg-white'
+                    }`}
+                    onClick={() => setBordaSelecionada(jaSelecionada ? null : borda)}
+                  >
+                    <div className="flex justify-between items-start">
+                      <div className="flex-1">
+                        <h5 className="font-medium text-gray-900 text-sm">{borda.nome}</h5>
+                        <p className="text-xs text-gray-500">{borda.descricao}</p>
+                      </div>
+                      <div className="ml-2">
+                        {borda.valorEspecial > 0 ? (
+                          <span className="text-xs text-amber-600">
+                            +R$ {borda.valorEspecial.toFixed(2)}
+                          </span>
+                        ) : (
+                          <span className="text-xs text-green-600">Grátis</span>
+                        )}
+                      </div>
+                    </div>
+                    {jaSelecionada && (
+                      <div className="mt-2">
+                        <Check className="h-4 w-4 text-amber-600" />
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Observações */}
+          <div className="mb-8">
+            <h4 className="text-lg font-semibold text-gray-900 mb-4">Observações (opcional)</h4>
+            <textarea
+              value={observacoes}
+              onChange={(e) => setObservacoes(e.target.value)}
+              placeholder="Alguma observação especial para sua pizza?"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent"
+              rows="3"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
 };
+
 
 // Modal do Carrinho
 const CarrinhoModal = ({ carrinho, setCarrinho, calcularSubtotal, onFechar, onFinalizar }) => {

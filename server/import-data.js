@@ -6,6 +6,7 @@ require('dotenv').config();
 const User = require('./models/User');
 const Pizzaria = require('./models/Pizzaria');
 const Pedido = require('./models/Pedido');
+const ItemCardapio = require('./models/Cardapio');
 
 async function importData() {
   try {
@@ -28,6 +29,7 @@ async function importData() {
     await User.deleteMany({});
     await Pizzaria.deleteMany({});
     await Pedido.deleteMany({});
+    await ItemCardapio.deleteMany({});
 
     // Importar dados
     console.log('📥 Importando dados...');
@@ -45,6 +47,11 @@ async function importData() {
     if (backupData.pedidos.length > 0) {
       await Pedido.insertMany(backupData.pedidos);
       console.log(`   ✅ ${backupData.pedidos.length} pedidos importados`);
+    }
+
+    if (backupData.cardapio && backupData.cardapio.length > 0) {
+      await ItemCardapio.insertMany(backupData.cardapio);
+      console.log(`   ✅ ${backupData.cardapio.length} itens de cardápio importados`);
     }
 
     await mongoose.connection.close();

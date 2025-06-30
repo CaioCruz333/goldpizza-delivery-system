@@ -31,13 +31,50 @@ router.get('/publico/:pizzariaId', async (req, res) => {
     }
     
     const itens = await ItemCardapio.find(query)
-      .select('nome descricao categoria preco valorEspecial tamanho ingredientes itensCombo quantidadeFatias quantidadeSabores')
-      .populate('itensCombo.item', 'nome categoria quantidadeFatias quantidadeSabores tamanho')
+      .select('nome descricao categoria preco valorEspecial tamanho ingredientes itensCombo quantidadeFatias quantidadeSabores categoriasPermitidas tipoSabor upgradesDisponiveis configuracoesPizza')
+      .populate('itensCombo.item', 'nome categoria quantidadeFatias quantidadeSabores tamanho visivelCardapio categoriasPermitidas')
+      .populate('configuracoesPizza.pizza', 'nome quantidadeFatias quantidadeSabores')
       .sort({ categoria: 1, nome: 1 });
     
-    // Para combos, ordenar itens para pizza ficar primeiro
+    // Encontrar todas as pizzas referenciadas em combos, mesmo que não estejam visíveis no cardápio
+    const pizzasReferenciadasEmCombos = new Set();
     itens.forEach(item => {
       if (item.categoria === 'combo' && item.itensCombo) {
+        item.itensCombo.forEach(comboItem => {
+          if (comboItem.tipo === 'pizza' && comboItem.item && comboItem.item._id) {
+            pizzasReferenciadasEmCombos.add(comboItem.item._id.toString());
+          }
+        });
+      }
+    });
+    
+    // Buscar pizzas referenciadas em combos que não estão no cardápio (visivelCardapio = false)
+    if (pizzasReferenciadasEmCombos.size > 0) {
+      const pizzasOcultas = await ItemCardapio.find({
+        _id: { $in: Array.from(pizzasReferenciadasEmCombos) },
+        categoria: 'pizza',
+        visivelCardapio: false,
+        disponivel: true,
+        pizzaria: pizzariaId
+      }).select('nome descricao categoria preco valorEspecial ingredientes quantidadeFatias quantidadeSabores categoriasPermitidas tipoSabor visivelCardapio');
+      
+      // Adicionar pizzas ocultas ao resultado final
+      itens.push(...pizzasOcultas);
+      
+      console.log(`📦 Adicionadas ${pizzasOcultas.length} pizzas ocultas referenciadas em combos`);
+    }
+    
+    // Para combos, ordenar itens para pizza ficar primeiro e garantir que todos os itens foram populados
+    itens.forEach(item => {
+      if (item.categoria === 'combo' && item.itensCombo) {
+        // Verificar se todos os itens do combo foram populados corretamente
+        item.itensCombo.forEach((comboItem, index) => {
+          if (!comboItem.item) {
+            console.warn(`⚠️  Item do combo não foi populado: ${item.nome} - posição ${index}`);
+          }
+        });
+        
+        // Ordenar itens para pizza ficar primeiro
         item.itensCombo.sort((a, b) => {
           if (a.tipo === 'pizza' && b.tipo === 'bebida') return -1;
           if (a.tipo === 'bebida' && b.tipo === 'pizza') return 1;
@@ -124,6 +161,7 @@ router.post('/', auth, requireRole(['admin', 'admin_pizzaria', 'atendente']), as
       quantidadeFatias,
       quantidadeSabores,
       visivelCardapio,
+      categoriasPermitidas,
       pizzaria
     } = req.body;
 
@@ -151,6 +189,7 @@ router.post('/', auth, requireRole(['admin', 'admin_pizzaria', 'atendente']), as
       itemData.quantidadeFatias = quantidadeFatias;
       itemData.quantidadeSabores = quantidadeSabores;
       itemData.visivelCardapio = visivelCardapio !== undefined ? visivelCardapio : true;
+      itemData.categoriasPermitidas = categoriasPermitidas || { doce: true, salgado: true };
     }
 
     // Adicionar campos específicos por categoria
@@ -186,7 +225,38 @@ router.post('/', auth, requireRole(['admin', 'admin_pizzaria', 'atendente']), as
     }
     
     if (categoria === 'combo' && itensCombo) {
-      itemData.itensCombo = itensCombo;
+      // Processar itens do combo com configurações específicas para pizzas e bebidas
+      itemData.itensCombo = itensCombo.map(item => {
+        const itemProcessado = {
+          item: item.item,
+          quantidade: item.quantidade || 1,
+          tipo: item.tipo
+        };
+        
+        // Adicionar configurações específicas para pizzas
+        if (item.tipo === 'pizza' && item.configuracaoPizza) {
+          itemProcessado.configuracaoPizza = {
+            permiteSalgado: item.configuracaoPizza.permiteSalgado !== undefined ? item.configuracaoPizza.permiteSalgado : true,
+            permiteDoce: item.configuracaoPizza.permiteDoce !== undefined ? item.configuracaoPizza.permiteDoce : true,
+            cobraEspecial: item.configuracaoPizza.cobraEspecial !== undefined ? item.configuracaoPizza.cobraEspecial : false
+          };
+        }
+        
+        // Adicionar configurações específicas para bebidas
+        if (item.tipo === 'bebida' && item.configuracaoBebida) {
+          itemProcessado.configuracaoBebida = {
+            permitirUpgrade: item.configuracaoBebida.permitirUpgrade !== undefined ? item.configuracaoBebida.permitirUpgrade : false,
+            valorEspecialUpgrade: item.configuracaoBebida.valorEspecialUpgrade !== undefined ? item.configuracaoBebida.valorEspecialUpgrade : 0
+          };
+        }
+        
+        return itemProcessado;
+      });
+      
+      // Adicionar configurações de upgrades disponíveis
+      if (req.body.upgradesDisponiveis) {
+        itemData.upgradesDisponiveis = req.body.upgradesDisponiveis;
+      }
     }
 
     const item = new ItemCardapio(itemData);
@@ -262,7 +332,8 @@ router.put('/:id', auth, requireRole(['admin', 'admin_pizzaria', 'atendente']), 
       tamanho,
       quantidadeFatias,
       quantidadeSabores,
-      visivelCardapio
+      visivelCardapio,
+      categoriasPermitidas
     } = req.body;
 
     // Verificar se estão tentando mudar a categoria (não permitido)
@@ -284,6 +355,7 @@ router.put('/:id', auth, requireRole(['admin', 'admin_pizzaria', 'atendente']), 
       if (quantidadeFatias !== undefined) updateData.quantidadeFatias = quantidadeFatias;
       if (quantidadeSabores !== undefined) updateData.quantidadeSabores = quantidadeSabores;
       if (visivelCardapio !== undefined) updateData.visivelCardapio = visivelCardapio;
+      if (categoriasPermitidas !== undefined) updateData.categoriasPermitidas = categoriasPermitidas;
     }
 
     // Validações específicas por categoria
@@ -328,7 +400,39 @@ router.put('/:id', auth, requireRole(['admin', 'admin_pizzaria', 'atendente']), 
       updateData.pizzasCompativeis = undefined;
       updateData.tipoPizza = undefined;
     } else if (item.categoria === 'combo' && itensCombo) {
-      updateData.itensCombo = itensCombo;
+      // Processar itens do combo com configurações específicas para pizzas e bebidas
+      updateData.itensCombo = itensCombo.map(comboItem => {
+        const itemProcessado = {
+          item: comboItem.item,
+          quantidade: comboItem.quantidade || 1,
+          tipo: comboItem.tipo
+        };
+        
+        // Adicionar configurações específicas para pizzas
+        if (comboItem.tipo === 'pizza' && comboItem.configuracaoPizza) {
+          itemProcessado.configuracaoPizza = {
+            permiteSalgado: comboItem.configuracaoPizza.permiteSalgado !== undefined ? comboItem.configuracaoPizza.permiteSalgado : true,
+            permiteDoce: comboItem.configuracaoPizza.permiteDoce !== undefined ? comboItem.configuracaoPizza.permiteDoce : true,
+            cobraEspecial: comboItem.configuracaoPizza.cobraEspecial !== undefined ? comboItem.configuracaoPizza.cobraEspecial : false
+          };
+        }
+        
+        // Adicionar configurações específicas para bebidas
+        if (comboItem.tipo === 'bebida' && comboItem.configuracaoBebida) {
+          itemProcessado.configuracaoBebida = {
+            permitirUpgrade: comboItem.configuracaoBebida.permitirUpgrade !== undefined ? comboItem.configuracaoBebida.permitirUpgrade : false,
+            valorEspecialUpgrade: comboItem.configuracaoBebida.valorEspecialUpgrade !== undefined ? comboItem.configuracaoBebida.valorEspecialUpgrade : 0
+          };
+        }
+        
+        return itemProcessado;
+      });
+      
+      // Adicionar configurações de upgrades disponíveis
+      if (req.body.upgradesDisponiveis !== undefined) {
+        updateData.upgradesDisponiveis = req.body.upgradesDisponiveis;
+      }
+      
       updateData.valorEspecial = 0;
       updateData.tamanhos = undefined;
       updateData.pizzasCompativeis = undefined;

@@ -24,7 +24,9 @@ router.get('/pizzaria/:pizzariaId', auth, async (req, res) => {
     const sabores = await ItemCardapio.find({
       pizzaria: pizzariaId,
       categoria: 'sabor'
-    }).sort({ nome: 1 });
+    })
+    .populate('configuracoesPizza.pizza', 'nome quantidadeFatias quantidadeSabores')
+    .sort({ nome: 1 });
 
     res.json(sabores);
   } catch (error) {
@@ -38,7 +40,8 @@ router.get('/:saborId', auth, async (req, res) => {
   try {
     const { saborId } = req.params;
 
-    const sabor = await ItemCardapio.findById(saborId);
+    const sabor = await ItemCardapio.findById(saborId)
+      .populate('configuracoesPizza.pizza', 'nome quantidadeFatias quantidadeSabores');
     
     if (!sabor) {
       return res.status(404).json({ message: 'Sabor não encontrado' });
@@ -72,7 +75,8 @@ router.post('/', auth, requireRole(['admin', 'admin_pizzaria', 'atendente']), as
       tipoSabor,
       valorEspecial,
       ingredientes,
-      pizzaria
+      pizzaria,
+      configuracoesPizza
     } = req.body;
 
     // Verificar acesso à pizzaria
@@ -100,8 +104,9 @@ router.post('/', auth, requireRole(['admin', 'admin_pizzaria', 'atendente']), as
       categoria: 'sabor',
       tipoSabor: tipoSabor || 'salgado',
       preco: 0, // Sabores não têm preço base
-      valorEspecial: valorEspecial || 0,
+      valorEspecial: valorEspecial || 0, // DEPRECATED - manter por compatibilidade
       ingredientes: ingredientes || [],
+      configuracoesPizza: configuracoesPizza || [], // NOVA ESTRUTURA
       pizzaria
     });
 
@@ -139,7 +144,8 @@ router.put('/:saborId', auth, requireRole(['admin', 'admin_pizzaria', 'atendente
       descricao,
       tipoSabor,
       valorEspecial,
-      ingredientes
+      ingredientes,
+      configuracoesPizza
     } = req.body;
 
     const sabor = await ItemCardapio.findById(saborId);
@@ -178,8 +184,9 @@ router.put('/:saborId', auth, requireRole(['admin', 'admin_pizzaria', 'atendente
     if (nome !== undefined) sabor.nome = nome;
     if (descricao !== undefined) sabor.descricao = descricao;
     if (tipoSabor !== undefined) sabor.tipoSabor = tipoSabor;
-    if (valorEspecial !== undefined) sabor.valorEspecial = valorEspecial;
+    if (valorEspecial !== undefined) sabor.valorEspecial = valorEspecial; // DEPRECATED
     if (ingredientes !== undefined) sabor.ingredientes = ingredientes;
+    if (configuracoesPizza !== undefined) sabor.configuracoesPizza = configuracoesPizza; // NOVA ESTRUTURA
 
     await sabor.save();
     

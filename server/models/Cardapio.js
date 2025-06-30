@@ -30,7 +30,7 @@ const itemCardapioSchema = new mongoose.Schema({
       return this.categoria === 'sabor';
     }
   },
-  // Para sabores: valor adicional que será multiplicado pela quantidade de sabores
+  // Para sabores: DEPRECATED - usar configuracoesPizza[].valorEspecial
   // Para bebidas: valor adicional para bebidas premium
   // Para bordas: valor adicional para bordas especiais
   valorEspecial: {
@@ -61,7 +61,39 @@ const itemCardapioSchema = new mongoose.Schema({
     },
     min: 1
   },
-  // Para sabores: quais pizzas podem usar este sabor
+  // Para pizzas: categorias de sabores permitidas (doce/salgado)
+  categoriasPermitidas: {
+    doce: {
+      type: Boolean,
+      default: function() {
+        return this.categoria === 'pizza' ? true : undefined;
+      }
+    },
+    salgado: {
+      type: Boolean,
+      default: function() {
+        return this.categoria === 'pizza' ? true : undefined;
+      }
+    }
+  },
+  // Para sabores: configurações específicas por pizza (NOVA ESTRUTURA)
+  configuracoesPizza: [{
+    pizza: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'ItemCardapio',
+      required: true
+    },
+    permitido: {
+      type: Boolean,
+      default: false
+    },
+    valorEspecial: {
+      type: Number,
+      default: 0,
+      min: 0
+    }
+  }],
+  // DEPRECATED: Manter por compatibilidade durante migração
   pizzasCompativeis: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'ItemCardapio'
@@ -82,9 +114,51 @@ const itemCardapioSchema = new mongoose.Schema({
       type: String,
       enum: ['pizza', 'bebida'],
       required: true
+    },
+    // Configurações específicas para pizzas em combos
+    configuracaoPizza: {
+      permiteSalgado: {
+        type: Boolean,
+        default: function() {
+          return this.tipo === 'pizza' ? true : undefined;
+        }
+      },
+      permiteDoce: {
+        type: Boolean,
+        default: function() {
+          return this.tipo === 'pizza' ? true : undefined;
+        }
+      },
+      cobraEspecial: {
+        type: Boolean,
+        default: function() {
+          return this.tipo === 'pizza' ? false : undefined;
+        }
+      }
+    },
+    // Configurações específicas para bebidas em combos
+    configuracaoBebida: {
+      permitirUpgrade: {
+        type: Boolean,
+        default: function() {
+          return this.tipo === 'bebida' ? false : undefined;
+        }
+      },
+      valorEspecialUpgrade: {
+        type: Number,
+        default: function() {
+          return this.tipo === 'bebida' ? 0 : undefined;
+        },
+        min: 0
+      }
     }
     // Removido tamanhoBebida - agora usa sempre referência ao item
   }],
+  // Para combos: configurações de upgrades de bebidas não incluídas
+  upgradesDisponiveis: {
+    type: mongoose.Schema.Types.Mixed,
+    default: {}
+  },
   preco: {
     type: Number,
     required: function() {

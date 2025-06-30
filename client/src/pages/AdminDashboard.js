@@ -1452,6 +1452,21 @@ const CardapioTab = ({ pizzaria, cardapio, onUpdate }) => {
                           {item.visivelCardapio ? 'Visível no Cardápio' : 'Oculta do Cardápio'}
                         </span>
                       )}
+                      {/* Badges de categorias permitidas */}
+                      {item.categoria === 'pizza' && item.categoriasPermitidas && (
+                        <>
+                          {item.categoriasPermitidas.doce && (
+                            <span className="px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                              🍰 Doce
+                            </span>
+                          )}
+                          {item.categoriasPermitidas.salgado && (
+                            <span className="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                              🧀 Salgado
+                            </span>
+                          )}
+                        </>
+                      )}
                     </div>
                     {/* Para sabores, mostrar apenas ingredientes */}
                     {item.categoria === 'sabor' ? (
@@ -1482,6 +1497,15 @@ const CardapioTab = ({ pizzaria, cardapio, onUpdate }) => {
                               }
                             };
                             
+                            const getDisplayName = () => {
+                              if (comboItem.tipo === 'bebida' && comboItem.item) {
+                                // Para bebidas, mostrar "Bebida [tamanho]" ao invés do nome específico
+                                return `Bebida ${comboItem.item.tamanho || ''}`.trim();
+                              }
+                              // Para outros tipos, manter o nome original
+                              return comboItem.item?.nome || comboItem.nome || `Item ${comboItem.tipo}`;
+                            };
+                            
                             return (
                               <span 
                                 key={index}
@@ -1489,7 +1513,7 @@ const CardapioTab = ({ pizzaria, cardapio, onUpdate }) => {
                               >
                                 <span className="mr-1">{getItemIcon(comboItem.tipo)}</span>
                                 <span className="font-medium">{comboItem.quantidade}x</span>
-                                <span className="ml-1">{comboItem.item?.nome || comboItem.nome || `Item ${comboItem.tipo}`}</span>
+                                <span className="ml-1">{getDisplayName()}</span>
                               </span>
                             );
                           })}
@@ -1507,16 +1531,6 @@ const CardapioTab = ({ pizzaria, cardapio, onUpdate }) => {
                             ? 'Grátis' 
                             : `R$ ${typeof item.preco === 'number' ? item.preco.toFixed(2) : '0.00'}`
                           }
-                        </p>
-                      )}
-                      {item.categoria === 'sabor' && item.valorEspecial > 0 && (
-                        <p className="text-sm text-purple-600">
-                          + R$ {item.valorEspecial.toFixed(2)} por sabor
-                        </p>
-                      )}
-                      {item.categoria === 'bebida' && item.valorEspecial > 0 && (
-                        <p className="text-sm text-cyan-600">
-                          + R$ {item.valorEspecial.toFixed(2)} valor premium
                         </p>
                       )}
                       {item.categoria === 'borda' && item.valorEspecial > 0 && (
@@ -1712,10 +1726,13 @@ const NovoItemModal = ({ pizzaria, defaultCategory = 'pizza', onClose, onSuccess
     quantidadeFatias: '', // Para pizzas: número de fatias
     quantidadeSabores: '', // Para pizzas: máximo de sabores
     visivelCardapio: true, // Para pizzas: visibilidade no cardápio
+    // REMOVIDO: categoriasPermitidas - agora controlado por sabor
     itensCombo: [],
     tamanhos: [{ nome: '', preco: '', descricao: '' }],
     tamanhosSelecionados: [],
     ingredientes: [], // Lista de ingredientes do sabor
+    upgradesDisponiveis: {}, // Para armazenar configurações de upgrade das bebidas não incluídas
+    configuracoesPizza: [], // NOVA ESTRUTURA: Configurações específicas por pizza
     pizzaria: pizzaria._id
   });
   const [pizzasDisponiveis, setPizzasDisponiveis] = useState([]);
@@ -1724,6 +1741,13 @@ const NovoItemModal = ({ pizzaria, defaultCategory = 'pizza', onClose, onSuccess
   useEffect(() => {
     loadInitialData();
   }, []);
+
+  // Recarregar dados quando mudar para categoria sabor
+  useEffect(() => {
+    if (formData.categoria === 'sabor' && pizzasDisponiveis.length === 0) {
+      loadInitialData();
+    }
+  }, [formData.categoria]);
 
   const loadInitialData = async () => {
     try {
@@ -1801,19 +1825,26 @@ const NovoItemModal = ({ pizzaria, defaultCategory = 'pizza', onClose, onSuccess
           preco: preco,
           valorEspecial: 0,
           visivelCardapio: formData.visivelCardapio,
+          // REMOVIDO: categoriasPermitidas - agora controlado por sabor
           pizzaria: formData.pizzaria
         };
       } else if (formData.categoria === 'sabor') {
-        // Para sabores, usar valorEspecial e gerar descrição automática
-        dataToSend = {
-          ...formData,
-          preco: 0,
-          tipoSabor: formData.tipoSabor || 'salgado',
+        // Para sabores, usar endpoint específico de sabores
+        await api.post('/sabores', {
+          nome: formData.nome,
           descricao: `Sabor ${formData.nome}`, // Descrição automática para sabores
-          valorEspecial: parseFloat(formData.valorEspecial),
-          tamanhos: undefined,
-          itensCombo: undefined
-        };
+          tipoSabor: formData.tipoSabor || 'salgado',
+          ingredientes: formData.ingredientes || [],
+          configuracoesPizza: formData.configuracoesPizza || [], // NOVA ESTRUTURA
+          pizzaria: formData.pizzaria
+        });
+        alert('Sabor criado com sucesso!');
+        
+        // Recarregar dados para atualizar a interface
+        await loadInitialData();
+        
+        onSuccess({ categoria: formData.categoria });
+        return; // Sair da função aqui pois já criamos o sabor
       } else if (formData.categoria === 'bebida') {
         // Para bebidas, validar se pelo menos um tamanho foi selecionado
         if (!formData.tamanhosSelecionados || formData.tamanhosSelecionados.length === 0) {
@@ -1827,7 +1858,6 @@ const NovoItemModal = ({ pizzaria, defaultCategory = 'pizza', onClose, onSuccess
           descricao: `${formData.descricao} - ${tamanho}`,
           categoria: 'bebida',
           preco: parseFloat(formData.preco),
-          valorEspecial: parseFloat(formData.valorEspecial) || 0,
           tamanho: tamanho, // Guardar o tamanho para referência
           pizzaria: formData.pizzaria,
           tamanhos: undefined,
@@ -1863,6 +1893,7 @@ const NovoItemModal = ({ pizzaria, defaultCategory = 'pizza', onClose, onSuccess
           ...formData,
           preco: parseFloat(formData.preco),
           itensCombo: formData.itensCombo,
+          upgradesDisponiveis: formData.upgradesDisponiveis,
           valorEspecial: 0,
           tamanhos: undefined,
           tipoPizza: undefined
@@ -2035,6 +2066,14 @@ const NovoItemModal = ({ pizzaria, defaultCategory = 'pizza', onClose, onSuccess
                     </div>
                   </label>
                 </div>
+
+                {/* REMOVIDO: Seção de Categorias - agora controlado individualmente por sabor */}
+                <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <p className="text-sm text-blue-700">
+                    <strong>💡 Nova funcionalidade:</strong> A compatibilidade com sabores agora é 
+                    configurada individualmente em cada sabor, permitindo preços diferenciados por tamanho de pizza.
+                  </p>
+                </div>
               </div>
               
               <div className="mt-4 p-3 bg-blue-50 rounded-lg">
@@ -2050,12 +2089,12 @@ const NovoItemModal = ({ pizzaria, defaultCategory = 'pizza', onClose, onSuccess
           )}
 
           {formData.categoria === 'sabor' && (
-            <div className="border-t pt-4">
+            <div className="border border-blue-200 rounded-lg p-4 bg-blue-50">
               <h4 className="font-medium text-gray-900 mb-3">Configurações do Sabor</h4>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Tipo do Sabor</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Tipo do Sabor</label>
                   <select
                     value={formData.tipoSabor}
                     onChange={(e) => setFormData({...formData, tipoSabor: e.target.value})}
@@ -2066,21 +2105,86 @@ const NovoItemModal = ({ pizzaria, defaultCategory = 'pizza', onClose, onSuccess
                   </select>
                 </div>
                 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Valor Especial (R$)</label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    required
-                    value={formData.valorEspecial}
-                    onChange={(e) => setFormData({...formData, valorEspecial: e.target.value})}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-500"
-                    placeholder="0.00"
-                  />
+              </div>
+
+              {/* NOVA SEÇÃO: Configurações por Pizza */}
+              <div className="mb-4">
+                <h5 className="font-medium text-gray-900 mb-3">Configurações por Tamanho de Pizza</h5>
+                <p className="text-xs text-gray-600 mb-4">
+                  Configure em quais pizzas este sabor pode ser usado e o valor especial para cada uma.
+                </p>
+                
+                <div className="space-y-3">
+                  {pizzasDisponiveis.map(pizza => {
+                    const configuracao = formData.configuracoesPizza.find(c => c.pizza === pizza._id) || {
+                      pizza: pizza._id,
+                      permitido: false,
+                      valorEspecial: 0
+                    };
+                    
+                    return (
+                      <div key={pizza._id} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg bg-white">
+                        <div className="flex-1">
+                          <h6 className="font-medium text-gray-900">{pizza.nome}</h6>
+                          <p className="text-sm text-gray-500">
+                            {pizza.quantidadeFatias} fatias • Até {pizza.quantidadeSabores} sabores
+                          </p>
+                        </div>
+                        
+                        <div className="flex items-center space-x-4">
+                          <label className="flex items-center space-x-2">
+                            <input
+                              type="checkbox"
+                              checked={configuracao.permitido}
+                              onChange={(e) => {
+                                const novasConfiguracoes = formData.configuracoesPizza.filter(c => c.pizza !== pizza._id);
+                                if (e.target.checked) {
+                                  novasConfiguracoes.push({
+                                    pizza: pizza._id,
+                                    permitido: true,
+                                    valorEspecial: configuracao.valorEspecial
+                                  });
+                                }
+                                setFormData({...formData, configuracoesPizza: novasConfiguracoes});
+                              }}
+                              className="rounded"
+                            />
+                            <span className="text-sm text-gray-700">Permitir</span>
+                          </label>
+                          
+                          {configuracao.permitido && (
+                            <div className="flex items-center space-x-2">
+                              <span className="text-sm text-gray-600">R$</span>
+                              <input
+                                type="number"
+                                step="0.01"
+                                min="0"
+                                value={configuracao.valorEspecial}
+                                onChange={(e) => {
+                                  const novasConfiguracoes = formData.configuracoesPizza.map(c => 
+                                    c.pizza === pizza._id 
+                                      ? {...c, valorEspecial: parseFloat(e.target.value) || 0}
+                                      : c
+                                  );
+                                  setFormData({...formData, configuracoesPizza: novasConfiguracoes});
+                                }}
+                                className="w-20 px-2 py-1 text-sm border border-gray-300 rounded"
+                                placeholder="0.00"
+                              />
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                  
+                  {pizzasDisponiveis.length === 0 && (
+                    <p className="text-sm text-gray-500 italic">
+                      Nenhuma pizza cadastrada. Cadastre pizzas primeiro para configurar sabores.
+                    </p>
+                  )}
                 </div>
               </div>
-              
-              <p className="text-xs text-gray-500 mb-4">Valor adicional que será multiplicado pela quantidade de sabores</p>
 
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-2">Ingredientes do Sabor</label>
@@ -2097,7 +2201,7 @@ const NovoItemModal = ({ pizzaria, defaultCategory = 'pizza', onClose, onSuccess
             <div className="border border-cyan-200 rounded-lg p-4 bg-cyan-50">
               <h4 className="font-medium text-gray-900 mb-3">Configurações da Bebida</h4>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Preço Base (R$)</label>
                   <input
@@ -2112,18 +2216,6 @@ const NovoItemModal = ({ pizzaria, defaultCategory = 'pizza', onClose, onSuccess
                   <p className="text-xs text-gray-500 mt-1">Preço base da bebida</p>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Valor Especial (R$)</label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    value={formData.valorEspecial || ''}
-                    onChange={(e) => setFormData({...formData, valorEspecial: e.target.value})}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-500"
-                    placeholder="0.00"
-                  />
-                  <p className="text-xs text-gray-500 mt-1">Valor adicional para bebidas especiais/premium (deixe 0 para bebidas normais)</p>
-                </div>
               </div>
 
               <div className="mt-4">
@@ -2244,6 +2336,79 @@ const NovoItemModal = ({ pizzaria, defaultCategory = 'pizza', onClose, onSuccess
                         />
                         <span className="text-sm">{pizza.nome}</span>
                       </div>
+                      
+                      {/* Flags de configuração para pizzas */}
+                      {formData.itensCombo.some(item => item.item === pizza._id && item.tipo === 'pizza') && (
+                        <div className="flex space-x-2 text-xs">
+                          <label className="flex items-center">
+                            <input
+                              type="checkbox"
+                              checked={formData.itensCombo.find(item => item.item === pizza._id && item.tipo === 'pizza')?.configuracaoPizza?.permiteSalgado !== false}
+                              onChange={(e) => {
+                                const novosItens = formData.itensCombo.map(item => 
+                                  item.item === pizza._id && item.tipo === 'pizza'
+                                    ? { 
+                                        ...item, 
+                                        configuracaoPizza: {
+                                          ...item.configuracaoPizza,
+                                          permiteSalgado: e.target.checked
+                                        }
+                                      }
+                                    : item
+                                );
+                                setFormData({...formData, itensCombo: novosItens});
+                              }}
+                              className="mr-1"
+                            />
+                            🧀 Salgado
+                          </label>
+                          <label className="flex items-center">
+                            <input
+                              type="checkbox"
+                              checked={formData.itensCombo.find(item => item.item === pizza._id && item.tipo === 'pizza')?.configuracaoPizza?.permiteDoce !== false}
+                              onChange={(e) => {
+                                const novosItens = formData.itensCombo.map(item => 
+                                  item.item === pizza._id && item.tipo === 'pizza'
+                                    ? { 
+                                        ...item, 
+                                        configuracaoPizza: {
+                                          ...item.configuracaoPizza,
+                                          permiteDoce: e.target.checked
+                                        }
+                                      }
+                                    : item
+                                );
+                                setFormData({...formData, itensCombo: novosItens});
+                              }}
+                              className="mr-1"
+                            />
+                            🍰 Doce
+                          </label>
+                          <label className="flex items-center">
+                            <input
+                              type="checkbox"
+                              checked={formData.itensCombo.find(item => item.item === pizza._id && item.tipo === 'pizza')?.configuracaoPizza?.cobraEspecial === true}
+                              onChange={(e) => {
+                                const novosItens = formData.itensCombo.map(item => 
+                                  item.item === pizza._id && item.tipo === 'pizza'
+                                    ? { 
+                                        ...item, 
+                                        configuracaoPizza: {
+                                          ...item.configuracaoPizza,
+                                          cobraEspecial: e.target.checked
+                                        }
+                                      }
+                                    : item
+                                );
+                                setFormData({...formData, itensCombo: novosItens});
+                              }}
+                              className="mr-1"
+                            />
+                            💎 Especial
+                          </label>
+                        </div>
+                      )}
+                      
                       {formData.itensCombo.some(item => item.item === pizza._id && item.tipo === 'pizza') && (
                         <input
                           type="number"
@@ -2268,7 +2433,7 @@ const NovoItemModal = ({ pizzaria, defaultCategory = 'pizza', onClose, onSuccess
                 <div>
                   <h5 className="text-sm font-medium text-gray-600 mb-2">Bebidas por Tamanho</h5>
                   <p className="text-xs text-gray-500 mb-3">
-                    Especifique o tamanho e quantidade de bebidas. Os clientes poderão escolher qualquer bebida disponível no tamanho selecionado.
+                    Especifique o tamanho e quantidade de bebidas. Configure se permite upgrade e o valor especial.
                   </p>
                   
                   {/* Tamanhos disponíveis baseados nas bebidas cadastradas */}
@@ -2294,7 +2459,11 @@ const NovoItemModal = ({ pizzaria, defaultCategory = 'pizza', onClose, onSuccess
                                   novosItens.push({ 
                                     item: bebidaDoTamanho._id,
                                     quantidade: 1, 
-                                    tipo: 'bebida'
+                                    tipo: 'bebida',
+                                    configuracaoBebida: {
+                                      permitirUpgrade: false,
+                                      valorEspecialUpgrade: 0
+                                    }
                                   });
                                 } else if (bebidaDoTamanho) {
                                   // Remover item de bebida desta referência
@@ -2329,6 +2498,63 @@ const NovoItemModal = ({ pizzaria, defaultCategory = 'pizza', onClose, onSuccess
                                 }}
                                 className="w-16 px-2 py-1 text-sm border border-gray-300 rounded"
                               />
+                            </div>
+                          )}
+                          
+                          {!itemExistente && bebidaDoTamanho && (
+                            <div className="space-y-2">
+                              <div className="flex items-center space-x-2">
+                                <input
+                                  type="checkbox"
+                                  id={`permite-upgrade-${bebidaDoTamanho._id}`}
+                                  checked={formData.upgradesDisponiveis?.[bebidaDoTamanho._id]?.permitir || false}
+                                  onChange={(e) => {
+                                    setFormData({
+                                      ...formData,
+                                      upgradesDisponiveis: {
+                                        ...formData.upgradesDisponiveis,
+                                        [bebidaDoTamanho._id]: {
+                                          ...formData.upgradesDisponiveis?.[bebidaDoTamanho._id],
+                                          permitir: e.target.checked
+                                        }
+                                      }
+                                    });
+                                  }}
+                                  className="rounded"
+                                />
+                                <label htmlFor={`permite-upgrade-${bebidaDoTamanho._id}`} className="text-xs text-gray-700">
+                                  📈 Disponível como upgrade
+                                </label>
+                              </div>
+                              
+                              {formData.upgradesDisponiveis?.[bebidaDoTamanho._id]?.permitir && (
+                                <div className="flex items-center space-x-2 ml-6">
+                                  <label className="text-xs text-gray-600">Valor especial:</label>
+                                  <div className="flex items-center">
+                                    <span className="text-xs text-gray-500 mr-1">R$</span>
+                                    <input
+                                      type="number"
+                                      min="0"
+                                      step="0.01"
+                                      value={formData.upgradesDisponiveis?.[bebidaDoTamanho._id]?.valor || 0}
+                                      onChange={(e) => {
+                                        setFormData({
+                                          ...formData,
+                                          upgradesDisponiveis: {
+                                            ...formData.upgradesDisponiveis,
+                                            [bebidaDoTamanho._id]: {
+                                              ...formData.upgradesDisponiveis?.[bebidaDoTamanho._id],
+                                              valor: parseFloat(e.target.value) || 0
+                                            }
+                                          }
+                                        });
+                                      }}
+                                      className="w-20 px-2 py-1 text-sm border border-gray-300 rounded"
+                                      placeholder="0.00"
+                                    />
+                                  </div>
+                                </div>
+                              )}
                             </div>
                           )}
                         </div>
@@ -2378,11 +2604,16 @@ const EditarItemModal = ({ item, onClose, onSuccess }) => {
     quantidadeFatias: item.quantidadeFatias || '',
     quantidadeSabores: item.quantidadeSabores || '',
     visivelCardapio: item.visivelCardapio !== undefined ? item.visivelCardapio : true,
+    // REMOVIDO: categoriasPermitidas - agora controlado por sabor
     itensCombo: item.itensCombo?.map(comboItem => ({
       ...comboItem,
-      item: comboItem.item?._id || comboItem.item // Extrair ID se for objeto populado, manter como está se já for ID
+      item: comboItem.item?._id || comboItem.item, // Extrair ID se for objeto populado, manter como está se já for ID
+      configuracaoBebida: comboItem.configuracaoBebida || { permitirUpgrade: false, valorEspecialUpgrade: 0 },
+      configuracaoPizza: comboItem.configuracaoPizza || {}
     })) || [],
     tamanhos: item.tamanhos && item.tamanhos.length > 0 ? item.tamanhos : [{ nome: '', preco: '', descricao: '' }],
+    upgradesDisponiveis: item.upgradesDisponiveis || {},
+    configuracoesPizza: item.configuracoesPizza || [], // NOVA ESTRUTURA
   });
   
   const [ingredientes, setIngredientes] = useState([]);
@@ -2392,6 +2623,7 @@ const EditarItemModal = ({ item, onClose, onSuccess }) => {
   useEffect(() => {
     if (item.categoria === 'sabor') {
       loadIngredientes();
+      loadInitialData(); // CORREÇÃO: Carregar pizzas também para sabores
     } else {
       loadInitialData();
     }
@@ -2459,6 +2691,7 @@ const EditarItemModal = ({ item, onClose, onSuccess }) => {
           quantidadeSabores: parseInt(formData.quantidadeSabores) || 0,
           preco: parseFloat(formData.preco) || 0,
           valorEspecial: 0,
+          // REMOVIDO: categoriasPermitidas - agora controlado por sabor
           tamanhos: undefined,
           itensCombo: undefined,
           pizzasCompativeis: undefined
@@ -2469,8 +2702,8 @@ const EditarItemModal = ({ item, onClose, onSuccess }) => {
           nome: formData.nome,
           descricao: `Sabor ${formData.nome}`, // Descrição automática para sabores
           tipoSabor: formData.tipoSabor,
-          valorEspecial: parseFloat(formData.valorEspecial) || 0,
-          ingredientes: ingredientes
+          ingredientes: ingredientes,
+          configuracoesPizza: formData.configuracoesPizza // NOVA ESTRUTURA
         });
         alert('Sabor atualizado com sucesso!');
         onSuccess();
@@ -2479,7 +2712,6 @@ const EditarItemModal = ({ item, onClose, onSuccess }) => {
         dataToSend = {
           ...formData,
           preco: parseFloat(formData.preco),
-          valorEspecial: parseFloat(formData.valorEspecial) || 0,
           tamanho: formData.tamanho,
           tamanhos: undefined,
           itensCombo: undefined,
@@ -2490,6 +2722,7 @@ const EditarItemModal = ({ item, onClose, onSuccess }) => {
           ...formData,
           preco: parseFloat(formData.preco),
           itensCombo: formData.itensCombo,
+          upgradesDisponiveis: formData.upgradesDisponiveis,
           valorEspecial: 0,
           tamanhos: undefined,
           tipoPizza: undefined
@@ -2659,6 +2892,14 @@ const EditarItemModal = ({ item, onClose, onSuccess }) => {
                     </div>
                   </label>
                 </div>
+
+                {/* REMOVIDO: Seção de Categorias - agora controlado individualmente por sabor */}
+                <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <p className="text-sm text-blue-700">
+                    <strong>💡 Nova funcionalidade:</strong> A compatibilidade com sabores agora é 
+                    configurada individualmente em cada sabor, permitindo preços diferenciados por tamanho de pizza.
+                  </p>
+                </div>
               </div>
             </div>
           )}
@@ -2680,24 +2921,86 @@ const EditarItemModal = ({ item, onClose, onSuccess }) => {
                   </select>
                 </div>
                 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Valor Especial</label>
-                  <div className="relative">
-                    <input
-                      type="number"
-                      step="0.01"
-                      value={formData.valorEspecial}
-                      onChange={(e) => setFormData({...formData, valorEspecial: e.target.value})}
-                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-500"
-                      placeholder="0.00"
-                    />
-                  </div>
+              </div>
+
+              {/* NOVA SEÇÃO: Configurações por Pizza */}
+              <div className="mb-4">
+                <h5 className="font-medium text-gray-900 mb-3">Configurações por Tamanho de Pizza</h5>
+                <p className="text-xs text-gray-600 mb-4">
+                  Configure em quais pizzas este sabor pode ser usado e o valor especial para cada uma.
+                </p>
+                
+                <div className="space-y-3">
+                  {pizzasDisponiveis.map(pizza => {
+                    const configuracao = formData.configuracoesPizza.find(c => c.pizza === pizza._id) || {
+                      pizza: pizza._id,
+                      permitido: false,
+                      valorEspecial: 0
+                    };
+                    
+                    return (
+                      <div key={pizza._id} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg bg-white">
+                        <div className="flex-1">
+                          <h6 className="font-medium text-gray-900">{pizza.nome}</h6>
+                          <p className="text-sm text-gray-500">
+                            {pizza.quantidadeFatias} fatias • Até {pizza.quantidadeSabores} sabores
+                          </p>
+                        </div>
+                        
+                        <div className="flex items-center space-x-4">
+                          <label className="flex items-center space-x-2">
+                            <input
+                              type="checkbox"
+                              checked={configuracao.permitido}
+                              onChange={(e) => {
+                                const novasConfiguracoes = formData.configuracoesPizza.filter(c => c.pizza !== pizza._id);
+                                if (e.target.checked) {
+                                  novasConfiguracoes.push({
+                                    pizza: pizza._id,
+                                    permitido: true,
+                                    valorEspecial: configuracao.valorEspecial
+                                  });
+                                }
+                                setFormData({...formData, configuracoesPizza: novasConfiguracoes});
+                              }}
+                              className="rounded"
+                            />
+                            <span className="text-sm text-gray-700">Permitir</span>
+                          </label>
+                          
+                          {configuracao.permitido && (
+                            <div className="flex items-center space-x-2">
+                              <span className="text-sm text-gray-600">R$</span>
+                              <input
+                                type="number"
+                                step="0.01"
+                                min="0"
+                                value={configuracao.valorEspecial}
+                                onChange={(e) => {
+                                  const novasConfiguracoes = formData.configuracoesPizza.map(c => 
+                                    c.pizza === pizza._id 
+                                      ? {...c, valorEspecial: parseFloat(e.target.value) || 0}
+                                      : c
+                                  );
+                                  setFormData({...formData, configuracoesPizza: novasConfiguracoes});
+                                }}
+                                className="w-20 px-2 py-1 text-sm border border-gray-300 rounded"
+                                placeholder="0.00"
+                              />
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                  
+                  {pizzasDisponiveis.length === 0 && (
+                    <p className="text-sm text-gray-500 italic">
+                      Nenhuma pizza cadastrada. Cadastre pizzas primeiro para configurar sabores.
+                    </p>
+                  )}
                 </div>
               </div>
-              
-              <p className="text-xs text-gray-400 mb-4">
-                💡 Exemplo: Se valor = 5,00 e cliente escolhe 2 sabores, adiciona R$ 10,00 ao preço da pizza
-              </p>
 
               <IngredientesManager 
                 itemId={item._id} 
@@ -2712,7 +3015,7 @@ const EditarItemModal = ({ item, onClose, onSuccess }) => {
             <div className="border border-cyan-200 rounded-lg p-4 bg-cyan-50">
               <h4 className="font-medium text-gray-900 mb-3">Configurações da Bebida</h4>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Preço Base (R$)</label>
                   <input
@@ -2727,29 +3030,6 @@ const EditarItemModal = ({ item, onClose, onSuccess }) => {
                   <p className="text-xs text-gray-500 mt-1">Preço base da bebida</p>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Valor Especial (R$)</label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    value={formData.valorEspecial || ''}
-                    onChange={(e) => setFormData({...formData, valorEspecial: e.target.value})}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-500"
-                    placeholder="0.00"
-                  />
-                  <p className="text-xs text-gray-500 mt-1">Valor adicional para bebidas premium</p>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Tamanho</label>
-                  <input
-                    type="text"
-                    value={formData.tamanho}
-                    disabled
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-100 text-gray-500"
-                  />
-                  <p className="text-xs text-gray-500 mt-1">Tamanho não pode ser alterado</p>
-                </div>
               </div>
               
               <div className="mt-3 p-2 bg-blue-50 rounded border">
@@ -2844,6 +3124,79 @@ const EditarItemModal = ({ item, onClose, onSuccess }) => {
                         />
                         <span className="text-sm">{pizza.nome}</span>
                       </div>
+                      
+                      {/* Flags de configuração para pizzas */}
+                      {formData.itensCombo.some(item => item.item === pizza._id && item.tipo === 'pizza') && (
+                        <div className="flex space-x-2 text-xs">
+                          <label className="flex items-center">
+                            <input
+                              type="checkbox"
+                              checked={formData.itensCombo.find(item => item.item === pizza._id && item.tipo === 'pizza')?.configuracaoPizza?.permiteSalgado !== false}
+                              onChange={(e) => {
+                                const novosItens = formData.itensCombo.map(item => 
+                                  item.item === pizza._id && item.tipo === 'pizza'
+                                    ? { 
+                                        ...item, 
+                                        configuracaoPizza: {
+                                          ...item.configuracaoPizza,
+                                          permiteSalgado: e.target.checked
+                                        }
+                                      }
+                                    : item
+                                );
+                                setFormData({...formData, itensCombo: novosItens});
+                              }}
+                              className="mr-1"
+                            />
+                            🧀 Salgado
+                          </label>
+                          <label className="flex items-center">
+                            <input
+                              type="checkbox"
+                              checked={formData.itensCombo.find(item => item.item === pizza._id && item.tipo === 'pizza')?.configuracaoPizza?.permiteDoce !== false}
+                              onChange={(e) => {
+                                const novosItens = formData.itensCombo.map(item => 
+                                  item.item === pizza._id && item.tipo === 'pizza'
+                                    ? { 
+                                        ...item, 
+                                        configuracaoPizza: {
+                                          ...item.configuracaoPizza,
+                                          permiteDoce: e.target.checked
+                                        }
+                                      }
+                                    : item
+                                );
+                                setFormData({...formData, itensCombo: novosItens});
+                              }}
+                              className="mr-1"
+                            />
+                            🍰 Doce
+                          </label>
+                          <label className="flex items-center">
+                            <input
+                              type="checkbox"
+                              checked={formData.itensCombo.find(item => item.item === pizza._id && item.tipo === 'pizza')?.configuracaoPizza?.cobraEspecial === true}
+                              onChange={(e) => {
+                                const novosItens = formData.itensCombo.map(item => 
+                                  item.item === pizza._id && item.tipo === 'pizza'
+                                    ? { 
+                                        ...item, 
+                                        configuracaoPizza: {
+                                          ...item.configuracaoPizza,
+                                          cobraEspecial: e.target.checked
+                                        }
+                                      }
+                                    : item
+                                );
+                                setFormData({...formData, itensCombo: novosItens});
+                              }}
+                              className="mr-1"
+                            />
+                            💎 Especial
+                          </label>
+                        </div>
+                      )}
+                      
                       {formData.itensCombo.some(item => item.item === pizza._id && item.tipo === 'pizza') && (
                         <input
                           type="number"
@@ -2868,7 +3221,7 @@ const EditarItemModal = ({ item, onClose, onSuccess }) => {
                 <div>
                   <h5 className="text-sm font-medium text-gray-600 mb-2">Bebidas por Tamanho</h5>
                   <p className="text-xs text-gray-500 mb-3">
-                    Especifique o tamanho e quantidade de bebidas. Os clientes poderão escolher qualquer bebida disponível no tamanho selecionado.
+                    Especifique o tamanho e quantidade de bebidas. Configure se permite upgrade e o valor especial.
                   </p>
                   
                   {/* Tamanhos disponíveis baseados nas bebidas cadastradas */}
@@ -2894,7 +3247,11 @@ const EditarItemModal = ({ item, onClose, onSuccess }) => {
                                   novosItens.push({ 
                                     item: bebidaDoTamanho._id,
                                     quantidade: 1, 
-                                    tipo: 'bebida'
+                                    tipo: 'bebida',
+                                    configuracaoBebida: {
+                                      permitirUpgrade: false,
+                                      valorEspecialUpgrade: 0
+                                    }
                                   });
                                 } else if (bebidaDoTamanho) {
                                   // Remover item de bebida desta referência
@@ -2929,6 +3286,63 @@ const EditarItemModal = ({ item, onClose, onSuccess }) => {
                                 }}
                                 className="w-16 px-2 py-1 text-sm border border-gray-300 rounded"
                               />
+                            </div>
+                          )}
+                          
+                          {!itemExistente && bebidaDoTamanho && (
+                            <div className="space-y-2">
+                              <div className="flex items-center space-x-2">
+                                <input
+                                  type="checkbox"
+                                  id={`permite-upgrade-${bebidaDoTamanho._id}`}
+                                  checked={formData.upgradesDisponiveis?.[bebidaDoTamanho._id]?.permitir || false}
+                                  onChange={(e) => {
+                                    setFormData({
+                                      ...formData,
+                                      upgradesDisponiveis: {
+                                        ...formData.upgradesDisponiveis,
+                                        [bebidaDoTamanho._id]: {
+                                          ...formData.upgradesDisponiveis?.[bebidaDoTamanho._id],
+                                          permitir: e.target.checked
+                                        }
+                                      }
+                                    });
+                                  }}
+                                  className="rounded"
+                                />
+                                <label htmlFor={`permite-upgrade-${bebidaDoTamanho._id}`} className="text-xs text-gray-700">
+                                  📈 Disponível como upgrade
+                                </label>
+                              </div>
+                              
+                              {formData.upgradesDisponiveis?.[bebidaDoTamanho._id]?.permitir && (
+                                <div className="flex items-center space-x-2 ml-6">
+                                  <label className="text-xs text-gray-600">Valor especial:</label>
+                                  <div className="flex items-center">
+                                    <span className="text-xs text-gray-500 mr-1">R$</span>
+                                    <input
+                                      type="number"
+                                      min="0"
+                                      step="0.01"
+                                      value={formData.upgradesDisponiveis?.[bebidaDoTamanho._id]?.valor || 0}
+                                      onChange={(e) => {
+                                        setFormData({
+                                          ...formData,
+                                          upgradesDisponiveis: {
+                                            ...formData.upgradesDisponiveis,
+                                            [bebidaDoTamanho._id]: {
+                                              ...formData.upgradesDisponiveis?.[bebidaDoTamanho._id],
+                                              valor: parseFloat(e.target.value) || 0
+                                            }
+                                          }
+                                        });
+                                      }}
+                                      className="w-20 px-2 py-1 text-sm border border-gray-300 rounded"
+                                      placeholder="0.00"
+                                    />
+                                  </div>
+                                </div>
+                              )}
                             </div>
                           )}
                         </div>
